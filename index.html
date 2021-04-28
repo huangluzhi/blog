@@ -160,6 +160,337 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://huangluzhi.github.io/blog/2021/04/27/C++%E6%8F%90%E7%BA%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Rex">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Luzhi's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2021/04/27/C++%E6%8F%90%E7%BA%B2/" class="post-title-link" itemprop="url">C++提纲</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-04-27 14:08:20" itemprop="dateCreated datePublished" datetime="2021-04-27T14:08:20+08:00">2021-04-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-04-28 13:00:30" itemprop="dateModified" datetime="2021-04-28T13:00:30+08:00">2021-04-28</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h1><h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><h3 id="static"><a href="#static" class="headerlink" title="static"></a>static</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qychjj/article/details/99310485">static的用法，全局变量与局部变量</a><br>（1）生命周期：在修饰变量的时候，static修饰的静态局部变量只执行初始化一次，而且延长了局部变量的生命周期，直到程序运行结束以后才释放，但不改变作用域。比如修饰函数中存放在栈空间的数组。如果不想让这个数组在函数调用结束释放可以使用static修饰。<br>（2）可见性：static修饰全局变量或函数时，这个全局变量只能在本文件中访问，不能在其它文件中访问，即便是extern外部声明也不可以。这个函数也只能在本文件中调用，不能被其他文件调用。<br>（3）存储方式：Static修饰的变量存放在全局数据区的静态变量区，包括全局静态变量和局部静态变量，都在全局数据区分配内存。初始化的时候自动初始化为0。<br>（4）考虑到数据安全性（当程序想要使用全局变量的时候应该先考虑使用static）。</p>
+<h3 id="union"><a href="#union" class="headerlink" title="union"></a>union</h3><h3 id="extern"><a href="#extern" class="headerlink" title="extern"></a>extern</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/keensword/article/details/401114">解析“extern”</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/extern-head-h-different.html">extern 与头文件(*.h)的区别和联系</a></p>
+<h2 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_34232363/article/details/85902435">C++ 四种强制类型转换</a></p>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/QG-whz/p/5132745.html">C++编译期多态与运行期多态</a></p>
+<h3 id="运行期多态"><a href="#运行期多态" class="headerlink" title="运行期多态"></a>运行期多态</h3><p>运行期多态的设计思想要归结到类继承体系的设计上去。对于有相关功能的对象集合，我们总希望能够抽象出它们共有的功能集合，在基类中将这些功能声明为虚接口（虚函数），然后由子类继承基类去重写这些虚接口，以实现子类特有的具体功能。</p>
+<h3 id="编译期多态"><a href="#编译期多态" class="headerlink" title="编译期多态"></a>编译期多态</h3><p>对模板参数而言，多态是通过模板具现化和函数重载解析实现的。以不同的模板参数具现化导致调用不同的函数，这就是所谓的编译期多态。<br>相比较于运行期多态，实现编译期多态的类之间并不需要成为一个继承体系，它们之间可以没有什么关系，但约束是它们都有相同的隐式接口。</p>
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><table>
+<thead>
+<tr>
+<th></th>
+<th><strong>排序方法</strong></th>
+<th><strong>最好时间</strong></th>
+<th><strong>最坏时间</strong></th>
+<th><strong>平均时间</strong></th>
+<th><strong>辅助空间</strong></th>
+<th><strong>稳定性</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1</strong></td>
+<td><strong>直接插入</strong></td>
+<td><strong>O(n)</strong></td>
+<td><strong>O(n2)</strong></td>
+<td><strong>O(n2)</strong></td>
+<td><strong>O(1)</strong></td>
+<td><strong>稳定</strong></td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td><strong>希尔排序</strong></td>
+<td><strong>——</strong></td>
+<td><strong>——</strong></td>
+<td><strong>——</strong></td>
+<td><strong>O(1)</strong></td>
+<td><strong>不稳定</strong></td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td><strong>冒泡排序</strong></td>
+<td><strong>O(n)</strong></td>
+<td><strong>O(n2)</strong></td>
+<td><strong>O(n2)</strong></td>
+<td><strong>O(1)</strong></td>
+<td><strong>稳定</strong></td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td><strong>快速排序</strong></td>
+<td><strong>O(nlog2n)</strong></td>
+<td><strong>O(nlog2n)</strong></td>
+<td><strong>O(nlog2n)</strong></td>
+<td><strong>O(nlog2n)</strong></td>
+<td><strong>不稳定</strong></td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td><strong>简单选择</strong></td>
+<td><strong>O(n2)</strong></td>
+<td><strong>O(n2)</strong></td>
+<td><strong>O(n2)</strong></td>
+<td><strong>O(1)</strong></td>
+<td><strong>不稳定</strong></td>
+</tr>
+<tr>
+<td><strong>6</strong></td>
+<td><strong>堆排序</strong></td>
+<td><strong>O(nlog2n)</strong></td>
+<td><strong>O(nlog2n)</strong></td>
+<td><strong>O(nlog2n)</strong></td>
+<td><strong>O(1)</strong></td>
+<td><strong>不稳定</strong></td>
+</tr>
+<tr>
+<td><strong>7</strong></td>
+<td><strong>归并排序</strong></td>
+<td><strong>O(nlog2n)</strong></td>
+<td><strong>O(nlog2n)</strong></td>
+<td><strong>O(nlog2n)</strong></td>
+<td><strong>O(n)</strong></td>
+<td><strong>稳定</strong></td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://huangluzhi.github.io/blog/2021/04/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E6%8F%90%E7%BA%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Rex">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Luzhi's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2021/04/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E6%8F%90%E7%BA%B2/" class="post-title-link" itemprop="url">操作系统-提纲</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-04-27 14:08:20" itemprop="dateCreated datePublished" datetime="2021-04-27T14:08:20+08:00">2021-04-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-04-28 13:06:06" itemprop="dateModified" datetime="2021-04-28T13:06:06+08:00">2021-04-28</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><h2 id="上下文切换"><a href="#上下文切换" class="headerlink" title="上下文切换"></a>上下文切换</h2><h3 id="进程上下文切换"><a href="#进程上下文切换" class="headerlink" title="进程上下文切换"></a>进程上下文切换</h3><h3 id="线程上下文切换"><a href="#线程上下文切换" class="headerlink" title="线程上下文切换"></a>线程上下文切换</h3><h3 id="CPU上下文切换link"><a href="#CPU上下文切换link" class="headerlink" title="CPU上下文切换link"></a>CPU上下文切换<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/52845869">link</a></h3><p>可以分为三种类型</p>
+<p>进程上下文切换 - 线程上下文切换 - 中断上下文切换</p>
+<h2 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h2><p>线程是调度的基本单位，而进程则是资源拥有的基本单位</p>
+<h2 id="互斥锁、自旋锁、读写锁、悲观锁、乐观锁"><a href="#互斥锁、自旋锁、读写锁、悲观锁、乐观锁" class="headerlink" title="互斥锁、自旋锁、读写锁、悲观锁、乐观锁"></a>互斥锁、自旋锁、读写锁、悲观锁、乐观锁</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiaolincoding/p/13675202.html">互斥锁、自旋锁、读写锁、悲观锁、乐观锁的应用场景</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://huangluzhi.github.io/blog/2021/04/27/%E6%95%B0%E6%8D%AE%E5%BA%93-%E6%8F%90%E7%BA%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Rex">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Luzhi's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2021/04/27/%E6%95%B0%E6%8D%AE%E5%BA%93-%E6%8F%90%E7%BA%B2/" class="post-title-link" itemprop="url">数据库-提纲</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-04-27 14:08:20 / Modified: 22:46:32" itemprop="dateCreated datePublished" datetime="2021-04-27T14:08:20+08:00">2021-04-27</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://huangluzhi.github.io/blog/2021/04/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E6%8F%90%E7%BA%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Rex">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Luzhi's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2021/04/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E6%8F%90%E7%BA%B2/" class="post-title-link" itemprop="url">计算机网络-提纲</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-04-27 14:08:20 / Modified: 22:46:38" itemprop="dateCreated datePublished" datetime="2021-04-27T14:08:20+08:00">2021-04-27</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://huangluzhi.github.io/blog/2021/04/13/%E5%88%BB%E5%9C%A8%E6%88%91%E5%BF%83%E5%BA%95%E7%9A%84%E5%90%8D%E5%AD%97-%E5%8D%A2%E5%B9%BF%E4%BB%B2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -283,9 +614,13 @@
       <div class="site-state-item site-state-posts">
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">posts</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span>
       </div>
   </nav>
 </div>
