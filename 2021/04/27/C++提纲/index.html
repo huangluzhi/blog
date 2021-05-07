@@ -28,7 +28,7 @@
 <meta property="og:description" content="C++关键字staticstatic的用法，全局变量与局部变量（1）生命周期：在修饰变量的时候，static修饰的静态局部变量只执行初始化一次，而且延长了局部变量的生命周期，直到程序运行结束以后才释放，但不改变作用域。比如修饰函数中存放在栈空间的数组。如果不想让这个数组在函数调用结束释放可以使用static修饰。（2）可见性：static修饰全局变量或函数时，这个全局变量只能在本文件中访问，不能在">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-04-27T06:08:20.000Z">
-<meta property="article:modified_time" content="2021-04-29T00:43:22.387Z">
+<meta property="article:modified_time" content="2021-05-02T02:41:15.179Z">
 <meta property="article:author" content="Rex">
 <meta property="article:tag" content="编程语言基础">
 <meta name="twitter:card" content="summary">
@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-04-29 08:43:22" itemprop="dateModified" datetime="2021-04-29T08:43:22+08:00">2021-04-29</time>
+                <time title="Modified: 2021-05-02 10:41:15" itemprop="dateModified" datetime="2021-05-02T10:41:15+08:00">2021-05-02</time>
               </span>
 
           
@@ -212,6 +212,7 @@
       
         <h1 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h1><h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><h3 id="static"><a href="#static" class="headerlink" title="static"></a>static</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qychjj/article/details/99310485">static的用法，全局变量与局部变量</a><br>（1）生命周期：在修饰变量的时候，static修饰的静态局部变量只执行初始化一次，而且延长了局部变量的生命周期，直到程序运行结束以后才释放，但不改变作用域。比如修饰函数中存放在栈空间的数组。如果不想让这个数组在函数调用结束释放可以使用static修饰。<br>（2）可见性：static修饰全局变量或函数时，这个全局变量只能在本文件中访问，不能在其它文件中访问，即便是extern外部声明也不可以。这个函数也只能在本文件中调用，不能被其他文件调用。<br>（3）存储方式：Static修饰的变量存放在全局数据区的静态变量区，包括全局静态变量和局部静态变量，都在全局数据区分配内存。初始化的时候自动初始化为0。<br>（4）考虑到数据安全性（当程序想要使用全局变量的时候应该先考虑使用static）。</p>
 <h3 id="union"><a href="#union" class="headerlink" title="union"></a>union</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/firefly_2002/article/details/7954458">Struct 和 Union区别</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/yuyanggo/article/details/49819667">union用法总结</a></p>
 <h3 id="extern"><a href="#extern" class="headerlink" title="extern"></a>extern</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/keensword/article/details/401114">解析“extern”</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/extern-head-h-different.html">extern 与头文件(*.h)的区别和联系</a></p>
 <h4 id="声明和定义"><a href="#声明和定义" class="headerlink" title="声明和定义"></a>声明和定义</h4><p>externint a; //属于声明  externint a = 10; //属于定义，同下</p>
@@ -220,11 +221,13 @@
 <p>注：声明可以拷贝n次，但是定义只能定义一次。</p>
 <h2 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h2><p>优先队列运算符重载 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/cielosun/p/5654595.html">浅谈C++ STL中的优先队列(priority_queue)</a></p>
 <h2 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_34232363/article/details/85902435">C++ 四种强制类型转换</a></p>
-<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/QG-whz/p/5132745.html">C++编译期多态与运行期多态</a></p>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><h3 id="虚函数"><a href="#虚函数" class="headerlink" title="虚函数"></a>虚函数</h3><p><a target="_blank" rel="noopener" href="https://jacktang816.github.io/post/virtualfunction/">C++虚函数的实现基本原理</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/QG-whz/p/5132745.html">C++编译期多态与运行期多态</a></p>
 <h3 id="运行期多态"><a href="#运行期多态" class="headerlink" title="运行期多态"></a>运行期多态</h3><p>运行期多态的设计思想要归结到类继承体系的设计上去。对于有相关功能的对象集合，我们总希望能够抽象出它们共有的功能集合，在基类中将这些功能声明为虚接口（虚函数），然后由子类继承基类去重写这些虚接口，以实现子类特有的具体功能。</p>
 <h3 id="编译期多态"><a href="#编译期多态" class="headerlink" title="编译期多态"></a>编译期多态</h3><p>对模板参数而言，多态是通过模板具现化和函数重载解析实现的。以不同的模板参数具现化导致调用不同的函数，这就是所谓的编译期多态。<br>相比较于运行期多态，实现编译期多态的类之间并不需要成为一个继承体系，它们之间可以没有什么关系，但约束是它们都有相同的隐式接口。</p>
 <h2 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/51855842">浅谈C++内存管理</a></p>
 <h2 id="智能指针"><a href="#智能指针" class="headerlink" title="智能指针"></a>智能指针</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wuyepeng/p/9741241.html">C++智能指针</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/74842729">智能指针短总结</a></p>
 <h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><table>
 <thead>
 <tr>
@@ -268,7 +271,7 @@
 <td><strong>4</strong></td>
 <td><strong>快速排序</strong></td>
 <td><strong>O(nlog2n)</strong></td>
-<td><strong>O(nlog2n)</strong></td>
+<td><strong>O(n2)</strong></td>
 <td><strong>O(nlog2n)</strong></td>
 <td><strong>O(nlog2n)</strong></td>
 <td><strong>不稳定</strong></td>
@@ -319,8 +322,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/blog/2021/04/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E6%8F%90%E7%BA%B2/" rel="prev" title="操作系统-提纲">
-      <i class="fa fa-chevron-left"></i> 操作系统-提纲
+    <a href="/blog/2021/04/27/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="prev" title="Java 数据结构与算法">
+      <i class="fa fa-chevron-left"></i> Java 数据结构与算法
     </a></div>
       <div class="post-nav-item"></div>
     </div>
@@ -381,7 +384,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C"><span class="nav-number">1.</span> <span class="nav-text">C++</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">1.1.</span> <span class="nav-text">关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#static"><span class="nav-number">1.1.1.</span> <span class="nav-text">static</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#union"><span class="nav-number">1.1.2.</span> <span class="nav-text">union</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#extern"><span class="nav-number">1.1.3.</span> <span class="nav-text">extern</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%E5%92%8C%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">声明和定义</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="nav-number">1.2.</span> <span class="nav-text">运算符重载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.3.</span> <span class="nav-text">强制类型转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E6%80%81"><span class="nav-number">1.4.</span> <span class="nav-text">多态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%9C%9F%E5%A4%9A%E6%80%81"><span class="nav-number">1.4.1.</span> <span class="nav-text">运行期多态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E6%9C%9F%E5%A4%9A%E6%80%81"><span class="nav-number">1.4.2.</span> <span class="nav-text">编译期多态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="nav-number">1.5.</span> <span class="nav-text">内存管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88"><span class="nav-number">1.6.</span> <span class="nav-text">智能指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F"><span class="nav-number">1.7.</span> <span class="nav-text">排序</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C"><span class="nav-number">1.</span> <span class="nav-text">C++</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">1.1.</span> <span class="nav-text">关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#static"><span class="nav-number">1.1.1.</span> <span class="nav-text">static</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#union"><span class="nav-number">1.1.2.</span> <span class="nav-text">union</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#extern"><span class="nav-number">1.1.3.</span> <span class="nav-text">extern</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%E5%92%8C%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">声明和定义</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="nav-number">1.2.</span> <span class="nav-text">运算符重载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.3.</span> <span class="nav-text">强制类型转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E6%80%81"><span class="nav-number">1.4.</span> <span class="nav-text">多态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%99%9A%E5%87%BD%E6%95%B0"><span class="nav-number">1.4.1.</span> <span class="nav-text">虚函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%9C%9F%E5%A4%9A%E6%80%81"><span class="nav-number">1.4.2.</span> <span class="nav-text">运行期多态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E6%9C%9F%E5%A4%9A%E6%80%81"><span class="nav-number">1.4.3.</span> <span class="nav-text">编译期多态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="nav-number">1.5.</span> <span class="nav-text">内存管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88"><span class="nav-number">1.6.</span> <span class="nav-text">智能指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F"><span class="nav-number">1.7.</span> <span class="nav-text">排序</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -395,12 +398,12 @@
       <div class="site-state-item site-state-posts">
           <a href="/blog/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>

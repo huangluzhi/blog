@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"huangluzhi.github.io","root":"/blog/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Java 数据结构与算法简述JAVA的ListList是一个有序队列，在JAVA中有两种实现方式: ArrayList 使用数组实现，是容量可变的非线程安全列表，随机访问快，集合扩容时会创建更大的数组，把原有数组复制到新数组。 LinkedList 本质是双向链表，与 ArrayList 相比插入和删除速度更快，但随机访问元素很慢。 简述JAVA的SetSet 即集合，该数据结构不允许元素重复且无">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 数据结构与算法">
+<meta property="og:url" content="https://huangluzhi.github.io/blog/2021/04/27/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="Luzhi&#39;s Blog">
+<meta property="og:description" content="Java 数据结构与算法简述JAVA的ListList是一个有序队列，在JAVA中有两种实现方式: ArrayList 使用数组实现，是容量可变的非线程安全列表，随机访问快，集合扩容时会创建更大的数组，把原有数组复制到新数组。 LinkedList 本质是双向链表，与 ArrayList 相比插入和删除速度更快，但随机访问元素很慢。 简述JAVA的SetSet 即集合，该数据结构不允许元素重复且无">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-04-27T06:08:20.000Z">
+<meta property="article:modified_time" content="2021-05-07T15:05:32.422Z">
+<meta property="article:author" content="Rex">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://huangluzhi.github.io/blog/2021/04/27/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Java 数据结构与算法 | Luzhi's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Luzhi's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-guitar-tab">
+
+    <a href="/blog/tabs/" rel="section"><i class="fa fa-archive fa-fw"></i>guitar tab</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://huangluzhi.github.io/blog/2021/04/27/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Rex">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Luzhi's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java 数据结构与算法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-04-27 14:08:20" itemprop="dateCreated datePublished" datetime="2021-04-27T14:08:20+08:00">2021-04-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-05-07 23:05:32" itemprop="dateModified" datetime="2021-05-07T23:05:32+08:00">2021-05-07</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Java-数据结构与算法"><a href="#Java-数据结构与算法" class="headerlink" title="Java 数据结构与算法"></a>Java 数据结构与算法</h1><h2 id="简述JAVA的List"><a href="#简述JAVA的List" class="headerlink" title="简述JAVA的List"></a><strong>简述JAVA的List</strong></h2><p>List是一个有序队列，在JAVA中有两种实现方式:</p>
+<p>ArrayList 使用数组实现，是容量可变的非线程安全列表，随机访问快，集合扩容时会创建更大的数组，把原有数组复制到新数组。</p>
+<p>LinkedList 本质是双向链表，与 ArrayList 相比插入和删除速度更快，但随机访问元素很慢。</p>
+<h2 id="简述JAVA的Set"><a href="#简述JAVA的Set" class="headerlink" title="简述JAVA的Set"></a>简述JAVA的Set</h2><p>Set 即集合，该数据结构不允许元素重复且无序。JAVA对Set有三种实现方式：</p>
+<p>HashSet 通过 HashMap 实现，HashMap 的 Key 即 HashSet 存储的元素，Value系统自定义一个名为 PRESENT 的 Object 类型常量。判断元素是否相同时，先比较hashCode，相同后再利用equals比较，查询O(1)</p>
+<p>LinkedHashSet 继承自 HashSet，通过 LinkedHashMap 实现，使用双向链表维护元素插入顺序。</p>
+<p>TreeSet 通过 TreeMap 实现的，底层数据结构是红黑树，添加元素到集合时按照比较规则将其插入合适的位置，保证插入后的集合仍然有序。查询O(logn)</p>
+<h2 id="简述JAVA的HashMap"><a href="#简述JAVA的HashMap" class="headerlink" title="简述JAVA的HashMap"></a><strong>简述JAVA的HashMap</strong></h2><p>JDK8 之前底层实现是数组 + 链表，JDK8 改为数组 + 链表/红黑树。主要成员变量包括存储数据的 table 数组、元素数量 size、加载因子 loadFactor。 </p>
+<p>HashMap 中数据以键值对的形式存在，键对应的 hash 值用来计算数组下标，如果两个元素 key 的 hash 值一样，就会发生哈希冲突，被放到同一个链表上。</p>
+<p>table 数组记录 HashMap 的数据，每个下标对应一条链表，所有哈希冲突的数据都会被存放到同一条链表，Node/Entry 节点包含四个成员变量：key、value、next 指针和 hash 值。在JDK8后链表超过8会转化为红黑树。</p>
+<p>若当前数据/总数据容量&gt;负载因子，Hashmap将执行扩容操作。 </p>
+<p>默认初始化容量为 16，扩容容量必须是 2 的幂次方、最大容量为 1&lt;&lt; 30 、默认加载因子为 0.75。</p>
+<h2 id="简述解决Hash冲突的方法"><a href="#简述解决Hash冲突的方法" class="headerlink" title="简述解决Hash冲突的方法"></a>简述解决Hash冲突的方法</h2><p>开放定址法：当发生哈希冲突时，如果哈希表未被装满，那么可以把这个值存放到冲突位置中的下一个空位置中去</p>
+<p>链地址法：对相同的哈希地址，设置一个单链表，单链表内放的都是哈希冲突元素。</p>
+<h2 id="简述java的TreeMap"><a href="#简述java的TreeMap" class="headerlink" title="简述java的TreeMap"></a>简述java的TreeMap</h2><p>TreeMap是底层利用红黑树实现的Map结构，底层实现是一棵平衡的排序二叉树，由于红黑树的插入、删除、遍历时间复杂度都为O(logN)，所以性能上低于哈希表。但是哈希表无法提供键值对的有序输出，红黑树可以按照键的值的大小有序输出。</p>
+<h2 id="简述AVL树"><a href="#简述AVL树" class="headerlink" title="简述AVL树"></a>简述AVL树</h2><p>AVL树是一种改进版的搜索二叉树，其引入平衡因子（左子支高度与右子支高度之差的绝对值），通过旋转使其尽量保持平衡。</p>
+<p>任何一个节点的左子支高度与右子支高度之差的绝对值不超过1。</p>
+<h2 id="简述红黑树"><a href="#简述红黑树" class="headerlink" title="简述红黑树"></a>简述红黑树</h2><p>红黑树本身是有2-3树发展而来，红黑树是保持黑平衡的二叉树，其查找会比AVL树慢一点，添加和删除元素会比AVL树快一点。增删改查统计性能上讲，红黑树更优。 </p>
+<p>红黑树主要特征是在每个节点上增加一个属性表示节点颜色，可以红色或黑色。红黑树和 AVL 树类似，都是在进行插入和删除时通过旋转保持自身平衡，从而获得较高的查找性能。红黑树保证从根节点到叶尾的最长路径不超过最短路径的 2 倍，所以最差时间复杂度是 O(logn)。红黑树通过重新着色和左右旋转，更加高效地完成了插入和删除之后的自平衡调整。</p>
+<h2 id="简述常见排序算法和其对应时间空间复杂度"><a href="#简述常见排序算法和其对应时间空间复杂度" class="headerlink" title="简述常见排序算法和其对应时间空间复杂度"></a>简述常见排序算法和其对应时间空间复杂度</h2><p>插入排序：每一趟将一个待排序记录按其关键字的大小插入到已排好序的一组记录的适当位置上，直到所有待排序记录全部插入为止。</p>
+<p>排序算法稳定。时间复杂度 O(n²)，空间复杂度 O(1)。</p>
+<p>希尔排序：把记录按下标的一定增量分组，对每组进行直接插入排序，每次排序后减小增量，当增量减至 1 时排序完毕。</p>
+<p>排序算法不稳定。时间复杂度 O(nlogn)，空间复杂度 O(1)。直接选择排序：每次在未排序序列中找到最小元素，和未排序序列的第一个元素交换位置，再在剩余未排序序列中重复该操作直到所有元素排序完毕。</p>
+<p>排序算法不稳定。时间复杂度 O(n²)，空间复杂度 O(1)。</p>
+<p>堆排序：将待排序数组看作一个树状数组，建立一个二叉树堆。通过对这种数据结构进行每个元素的插入，完成排序工作。</p>
+<p>排序算法不稳定，时间复杂度 O(nlogn)，空间复杂度 O(1)。</p>
+<p>冒泡排序：比较相邻的元素，如果第一个比第二个大就进行交换，对每一对相邻元素做同样的工作。</p>
+<p>排序算法稳定，时间复杂度 O(n²)，空间复杂度 O(1)。</p>
+<p>快速排序：随机选择一个基准元素，通过一趟排序将要排序的数据分割成独立的两部分，一部分全部小于等于基准元素，一部分全部大于等于基准元素，再按此方法递归对这两部分数据进行快速排序。</p>
+<p>排序算法不稳定，时间复杂度 O(nlogn)，空间复杂度 O(logn)。</p>
+<p>归并排序：将待排序序列分成两部分，然后对两部分分别递归排序，最后进行合并。</p>
+<p>排序算法稳定，时间复杂度都为 O(nlogn)，空间复杂度为 O(n)。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2021/04/27/Java%E8%99%9A%E6%8B%9F%E6%9C%BA/" rel="prev" title="Java 虚拟机">
+      <i class="fa fa-chevron-left"></i> Java 虚拟机
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2021/04/27/C++%E6%8F%90%E7%BA%B2/" rel="next" title="C++提纲">
+      C++提纲 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">Java 数据结构与算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0JAVA%E7%9A%84List"><span class="nav-number">1.1.</span> <span class="nav-text">简述JAVA的List</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0JAVA%E7%9A%84Set"><span class="nav-number">1.2.</span> <span class="nav-text">简述JAVA的Set</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0JAVA%E7%9A%84HashMap"><span class="nav-number">1.3.</span> <span class="nav-text">简述JAVA的HashMap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E8%A7%A3%E5%86%B3Hash%E5%86%B2%E7%AA%81%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">1.4.</span> <span class="nav-text">简述解决Hash冲突的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0java%E7%9A%84TreeMap"><span class="nav-number">1.5.</span> <span class="nav-text">简述java的TreeMap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0AVL%E6%A0%91"><span class="nav-number">1.6.</span> <span class="nav-text">简述AVL树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E7%BA%A2%E9%BB%91%E6%A0%91"><span class="nav-number">1.7.</span> <span class="nav-text">简述红黑树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E5%B8%B8%E8%A7%81%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E5%92%8C%E5%85%B6%E5%AF%B9%E5%BA%94%E6%97%B6%E9%97%B4%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">1.8.</span> <span class="nav-text">简述常见排序算法和其对应时间空间复杂度</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Rex</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Rex</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/muse.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
