@@ -27,28 +27,11 @@
 <meta property="og:site_name" content="Luzhi&#39;s Blog">
 <meta property="og:description" content="Java 多线程java内存模型（JMM）java内存模型定义了程序中各种变量的访问规则。其规定所有变量都存储在主内存，线程均有自己的工作内存。 工作内存中保存被该线程使用的变量的主内存副本，线程对变量的所有操作都必须在工作空间进行，不能直接读写主内存数据。操作完成后，线程的工作内存通过缓存一致性协议将操作完的数据刷回主存。 简述as-if-serial编译器等会对原始的程序进行指令重排序和优化。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image001.gif">
-<meta property="og:image" content="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image002.gif">
-<meta property="og:image" content="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image003.gif">
-<meta property="og:image" content="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image004.gif">
-<meta property="og:image" content="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image005.gif">
-<meta property="og:image" content="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image006.gif">
-<meta property="og:image" content="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image007.gif">
-<meta property="og:image" content="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image003.gif">
-<meta property="og:image" content="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image008.gif">
-<meta property="og:image" content="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image009.gif">
-<meta property="og:image" content="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image010.gif">
-<meta property="og:image" content="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image011.gif">
-<meta property="og:image" content="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image012.gif">
-<meta property="og:image" content="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image013.gif">
-<meta property="og:image" content="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image002.gif">
-<meta property="og:image" content="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image014.gif">
 <meta property="article:published_time" content="2021-04-27T06:08:20.000Z">
-<meta property="article:modified_time" content="2021-05-07T14:45:49.217Z">
+<meta property="article:modified_time" content="2021-05-07T15:45:48.851Z">
 <meta property="article:author" content="Rex">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image001.gif">
 
 <link rel="canonical" href="https://huangluzhi.github.io/blog/2021/04/27/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
 
@@ -213,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-05-07 22:45:49" itemprop="dateModified" datetime="2021-05-07T22:45:49+08:00">2021-05-07</time>
+                <time title="Modified: 2021-05-07 23:45:48" itemprop="dateModified" datetime="2021-05-07T23:45:48+08:00">2021-05-07</time>
               </span>
 
           
@@ -229,20 +212,20 @@
       
         <h1 id="Java-多线程"><a href="#Java-多线程" class="headerlink" title="Java 多线程"></a>Java 多线程</h1><h2 id="java内存模型（JMM）"><a href="#java内存模型（JMM）" class="headerlink" title="java内存模型（JMM）"></a><strong>java</strong>内存模型（<strong>JMM</strong>）</h2><p>java内存模型定义了程序中各种变量的访问规则。其规定所有变量都存储在主内存，线程均有自己的工作内存。</p>
 <p>工作内存中保存被该线程使用的变量的主内存副本，线程对变量的所有操作都必须在工作空间进行，不能直接读写主内存数据。操作完成后，线程的工作内存通过缓存一致性协议将操作完的数据刷回主存。</p>
-<h1 id="简述as-if-serial"><a href="#简述as-if-serial" class="headerlink" title="简述as-if-serial"></a>简述as-if-serial</h1><p>编译器等会对原始的程序进行指令重排序和优化。但不管怎么重排序，其结果和用户原始程序输出预定结果一致。</p>
-<h1 id="简述happens-before八大原则"><a href="#简述happens-before八大原则" class="headerlink" title="简述happens-before八大原则"></a>简述happens-before八大原则</h1><p>程序次序规则：一个线程内写在前面的操作先行发生于后面的。</p>
+<h2 id="简述as-if-serial"><a href="#简述as-if-serial" class="headerlink" title="简述as-if-serial"></a>简述as-if-serial</h2><p>编译器等会对原始的程序进行指令重排序和优化。但不管怎么重排序，其结果和用户原始程序输出预定结果一致。</p>
+<h2 id="简述happens-before八大原则"><a href="#简述happens-before八大原则" class="headerlink" title="简述happens-before八大原则"></a>简述happens-before八大原则</h2><p>程序次序规则：一个线程内写在前面的操作先行发生于后面的。</p>
 <p>锁定规则： unlock 操作先行发生于后面对同一个锁的 lock 操作。 volatile 规则：对 volatile 变量的写操作先行发生于后面的读操作。</p>
 <p>线程启动规则：线程的 start 方法先行发生于线程的每个动作。</p>
 <p>线程中断规则：对线程interrupt()方法的调用先行发生于被中断线程的代码检测到中断事件的发生。</p>
 <p>线程终止规则：线程中所有操作先行发生于对线程的终止检测。</p>
 <p>对象终结规则：对象的初始化先行发生于 finalize 方法。</p>
 <p>传递性规则：如果操作 A 先行发生于操作 B，操作 B 先行发生于操作 C，那么操作 A 先行发生于操作C</p>
-<h1 id="as-if-serial-和-happens-before-的区别"><a href="#as-if-serial-和-happens-before-的区别" class="headerlink" title="as-if-serial 和 happens-before 的区别"></a>as-if-serial 和 happens-before 的区别</h1><p>as-if-serial 保证单线程程序的执行结果不变，happens-before 保证正确同步的多线程程序的执行结果不变。</p>
+<h2 id="as-if-serial-和-happens-before-的区别"><a href="#as-if-serial-和-happens-before-的区别" class="headerlink" title="as-if-serial 和 happens-before 的区别"></a>as-if-serial 和 happens-before 的区别</h2><p>as-if-serial 保证单线程程序的执行结果不变，happens-before 保证正确同步的多线程程序的执行结果不变。</p>
 <h2 id="简述原子性操作"><a href="#简述原子性操作" class="headerlink" title="简述原子性操作"></a>简述原子性操作</h2><p>一个操作或者多个操作，要么全部执行并且执行的过程不会被任何因素打断，要么就都不执行，这就是原子性操作。</p>
 <h2 id="简述线程的可见性"><a href="#简述线程的可见性" class="headerlink" title="简述线程的可见性"></a>简述线程的可见性</h2><p>可见性指当一个线程修改了共享变量时，其他线程能够立即得知修改。volatile,synchronized,final都能保证可见性。</p>
 <p><strong>简述有序性</strong></p>
 <p>即虽然多线程存在并发和指令优化等操作，在本线程内观察该线程的所有执行操作是有序的。</p>
-<h1 id="简述java中volatile关键字作用"><a href="#简述java中volatile关键字作用" class="headerlink" title="简述java中volatile关键字作用"></a>简述java中volatile关键字作用</h1><ol>
+<h2 id="简述java中volatile关键字作用"><a href="#简述java中volatile关键字作用" class="headerlink" title="简述java中volatile关键字作用"></a>简述java中volatile关键字作用</h2><ol>
 <li>保证变量对所有线程的可见性。</li>
 </ol>
 <p>当一条线程修改了变量值，新值对于其他线程来说是立即可以得知的。</p>
@@ -302,8 +285,8 @@
 <li><p>handler：拒绝策略。有以下几种拒绝策略：</p>
 </li>
 </ol>
-<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image001.gif" alt="img"> AbortPolicy：丢弃任务并抛出异常</p>
-<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image002.gif" alt="img">CallerRunsPolicy： 重新尝试提交该任务</p>
+<p>AbortPolicy：丢弃任务并抛出异常</p>
+<p>CallerRunsPolicy： 重新尝试提交该任务</p>
 <p>DiscardOldestPolicy 抛弃队列里等待最久的任务并把当前任务加入队列 DiscardPolicy 表示直接抛弃当前任务但不抛出异常。<strong>线程池创建方法</strong></p>
 <ol>
 <li><p>newFixedThreadPool，创建固定大小的线程池。</p>
@@ -317,32 +300,32 @@
 <li><p>newWorkStealingPool：一个拥有多个任务队列的线程池。</p>
 </li>
 </ol>
-<h1 id="简述Executor框架"><a href="#简述Executor框架" class="headerlink" title="简述Executor框架"></a>简述Executor框架</h1><p>Executor框架目的是将任务提交和任务如何运行分离开来的机制。用户不再需要从代码层考虑设计任务的提交运行，只需要调用Executor框架实现类的Execute方法就可以提交任务。产生线程池的函数</p>
+<h2 id="简述Executor框架"><a href="#简述Executor框架" class="headerlink" title="简述Executor框架"></a>简述Executor框架</h2><p>Executor框架目的是将任务提交和任务如何运行分离开来的机制。用户不再需要从代码层考虑设计任务的提交运行，只需要调用Executor框架实现类的Execute方法就可以提交任务。产生线程池的函数</p>
 <p>ThreadPoolExecutor也是Executor的具体实现类。</p>
-<h1 id="简述Executor的继承关系"><a href="#简述Executor的继承关系" class="headerlink" title="简述Executor的继承关系"></a>简述Executor的继承关系</h1><p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image003.gif" alt="img"> Executor：一个接口，其定义了一个接收Runnable对象的方法executor，该方法接收一个Runable 实例执行这个任务。</p>
-<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image004.gif" alt="img"> ExecutorService：Executor的子类接口，其定义了一个接收Callable对象的方法，返回 Future 对象，同时提供execute方法。</p>
-<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image005.gif" alt="img">ScheduledExecutorService：ExecutorService的子类接口，支持定期执行任务。</p>
+<h2 id="简述Executor的继承关系"><a href="#简述Executor的继承关系" class="headerlink" title="简述Executor的继承关系"></a>简述Executor的继承关系</h2><p> Executor：一个接口，其定义了一个接收Runnable对象的方法executor，该方法接收一个Runable 实例执行这个任务。</p>
+<p> ExecutorService：Executor的子类接口，其定义了一个接收Callable对象的方法，返回 Future 对象，同时提供execute方法。</p>
+<p>ScheduledExecutorService：ExecutorService的子类接口，支持定期执行任务。</p>
 <p>AbstractExecutorService：抽象类，提供 ExecutorService 执行方法的默认实现。</p>
 <p>Executors：实现ExecutorService接口的静态工厂类，提供了一系列工厂方法用于创建线程池。</p>
 <p>ThreadPoolExecutor：继承AbstractExecutorService，用于创建线程池。</p>
 <p>ForkJoinPool: 继承AbstractExecutorService，Fork 将大任务分叉为多个小任务，然后让小任务执行，Join 是获得小任务的结果，类似于map reduce。</p>
-<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image006.gif" alt="img"> ThreadPoolExecutor：继承ThreadPoolExecutor，实现ScheduledExecutorService，用于创建带定时任务的线程池。</p>
-<h2 id="简述线程池的状态"><a href="#简述线程池的状态" class="headerlink" title="简述线程池的状态"></a>简述线程池的状态</h2><p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image007.gif" alt="img"> Running：能接受新提交的任务，也可以处理阻塞队列的任务。</p>
-<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image003.gif" alt="img"> Shutdown：不再接受新提交的任务，但可以处理存量任务，线程池处于running时调用shutdown方法，会进入该状态。</p>
-<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image008.gif" alt="img">Stop：不接受新任务，不处理存量任务，调用shutdownnow进入该状态。</p>
+<p>ThreadPoolExecutor：继承ThreadPoolExecutor，实现ScheduledExecutorService，用于创建带定时任务的线程池。</p>
+<h2 id="简述线程池的状态"><a href="#简述线程池的状态" class="headerlink" title="简述线程池的状态"></a>简述线程池的状态</h2><p> Running：能接受新提交的任务，也可以处理阻塞队列的任务。</p>
+<p>Shutdown：不再接受新提交的任务，但可以处理存量任务，线程池处于running时调用shutdown方法，会进入该状态。</p>
+<p>Stop：不接受新任务，不处理存量任务，调用shutdownnow进入该状态。</p>
 <p>Tidying：所有任务已经终止了，worker_count（有效线程数）为0。</p>
 <p>Terminated：线程池彻底终止。在tidying模式下调用terminated方法会进入该状态。</p>
 <h2 id="简述阻塞队列"><a href="#简述阻塞队列" class="headerlink" title="简述阻塞队列"></a>简述阻塞队列</h2><p>阻塞队列是生产者消费者的实现具体组件之一。当阻塞队列为空时，从队列中获取元素的操作将会被阻塞，当阻塞队列满了，往队列添加元素的操作将会被阻塞。具体实现有：</p>
-<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image009.gif" alt="img">ArrayBlockingQueue：底层是由数组组成的有界阻塞队列。</p>
+<p>ArrayBlockingQueue：底层是由数组组成的有界阻塞队列。</p>
 <p>LinkedBlockingQueue：底层是由链表组成的有界阻塞队列。</p>
 <p>PriorityBlockingQueue：阻塞优先队列。</p>
 <p>DelayQueue：创建元素时可以指定多久才能从队列中获取当前元素</p>
 <p>SynchronousQueue：不存储元素的阻塞队列，每一个存储必须等待一个取出操作</p>
 <p>LinkedTransferQueue：与LinkedBlockingQueue相比多一个transfer方法，即如果当前有消费者正等待接收元素，可以把生产者传入的元素立刻传输给消费者。</p>
-<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image010.gif" alt="img"> LinkedBlockingDeque：双向阻塞队列。</p>
-<h1 id="谈一谈ThreadLocal"><a href="#谈一谈ThreadLocal" class="headerlink" title="谈一谈ThreadLocal"></a>谈一谈ThreadLocal</h1><p>ThreadLocal 是线程共享变量。ThreadLoacl 有一个静态内部类 ThreadLocalMap，其 Key 是</p>
+<p>LinkedBlockingDeque：双向阻塞队列。</p>
+<h2 id="谈一谈ThreadLocal"><a href="#谈一谈ThreadLocal" class="headerlink" title="谈一谈ThreadLocal"></a>谈一谈ThreadLocal</h2><p>ThreadLocal 是线程共享变量。ThreadLoacl 有一个静态内部类 ThreadLocalMap，其 Key 是</p>
 <p>ThreadLocal 对象，值是 Entry 对象，ThreadLocalMap是每个线程私有的。</p>
-<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image011.gif" alt="img">set 给ThreadLocalMap设置值。</p>
+<p>set 给ThreadLocalMap设置值。</p>
 <p>get 获取ThreadLocalMap。</p>
 <p>remove 删除ThreadLocalMap类型的对象。</p>
 <p>存在的问题</p>
@@ -370,43 +353,43 @@
 </ol>
 <h2 id="ABA问题及解决方法简述"><a href="#ABA问题及解决方法简述" class="headerlink" title="ABA问题及解决方法简述"></a>ABA问题及解决方法简述</h2><p>CAS 算法是基于值来做比较的，如果当前有两个线程，一个线程将变量值从 A 改为 B ，再由 B 改回为 A ，当前线程开始执行 CAS 算法时，就很容易认为值没有变化，误认为读取数据到执行 CAS 算法的期间，没有线程修改过数据。</p>
 <p>juc 包提供了一个 AtomicStampedReference，即在原始的版本下加入版本号戳，解决 ABA 问题。</p>
-<h1 id="简述常见的Atomic类"><a href="#简述常见的Atomic类" class="headerlink" title="简述常见的Atomic类"></a>简述常见的Atomic类</h1><p>在很多时候，我们需要的仅仅是一个简单的、高效的、线程安全的++或者–方案，使用synchronized关键字和lock固然可以实现，但代价比较大，此时用原子类更加方便。 </p>
+<h2 id="简述常见的Atomic类"><a href="#简述常见的Atomic类" class="headerlink" title="简述常见的Atomic类"></a>简述常见的Atomic类</h2><p>在很多时候，我们需要的仅仅是一个简单的、高效的、线程安全的++或者–方案，使用synchronized关键字和lock固然可以实现，但代价比较大，此时用原子类更加方便。 </p>
 <p>基本数据类型的原子类有：</p>
-<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image012.gif" alt="img">AtomicInteger 原子更新整形 AtomicLong 原子更新长整型</p>
+<p>AtomicInteger 原子更新整形 AtomicLong 原子更新长整型</p>
 <p>AtomicBoolean 原子更新布尔类型</p>
 <p>Atomic数组类型有：</p>
-<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image013.gif" alt="img">AtomicIntegerArray 原子更新整形数组里的元素</p>
+<p>AtomicIntegerArray 原子更新整形数组里的元素</p>
 <p>AtomicLongArray 原子更新长整型数组里的元素</p>
 <p>AtomicReferenceArray 原子更新引用类型数组里的元素。</p>
 <p>Atomic引用类型有</p>
-<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image002.gif" alt="img">AtomicReference 原子更新引用类型</p>
+<p>AtomicReference 原子更新引用类型</p>
 <p>AtomicMarkableReference 原子更新带有标记位的引用类型，可以绑定一个 boolean 标记 AtomicStampedReference 原子更新带有版本号的引用类型</p>
 <p>FieldUpdater类型：</p>
-<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image014.gif" alt="img">AtomicIntegerFieldUpdater 原子更新整形字段的更新器</p>
+<p>AtomicIntegerFieldUpdater 原子更新整形字段的更新器</p>
 <p>AtomicLongFieldUpdater 原子更新长整形字段的更新器</p>
 <p>AtomicReferenceFieldUpdater 原子更新引用类型字段的更新器<strong>简述<strong><strong>Atomic</strong></strong>类基本实现原理</strong></p>
 <p>以AtomicIntger 为例： </p>
 <p>方法getAndIncrement：以原子方式将当前的值加1，具体实现为：</p>
 <ol>
-<li><p>  在 for 死循环中取得 AtomicInteger 里存储的数值</p>
+<li><p>在 for 死循环中取得 AtomicInteger 里存储的数值</p>
 </li>
-<li><p>  对 AtomicInteger 当前的值加 1</p>
+<li><p>对 AtomicInteger 当前的值加 1</p>
 </li>
-<li><p>  调用 compareAndSet 方法进行原子更新</p>
+<li><p>调用 compareAndSet 方法进行原子更新</p>
 </li>
-<li><p>  先检查当前数值是否等于 expect</p>
+<li><p>先检查当前数值是否等于 expect</p>
 </li>
-<li><p>  如果等于则说明当前值没有被其他线程修改，则将值更新为 next，</p>
+<li><p>如果等于则说明当前值没有被其他线程修改，则将值更新为 next，</p>
 </li>
 <li><p>如果不是会更新失败返回 false，程序会进入 for 循环重新进行 compareAndSet 操作。</p>
 </li>
 </ol>
-<h1 id="简述CountDownLatch"><a href="#简述CountDownLatch" class="headerlink" title="简述CountDownLatch"></a><strong>简述</strong>CountDownLatch</h1><p>countDownLatch这个类使一个线程等待其他线程各自执行完毕后再执行。是通过一个计数器来实现的，计数器的初始值是线程的数量。每当一个线程执行完毕后，调用 countDown方法，计数器的值就减1，当计数器的值为0时，表示所有线程都执行完毕，然后在等待的线程就可以恢复工作了。只能一次性使用，不能reset。<strong>简述****CyclicBarrier</strong></p>
+<h2 id="简述CountDownLatch"><a href="#简述CountDownLatch" class="headerlink" title="简述CountDownLatch"></a><strong>简述</strong>CountDownLatch</h2><p>countDownLatch这个类使一个线程等待其他线程各自执行完毕后再执行。是通过一个计数器来实现的，计数器的初始值是线程的数量。每当一个线程执行完毕后，调用 countDown方法，计数器的值就减1，当计数器的值为0时，表示所有线程都执行完毕，然后在等待的线程就可以恢复工作了。只能一次性使用，不能reset。<strong>简述****CyclicBarrier</strong></p>
 <p>CyclicBarrier 主要功能和countDownLatch类似，也是通过一个计数器，使一个线程等待其他线程各自执行完毕后再执行。但是其可以重复使用（reset）。</p>
-<h1 id="简述Semaphore"><a href="#简述Semaphore" class="headerlink" title="简述Semaphore"></a>简述Semaphore</h1><p>Semaphore即信号量。 </p>
+<h2 id="简述Semaphore"><a href="#简述Semaphore" class="headerlink" title="简述Semaphore"></a>简述Semaphore</h2><p>Semaphore即信号量。 </p>
 <p>Semaphore 的构造方法参数接收一个 int 值，设置一个计数器，表示可用的许可数量即最大并发数。使用 acquire 方法获得一个许可证，计数器减一，使用 release 方法归还许可，计数器加一。如果此时计数器值为0,线程进入休眠。</p>
-<h1 id="简述Exchanger"><a href="#简述Exchanger" class="headerlink" title="简述Exchanger"></a>简述Exchanger</h1><p>Exchanger类可用于两个线程之间交换信息。可简单地将Exchanger对象理解为一个包含两个格子的容器，通过exchanger方法可以向两个格子中填充信息。线程通过exchange 方法交换数据，第一个线程执行 exchange 方法后会阻塞等待第二个线程执行该方法。当两个线程都到达同步点时这两个线程就可以交换数据当两个格子中的均被填充时，该对象会自动将两个格子的信息交换，然后返回给线程，从而实现两个线程的信息交换。</p>
-<h1 id="简述ConcurrentHashMap"><a href="#简述ConcurrentHashMap" class="headerlink" title="简述ConcurrentHashMap"></a>简述ConcurrentHashMap</h1><p>JDK7采用锁分段技术。首先将数据分成 Segment 数据段，然后给每一个数据段配一把锁，当一个线程占用锁访问其中一个段的数据时，其他段的数据也能被其他线程访问。</p>
+<h2 id="简述Exchanger"><a href="#简述Exchanger" class="headerlink" title="简述Exchanger"></a>简述Exchanger</h2><p>Exchanger类可用于两个线程之间交换信息。可简单地将Exchanger对象理解为一个包含两个格子的容器，通过exchanger方法可以向两个格子中填充信息。线程通过exchange 方法交换数据，第一个线程执行 exchange 方法后会阻塞等待第二个线程执行该方法。当两个线程都到达同步点时这两个线程就可以交换数据当两个格子中的均被填充时，该对象会自动将两个格子的信息交换，然后返回给线程，从而实现两个线程的信息交换。</p>
+<h2 id="简述ConcurrentHashMap"><a href="#简述ConcurrentHashMap" class="headerlink" title="简述ConcurrentHashMap"></a>简述ConcurrentHashMap</h2><p>JDK7采用锁分段技术。首先将数据分成 Segment 数据段，然后给每一个数据段配一把锁，当一个线程占用锁访问其中一个段的数据时，其他段的数据也能被其他线程访问。</p>
 <p>get 除读到空值不需要加锁。该方法先经过一次再散列，再用这个散列值通过散列运算定位到</p>
 <p>Segment，最后通过散列算法定位到元素。 </p>
 <p>put 须加锁，首先定位到 Segment，然后进行插入操作，第一步判断是否需要对 Segment 里的</p>
@@ -420,12 +403,12 @@
 <li><p>使用了更加优化的方式统计集合内的元素数量。</p>
 </li>
 </ol>
-<h1 id="Synchronized底层实现原理"><a href="#Synchronized底层实现原理" class="headerlink" title="Synchronized底层实现原理"></a>Synchronized底层实现原理</h1><p>Java 对象底层都关联一个的 monitor，使用 synchronized 时 JVM 会根据使用环境找到对象的 monitor，根据 monitor 的状态进行加解锁的判断。如果成功加锁就成为该 monitor 的唯一持有者， monitor 在被释放前不能再被其他线程获取。</p>
+<h2 id="Synchronized底层实现原理"><a href="#Synchronized底层实现原理" class="headerlink" title="Synchronized底层实现原理"></a>Synchronized底层实现原理</h2><p>Java 对象底层都关联一个的 monitor，使用 synchronized 时 JVM 会根据使用环境找到对象的 monitor，根据 monitor 的状态进行加解锁的判断。如果成功加锁就成为该 monitor 的唯一持有者， monitor 在被释放前不能再被其他线程获取。</p>
 <p>synchronized在JVM编译后会产生monitorenter 和 monitorexit 这两个字节码指令，获取和释放</p>
 <p>monitor。这两个字节码指令都需要一个引用类型的参数指明要锁定和解锁的对象，对于同步普通方法，</p>
 <p>锁是当前实例对象；对于静态同步方法，锁是当前类的 Class 对象；对于同步方法块，锁是 synchronized 括号里的对象。</p>
 <p>执行 monitorenter 指令时，首先尝试获取对象锁。如果这个对象没有被锁定，或当前线程已经持有锁，就把锁的计数器加 1，执行 monitorexit 指令时会将锁计数器减 1。一旦计数器为 0 锁随即就被释放。</p>
-<h1 id="Synchronized关键词使用方法"><a href="#Synchronized关键词使用方法" class="headerlink" title="Synchronized关键词使用方法"></a>Synchronized关键词使用方法</h1><ol>
+<h2 id="Synchronized关键词使用方法"><a href="#Synchronized关键词使用方法" class="headerlink" title="Synchronized关键词使用方法"></a>Synchronized关键词使用方法</h2><ol>
 <li><p>直接修饰某个实例方法</p>
 </li>
 <li><p>直接修饰某个静态方法</p>
@@ -474,7 +457,7 @@
 <p><strong>简述锁粗化</strong></p>
 <p>锁粗化的思想就是扩大加锁范围，避免反复的加锁和解锁。</p>
 <h2 id="简述锁消除"><a href="#简述锁消除" class="headerlink" title="简述锁消除"></a>简述锁消除</h2><p>锁消除是一种更为彻底的优化，在编译时，java编译器对运行上下文进行扫描，去除不可能存在共享资源竞争的锁。</p>
-<h1 id="简述Lock与ReentrantLock"><a href="#简述Lock与ReentrantLock" class="headerlink" title="简述Lock与ReentrantLock"></a>简述Lock与ReentrantLock</h1><p>Lock 接是 java并发包的顶层接口。</p>
+<h2 id="简述Lock与ReentrantLock"><a href="#简述Lock与ReentrantLock" class="headerlink" title="简述Lock与ReentrantLock"></a>简述Lock与ReentrantLock</h2><p>Lock 接是 java并发包的顶层接口。</p>
 <p>可重入锁 ReentrantLock 是 Lock 最常见的实现，与 synchronized 一样可重入。ReentrantLock 在默认情况下是非公平的，可以通过构造方法指定公平锁。一旦使用了公平锁，性能会下降。</p>
 <p><strong>简述</strong>AQS</p>
 <p>AQS（AbstractQuenedSynchronizer）抽象的队列式同步器。 </p>
@@ -525,8 +508,8 @@
       <i class="fa fa-chevron-left"></i> 操作系统-提纲
     </a></div>
       <div class="post-nav-item">
-    <a href="/blog/2021/04/27/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="next" title="设计模式">
-      设计模式 <i class="fa fa-chevron-right"></i>
+    <a href="/blog/2021/04/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E6%8F%90%E7%BA%B2/" rel="next" title="计算机网络-提纲">
+      计算机网络-提纲 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -586,7 +569,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">Java 多线程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%EF%BC%88JMM%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">java内存模型（JMM）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0as-if-serial"><span class="nav-number">2.</span> <span class="nav-text">简述as-if-serial</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0happens-before%E5%85%AB%E5%A4%A7%E5%8E%9F%E5%88%99"><span class="nav-number">3.</span> <span class="nav-text">简述happens-before八大原则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#as-if-serial-%E5%92%8C-happens-before-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">4.</span> <span class="nav-text">as-if-serial 和 happens-before 的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E5%8E%9F%E5%AD%90%E6%80%A7%E6%93%8D%E4%BD%9C"><span class="nav-number">4.1.</span> <span class="nav-text">简述原子性操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%8F%AF%E8%A7%81%E6%80%A7"><span class="nav-number">4.2.</span> <span class="nav-text">简述线程的可见性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0java%E4%B8%ADvolatile%E5%85%B3%E9%94%AE%E5%AD%97%E4%BD%9C%E7%94%A8"><span class="nav-number">5.</span> <span class="nav-text">简述java中volatile关键字作用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#java%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="nav-number">5.1.</span> <span class="nav-text">java线程的实现方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0java%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81"><span class="nav-number">5.2.</span> <span class="nav-text">简述java线程的状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-number">5.3.</span> <span class="nav-text">简述线程通信的方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="nav-number">5.4.</span> <span class="nav-text">简述线程池</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%8F%82%E6%95%B0"><span class="nav-number">5.5.</span> <span class="nav-text">线程池参数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0Executor%E6%A1%86%E6%9E%B6"><span class="nav-number">6.</span> <span class="nav-text">简述Executor框架</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0Executor%E7%9A%84%E7%BB%A7%E6%89%BF%E5%85%B3%E7%B3%BB"><span class="nav-number">7.</span> <span class="nav-text">简述Executor的继承关系</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E7%8A%B6%E6%80%81"><span class="nav-number">7.1.</span> <span class="nav-text">简述线程池的状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E9%98%BB%E5%A1%9E%E9%98%9F%E5%88%97"><span class="nav-number">7.2.</span> <span class="nav-text">简述阻塞队列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B0%88%E4%B8%80%E8%B0%88ThreadLocal"><span class="nav-number">8.</span> <span class="nav-text">谈一谈ThreadLocal</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%81%8A%E8%81%8A%E4%BD%A0%E5%AF%B9java%E5%B9%B6%E5%8F%91%E5%8C%85%E4%B8%8Bunsafe%E7%B1%BB%E7%9A%84%E7%90%86%E8%A7%A3"><span class="nav-number">8.1.</span> <span class="nav-text">聊聊你对java并发包下unsafe类的理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JAVA%E4%B8%AD%E7%9A%84%E4%B9%90%E8%A7%82%E9%94%81%E4%B8%8ECAS%E7%AE%97%E6%B3%95"><span class="nav-number">8.2.</span> <span class="nav-text">JAVA中的乐观锁与CAS算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ABA%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%E7%AE%80%E8%BF%B0"><span class="nav-number">8.3.</span> <span class="nav-text">ABA问题及解决方法简述</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E5%B8%B8%E8%A7%81%E7%9A%84Atomic%E7%B1%BB"><span class="nav-number">9.</span> <span class="nav-text">简述常见的Atomic类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0CountDownLatch"><span class="nav-number">10.</span> <span class="nav-text">简述CountDownLatch</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0Semaphore"><span class="nav-number">11.</span> <span class="nav-text">简述Semaphore</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0Exchanger"><span class="nav-number">12.</span> <span class="nav-text">简述Exchanger</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0ConcurrentHashMap"><span class="nav-number">13.</span> <span class="nav-text">简述ConcurrentHashMap</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">14.</span> <span class="nav-text">Synchronized底层实现原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Synchronized%E5%85%B3%E9%94%AE%E8%AF%8D%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">15.</span> <span class="nav-text">Synchronized关键词使用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0java%E5%81%8F%E5%90%91%E9%94%81"><span class="nav-number">15.1.</span> <span class="nav-text">简述java偏向锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%81"><span class="nav-number">15.2.</span> <span class="nav-text">简述轻量级锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0java%E7%9A%84%E8%87%AA%E6%97%8B%E9%94%81"><span class="nav-number">15.3.</span> <span class="nav-text">简述java的自旋锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E8%87%AA%E9%80%82%E5%BA%94%E8%87%AA%E6%97%8B%E9%94%81"><span class="nav-number">15.4.</span> <span class="nav-text">简述自适应自旋锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E9%94%81%E6%B6%88%E9%99%A4"><span class="nav-number">15.5.</span> <span class="nav-text">简述锁消除</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0Lock%E4%B8%8EReentrantLock"><span class="nav-number">16.</span> <span class="nav-text">简述Lock与ReentrantLock</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AQS%E8%8E%B7%E5%8F%96%E7%8B%AC%E5%8D%A0%E9%94%81-%E9%87%8A%E6%94%BE%E7%8B%AC%E5%8D%A0%E9%94%81%E5%8E%9F%E7%90%86"><span class="nav-number">16.1.</span> <span class="nav-text">AQS获取独占锁&#x2F;释放独占锁原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AQS%E8%8E%B7%E5%8F%96%E5%85%B1%E4%BA%AB%E9%94%81-%E9%87%8A%E6%94%BE%E5%85%B1%E4%BA%AB%E9%94%81%E5%8E%9F%E7%90%86"><span class="nav-number">16.2.</span> <span class="nav-text">AQS获取共享锁&#x2F;释放共享锁原理</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">Java 多线程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%EF%BC%88JMM%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">java内存模型（JMM）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0as-if-serial"><span class="nav-number">1.2.</span> <span class="nav-text">简述as-if-serial</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0happens-before%E5%85%AB%E5%A4%A7%E5%8E%9F%E5%88%99"><span class="nav-number">1.3.</span> <span class="nav-text">简述happens-before八大原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#as-if-serial-%E5%92%8C-happens-before-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.4.</span> <span class="nav-text">as-if-serial 和 happens-before 的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E5%8E%9F%E5%AD%90%E6%80%A7%E6%93%8D%E4%BD%9C"><span class="nav-number">1.5.</span> <span class="nav-text">简述原子性操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%8F%AF%E8%A7%81%E6%80%A7"><span class="nav-number">1.6.</span> <span class="nav-text">简述线程的可见性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0java%E4%B8%ADvolatile%E5%85%B3%E9%94%AE%E5%AD%97%E4%BD%9C%E7%94%A8"><span class="nav-number">1.7.</span> <span class="nav-text">简述java中volatile关键字作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="nav-number">1.8.</span> <span class="nav-text">java线程的实现方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0java%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81"><span class="nav-number">1.9.</span> <span class="nav-text">简述java线程的状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-number">1.10.</span> <span class="nav-text">简述线程通信的方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="nav-number">1.11.</span> <span class="nav-text">简述线程池</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%8F%82%E6%95%B0"><span class="nav-number">1.12.</span> <span class="nav-text">线程池参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0Executor%E6%A1%86%E6%9E%B6"><span class="nav-number">1.13.</span> <span class="nav-text">简述Executor框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0Executor%E7%9A%84%E7%BB%A7%E6%89%BF%E5%85%B3%E7%B3%BB"><span class="nav-number">1.14.</span> <span class="nav-text">简述Executor的继承关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E7%8A%B6%E6%80%81"><span class="nav-number">1.15.</span> <span class="nav-text">简述线程池的状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E9%98%BB%E5%A1%9E%E9%98%9F%E5%88%97"><span class="nav-number">1.16.</span> <span class="nav-text">简述阻塞队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%88%E4%B8%80%E8%B0%88ThreadLocal"><span class="nav-number">1.17.</span> <span class="nav-text">谈一谈ThreadLocal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%81%8A%E8%81%8A%E4%BD%A0%E5%AF%B9java%E5%B9%B6%E5%8F%91%E5%8C%85%E4%B8%8Bunsafe%E7%B1%BB%E7%9A%84%E7%90%86%E8%A7%A3"><span class="nav-number">1.18.</span> <span class="nav-text">聊聊你对java并发包下unsafe类的理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JAVA%E4%B8%AD%E7%9A%84%E4%B9%90%E8%A7%82%E9%94%81%E4%B8%8ECAS%E7%AE%97%E6%B3%95"><span class="nav-number">1.19.</span> <span class="nav-text">JAVA中的乐观锁与CAS算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ABA%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%E7%AE%80%E8%BF%B0"><span class="nav-number">1.20.</span> <span class="nav-text">ABA问题及解决方法简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E5%B8%B8%E8%A7%81%E7%9A%84Atomic%E7%B1%BB"><span class="nav-number">1.21.</span> <span class="nav-text">简述常见的Atomic类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0CountDownLatch"><span class="nav-number">1.22.</span> <span class="nav-text">简述CountDownLatch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0Semaphore"><span class="nav-number">1.23.</span> <span class="nav-text">简述Semaphore</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0Exchanger"><span class="nav-number">1.24.</span> <span class="nav-text">简述Exchanger</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0ConcurrentHashMap"><span class="nav-number">1.25.</span> <span class="nav-text">简述ConcurrentHashMap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Synchronized%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">1.26.</span> <span class="nav-text">Synchronized底层实现原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Synchronized%E5%85%B3%E9%94%AE%E8%AF%8D%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">1.27.</span> <span class="nav-text">Synchronized关键词使用方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0java%E5%81%8F%E5%90%91%E9%94%81"><span class="nav-number">1.28.</span> <span class="nav-text">简述java偏向锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%81"><span class="nav-number">1.29.</span> <span class="nav-text">简述轻量级锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0java%E7%9A%84%E8%87%AA%E6%97%8B%E9%94%81"><span class="nav-number">1.30.</span> <span class="nav-text">简述java的自旋锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E8%87%AA%E9%80%82%E5%BA%94%E8%87%AA%E6%97%8B%E9%94%81"><span class="nav-number">1.31.</span> <span class="nav-text">简述自适应自旋锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E9%94%81%E6%B6%88%E9%99%A4"><span class="nav-number">1.32.</span> <span class="nav-text">简述锁消除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0Lock%E4%B8%8EReentrantLock"><span class="nav-number">1.33.</span> <span class="nav-text">简述Lock与ReentrantLock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AQS%E8%8E%B7%E5%8F%96%E7%8B%AC%E5%8D%A0%E9%94%81-%E9%87%8A%E6%94%BE%E7%8B%AC%E5%8D%A0%E9%94%81%E5%8E%9F%E7%90%86"><span class="nav-number">1.34.</span> <span class="nav-text">AQS获取独占锁&#x2F;释放独占锁原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AQS%E8%8E%B7%E5%8F%96%E5%85%B1%E4%BA%AB%E9%94%81-%E9%87%8A%E6%94%BE%E5%85%B1%E4%BA%AB%E9%94%81%E5%8E%9F%E7%90%86"><span class="nav-number">1.35.</span> <span class="nav-text">AQS获取共享锁&#x2F;释放共享锁原理</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

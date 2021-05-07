@@ -318,102 +318,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://huangluzhi.github.io/blog/2021/04/27/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="Rex">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Luzhi's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2021/04/27/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">Java 数据结构与算法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-04-27 14:08:20" itemprop="dateCreated datePublished" datetime="2021-04-27T14:08:20+08:00">2021-04-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-05-07 23:05:32" itemprop="dateModified" datetime="2021-05-07T23:05:32+08:00">2021-05-07</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Java-数据结构与算法"><a href="#Java-数据结构与算法" class="headerlink" title="Java 数据结构与算法"></a>Java 数据结构与算法</h1><h2 id="简述JAVA的List"><a href="#简述JAVA的List" class="headerlink" title="简述JAVA的List"></a><strong>简述JAVA的List</strong></h2><p>List是一个有序队列，在JAVA中有两种实现方式:</p>
-<p>ArrayList 使用数组实现，是容量可变的非线程安全列表，随机访问快，集合扩容时会创建更大的数组，把原有数组复制到新数组。</p>
-<p>LinkedList 本质是双向链表，与 ArrayList 相比插入和删除速度更快，但随机访问元素很慢。</p>
-<h2 id="简述JAVA的Set"><a href="#简述JAVA的Set" class="headerlink" title="简述JAVA的Set"></a>简述JAVA的Set</h2><p>Set 即集合，该数据结构不允许元素重复且无序。JAVA对Set有三种实现方式：</p>
-<p>HashSet 通过 HashMap 实现，HashMap 的 Key 即 HashSet 存储的元素，Value系统自定义一个名为 PRESENT 的 Object 类型常量。判断元素是否相同时，先比较hashCode，相同后再利用equals比较，查询O(1)</p>
-<p>LinkedHashSet 继承自 HashSet，通过 LinkedHashMap 实现，使用双向链表维护元素插入顺序。</p>
-<p>TreeSet 通过 TreeMap 实现的，底层数据结构是红黑树，添加元素到集合时按照比较规则将其插入合适的位置，保证插入后的集合仍然有序。查询O(logn)</p>
-<h2 id="简述JAVA的HashMap"><a href="#简述JAVA的HashMap" class="headerlink" title="简述JAVA的HashMap"></a><strong>简述JAVA的HashMap</strong></h2><p>JDK8 之前底层实现是数组 + 链表，JDK8 改为数组 + 链表/红黑树。主要成员变量包括存储数据的 table 数组、元素数量 size、加载因子 loadFactor。 </p>
-<p>HashMap 中数据以键值对的形式存在，键对应的 hash 值用来计算数组下标，如果两个元素 key 的 hash 值一样，就会发生哈希冲突，被放到同一个链表上。</p>
-<p>table 数组记录 HashMap 的数据，每个下标对应一条链表，所有哈希冲突的数据都会被存放到同一条链表，Node/Entry 节点包含四个成员变量：key、value、next 指针和 hash 值。在JDK8后链表超过8会转化为红黑树。</p>
-<p>若当前数据/总数据容量&gt;负载因子，Hashmap将执行扩容操作。 </p>
-<p>默认初始化容量为 16，扩容容量必须是 2 的幂次方、最大容量为 1&lt;&lt; 30 、默认加载因子为 0.75。</p>
-<h2 id="简述解决Hash冲突的方法"><a href="#简述解决Hash冲突的方法" class="headerlink" title="简述解决Hash冲突的方法"></a>简述解决Hash冲突的方法</h2><p>开放定址法：当发生哈希冲突时，如果哈希表未被装满，那么可以把这个值存放到冲突位置中的下一个空位置中去</p>
-<p>链地址法：对相同的哈希地址，设置一个单链表，单链表内放的都是哈希冲突元素。</p>
-<h2 id="简述java的TreeMap"><a href="#简述java的TreeMap" class="headerlink" title="简述java的TreeMap"></a>简述java的TreeMap</h2><p>TreeMap是底层利用红黑树实现的Map结构，底层实现是一棵平衡的排序二叉树，由于红黑树的插入、删除、遍历时间复杂度都为O(logN)，所以性能上低于哈希表。但是哈希表无法提供键值对的有序输出，红黑树可以按照键的值的大小有序输出。</p>
-<h2 id="简述AVL树"><a href="#简述AVL树" class="headerlink" title="简述AVL树"></a>简述AVL树</h2><p>AVL树是一种改进版的搜索二叉树，其引入平衡因子（左子支高度与右子支高度之差的绝对值），通过旋转使其尽量保持平衡。</p>
-<p>任何一个节点的左子支高度与右子支高度之差的绝对值不超过1。</p>
-<h2 id="简述红黑树"><a href="#简述红黑树" class="headerlink" title="简述红黑树"></a>简述红黑树</h2><p>红黑树本身是有2-3树发展而来，红黑树是保持黑平衡的二叉树，其查找会比AVL树慢一点，添加和删除元素会比AVL树快一点。增删改查统计性能上讲，红黑树更优。 </p>
-<p>红黑树主要特征是在每个节点上增加一个属性表示节点颜色，可以红色或黑色。红黑树和 AVL 树类似，都是在进行插入和删除时通过旋转保持自身平衡，从而获得较高的查找性能。红黑树保证从根节点到叶尾的最长路径不超过最短路径的 2 倍，所以最差时间复杂度是 O(logn)。红黑树通过重新着色和左右旋转，更加高效地完成了插入和删除之后的自平衡调整。</p>
-<h2 id="简述常见排序算法和其对应时间空间复杂度"><a href="#简述常见排序算法和其对应时间空间复杂度" class="headerlink" title="简述常见排序算法和其对应时间空间复杂度"></a>简述常见排序算法和其对应时间空间复杂度</h2><p>插入排序：每一趟将一个待排序记录按其关键字的大小插入到已排好序的一组记录的适当位置上，直到所有待排序记录全部插入为止。</p>
-<p>排序算法稳定。时间复杂度 O(n²)，空间复杂度 O(1)。</p>
-<p>希尔排序：把记录按下标的一定增量分组，对每组进行直接插入排序，每次排序后减小增量，当增量减至 1 时排序完毕。</p>
-<p>排序算法不稳定。时间复杂度 O(nlogn)，空间复杂度 O(1)。直接选择排序：每次在未排序序列中找到最小元素，和未排序序列的第一个元素交换位置，再在剩余未排序序列中重复该操作直到所有元素排序完毕。</p>
-<p>排序算法不稳定。时间复杂度 O(n²)，空间复杂度 O(1)。</p>
-<p>堆排序：将待排序数组看作一个树状数组，建立一个二叉树堆。通过对这种数据结构进行每个元素的插入，完成排序工作。</p>
-<p>排序算法不稳定，时间复杂度 O(nlogn)，空间复杂度 O(1)。</p>
-<p>冒泡排序：比较相邻的元素，如果第一个比第二个大就进行交换，对每一对相邻元素做同样的工作。</p>
-<p>排序算法稳定，时间复杂度 O(n²)，空间复杂度 O(1)。</p>
-<p>快速排序：随机选择一个基准元素，通过一趟排序将要排序的数据分割成独立的两部分，一部分全部小于等于基准元素，一部分全部大于等于基准元素，再按此方法递归对这两部分数据进行快速排序。</p>
-<p>排序算法不稳定，时间复杂度 O(nlogn)，空间复杂度 O(logn)。</p>
-<p>归并排序：将待排序序列分成两部分，然后对两部分分别递归排序，最后进行合并。</p>
-<p>排序算法稳定，时间复杂度都为 O(nlogn)，空间复杂度为 O(n)。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://huangluzhi.github.io/blog/2021/04/27/Java%E8%99%9A%E6%8B%9F%E6%9C%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -596,6 +500,102 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://huangluzhi.github.io/blog/2021/04/27/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Rex">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Luzhi's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2021/04/27/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">Java 数据结构与算法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-04-27 14:08:20" itemprop="dateCreated datePublished" datetime="2021-04-27T14:08:20+08:00">2021-04-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-05-07 23:05:32" itemprop="dateModified" datetime="2021-05-07T23:05:32+08:00">2021-05-07</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Java-数据结构与算法"><a href="#Java-数据结构与算法" class="headerlink" title="Java 数据结构与算法"></a>Java 数据结构与算法</h1><h2 id="简述JAVA的List"><a href="#简述JAVA的List" class="headerlink" title="简述JAVA的List"></a><strong>简述JAVA的List</strong></h2><p>List是一个有序队列，在JAVA中有两种实现方式:</p>
+<p>ArrayList 使用数组实现，是容量可变的非线程安全列表，随机访问快，集合扩容时会创建更大的数组，把原有数组复制到新数组。</p>
+<p>LinkedList 本质是双向链表，与 ArrayList 相比插入和删除速度更快，但随机访问元素很慢。</p>
+<h2 id="简述JAVA的Set"><a href="#简述JAVA的Set" class="headerlink" title="简述JAVA的Set"></a>简述JAVA的Set</h2><p>Set 即集合，该数据结构不允许元素重复且无序。JAVA对Set有三种实现方式：</p>
+<p>HashSet 通过 HashMap 实现，HashMap 的 Key 即 HashSet 存储的元素，Value系统自定义一个名为 PRESENT 的 Object 类型常量。判断元素是否相同时，先比较hashCode，相同后再利用equals比较，查询O(1)</p>
+<p>LinkedHashSet 继承自 HashSet，通过 LinkedHashMap 实现，使用双向链表维护元素插入顺序。</p>
+<p>TreeSet 通过 TreeMap 实现的，底层数据结构是红黑树，添加元素到集合时按照比较规则将其插入合适的位置，保证插入后的集合仍然有序。查询O(logn)</p>
+<h2 id="简述JAVA的HashMap"><a href="#简述JAVA的HashMap" class="headerlink" title="简述JAVA的HashMap"></a><strong>简述JAVA的HashMap</strong></h2><p>JDK8 之前底层实现是数组 + 链表，JDK8 改为数组 + 链表/红黑树。主要成员变量包括存储数据的 table 数组、元素数量 size、加载因子 loadFactor。 </p>
+<p>HashMap 中数据以键值对的形式存在，键对应的 hash 值用来计算数组下标，如果两个元素 key 的 hash 值一样，就会发生哈希冲突，被放到同一个链表上。</p>
+<p>table 数组记录 HashMap 的数据，每个下标对应一条链表，所有哈希冲突的数据都会被存放到同一条链表，Node/Entry 节点包含四个成员变量：key、value、next 指针和 hash 值。在JDK8后链表超过8会转化为红黑树。</p>
+<p>若当前数据/总数据容量&gt;负载因子，Hashmap将执行扩容操作。 </p>
+<p>默认初始化容量为 16，扩容容量必须是 2 的幂次方、最大容量为 1&lt;&lt; 30 、默认加载因子为 0.75。</p>
+<h2 id="简述解决Hash冲突的方法"><a href="#简述解决Hash冲突的方法" class="headerlink" title="简述解决Hash冲突的方法"></a>简述解决Hash冲突的方法</h2><p>开放定址法：当发生哈希冲突时，如果哈希表未被装满，那么可以把这个值存放到冲突位置中的下一个空位置中去</p>
+<p>链地址法：对相同的哈希地址，设置一个单链表，单链表内放的都是哈希冲突元素。</p>
+<h2 id="简述java的TreeMap"><a href="#简述java的TreeMap" class="headerlink" title="简述java的TreeMap"></a>简述java的TreeMap</h2><p>TreeMap是底层利用红黑树实现的Map结构，底层实现是一棵平衡的排序二叉树，由于红黑树的插入、删除、遍历时间复杂度都为O(logN)，所以性能上低于哈希表。但是哈希表无法提供键值对的有序输出，红黑树可以按照键的值的大小有序输出。</p>
+<h2 id="简述AVL树"><a href="#简述AVL树" class="headerlink" title="简述AVL树"></a>简述AVL树</h2><p>AVL树是一种改进版的搜索二叉树，其引入平衡因子（左子支高度与右子支高度之差的绝对值），通过旋转使其尽量保持平衡。</p>
+<p>任何一个节点的左子支高度与右子支高度之差的绝对值不超过1。</p>
+<h2 id="简述红黑树"><a href="#简述红黑树" class="headerlink" title="简述红黑树"></a>简述红黑树</h2><p>红黑树本身是有2-3树发展而来，红黑树是保持黑平衡的二叉树，其查找会比AVL树慢一点，添加和删除元素会比AVL树快一点。增删改查统计性能上讲，红黑树更优。 </p>
+<p>红黑树主要特征是在每个节点上增加一个属性表示节点颜色，可以红色或黑色。红黑树和 AVL 树类似，都是在进行插入和删除时通过旋转保持自身平衡，从而获得较高的查找性能。红黑树保证从根节点到叶尾的最长路径不超过最短路径的 2 倍，所以最差时间复杂度是 O(logn)。红黑树通过重新着色和左右旋转，更加高效地完成了插入和删除之后的自平衡调整。</p>
+<h2 id="简述常见排序算法和其对应时间空间复杂度"><a href="#简述常见排序算法和其对应时间空间复杂度" class="headerlink" title="简述常见排序算法和其对应时间空间复杂度"></a>简述常见排序算法和其对应时间空间复杂度</h2><p>插入排序：每一趟将一个待排序记录按其关键字的大小插入到已排好序的一组记录的适当位置上，直到所有待排序记录全部插入为止。</p>
+<p>排序算法稳定。时间复杂度 O(n²)，空间复杂度 O(1)。</p>
+<p>希尔排序：把记录按下标的一定增量分组，对每组进行直接插入排序，每次排序后减小增量，当增量减至 1 时排序完毕。</p>
+<p>排序算法不稳定。时间复杂度 O(nlogn)，空间复杂度 O(1)。直接选择排序：每次在未排序序列中找到最小元素，和未排序序列的第一个元素交换位置，再在剩余未排序序列中重复该操作直到所有元素排序完毕。</p>
+<p>排序算法不稳定。时间复杂度 O(n²)，空间复杂度 O(1)。</p>
+<p>堆排序：将待排序数组看作一个树状数组，建立一个二叉树堆。通过对这种数据结构进行每个元素的插入，完成排序工作。</p>
+<p>排序算法不稳定，时间复杂度 O(nlogn)，空间复杂度 O(1)。</p>
+<p>冒泡排序：比较相邻的元素，如果第一个比第二个大就进行交换，对每一对相邻元素做同样的工作。</p>
+<p>排序算法稳定，时间复杂度 O(n²)，空间复杂度 O(1)。</p>
+<p>快速排序：随机选择一个基准元素，通过一趟排序将要排序的数据分割成独立的两部分，一部分全部小于等于基准元素，一部分全部大于等于基准元素，再按此方法递归对这两部分数据进行快速排序。</p>
+<p>排序算法不稳定，时间复杂度 O(nlogn)，空间复杂度 O(logn)。</p>
+<p>归并排序：将待排序序列分成两部分，然后对两部分分别递归排序，最后进行合并。</p>
+<p>排序算法稳定，时间复杂度都为 O(nlogn)，空间复杂度为 O(n)。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://huangluzhi.github.io/blog/2021/04/27/%E6%95%B0%E6%8D%AE%E5%BA%93-%E6%8F%90%E7%BA%B2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -643,6 +643,96 @@
       
           <h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><p><a target="_blank" rel="noopener" href="https://www.secn.net/article/1258557.html">9道面试题</a></p>
 <h2 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a>隔离级别</h2><p><a target="_blank" rel="noopener" href="https://www.secn.net/article/1258557.html">隔离级别</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://huangluzhi.github.io/blog/2021/04/27/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Rex">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Luzhi's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2021/04/27/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">设计模式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-04-27 14:08:20" itemprop="dateCreated datePublished" datetime="2021-04-27T14:08:20+08:00">2021-04-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-05-07 22:56:58" itemprop="dateModified" datetime="2021-05-07T22:56:58+08:00">2021-05-07</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><h2 id="简述设计模式七大原则"><a href="#简述设计模式七大原则" class="headerlink" title="简述设计模式七大原则"></a><strong>简述设计模式七大原则</strong></h2><p>开放封闭原则：对扩展开放，对修改关闭。在程序需要进行拓展的时候，不能去修改原有的代码，实现一个热插拔的效果。</p>
+<p>单一职责原则：一个类、接口或方法只负责一个职责，降低代码复杂度以及变更引起的风险。</p>
+<p>依赖倒置原则：针对接口编程，依赖于抽象类或接口而不依赖于具体实现类。</p>
+<p>接口隔离原则：将不同功能定义在不同接口中实现接口隔离。</p>
+<p>里氏替换原则：任何基类可以出现的地方，子类一定可以出现。</p>
+<p>迪米特原则：每个模块对其他模块都要尽可能少地了解和依赖，降低代码耦合度。</p>
+<p>合成复用原则：尽量使用组合(has-a)/聚合(contains-a)而不是继承(is-a)达到软件复用的目的。</p>
+<h2 id="简述设计模式的分类"><a href="#简述设计模式的分类" class="headerlink" title="简述设计模式的分类"></a>简述设计模式的分类</h2><p>创建型模式：在创建对象的同时隐藏创建逻辑，不使用 new 直接实例化对象。有工厂方法模式、抽象工厂模式、单例模式、建造者模式、原型模式。</p>
+<p>结构型模式：通过类和接口间的继承和引用实现创建复杂结构的对象。有适配器模式、装饰器模式、代理模式、外观模式、桥接模式、组合模式、享元模式。</p>
+<p>行为型模式：通过类之间不同通信方式实现不同行为。有策略模式、模板方法模式、观察者模式、迭代子模式、责任链模式、命令模式、备忘录模式、状态模式、访问者模式、中介者模式、解释器模式。</p>
+<h2 id="简述简单工厂模式"><a href="#简述简单工厂模式" class="headerlink" title="简述简单工厂模式"></a>简述简单工厂模式</h2><p>简单工厂模式指由一个工厂对象来创建实例,适用于工厂类负责创建对象较少的情况。例子：Spring 中的 BeanFactory 使用简单工厂模式，产生 Bean 对象。</p>
+<h2 id="简述工厂模式"><a href="#简述工厂模式" class="headerlink" title="简述工厂模式"></a>简述工厂模式</h2><p>工厂方法模式指定义一个创建对象的接口，让接口的实现类决定创建哪种对象，让类的实例化推迟到子类中进行。例子：Spring 的 FactoryBean 接口的 getObject 方法也是工厂方法。</p>
+<h2 id="简述抽象工厂模式"><a href="#简述抽象工厂模式" class="headerlink" title="简述抽象工厂模式"></a>简述抽象工厂模式</h2><p>抽象工厂模式指提供一个创建一系列相关或相互依赖对象的接口，无需指定它们的具体类。例子： java.sql.Connection 接口。</p>
+<h2 id="简述单例模式"><a href="#简述单例模式" class="headerlink" title="简述单例模式"></a><strong>简述单例模式</strong></h2><p>一个单例类在任何情况下都只存在一个实例。饿汉式实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Singleton instance</span><br><span class="line">		= <span class="keyword">new</span> Singleton();</span><br><span class="line">		</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> instance;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>懒汉式实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">DoubleCheckSingleton</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span></span><br><span class="line">    Singleton instance;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (Singleton.class) &#123;</span><br><span class="line">                <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">                	instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="简述代理模式"><a href="#简述代理模式" class="headerlink" title="简述代理模式"></a>简述代理模式</h2><p>代理模式为其他对象提供一种代理以控制对这个对象的访问。优点是可以增强目标对象的功能，降低代码耦合度，扩展性好。缺点是在客户端和目标对象之间增加代理对象会导致请求处理速度变慢，增加系统复杂度。</p>
+<p>静态代理：在程序运行前就已经存在代理类的字节码文件，代理类和委托类的关系在运行前就确定了。</p>
+<p>动态代理：程序运行期间动态的生成，所以不存在代理类的字节码文件。代理类和委托类的关系是在程序运行时确定。</p>
+<h2 id="简述适配器模式"><a href="#简述适配器模式" class="headerlink" title="简述适配器模式"></a><strong>简述适配器模式</strong></h2><p>适配器模式将一个接口转换成客户希望的另一个接口，使接口不兼容的那些类可以一起工作。</p>
+<h2 id="简述模板模式"><a href="#简述模板模式" class="headerlink" title="简述模板模式"></a>简述模板模式</h2><p>模板模式定义了一个操作中的算法的骨架，并将一些步骤延迟到子类，适用于抽取子类重复代码到公共父类。</p>
+<p>可以封装固定不变的部分，扩展可变的部分。但每一个不同实现都需要一个子类维护，会增加类的数量。</p>
+<h2 id="简述装饰器模式"><a href="#简述装饰器模式" class="headerlink" title="简述装饰器模式"></a>简述装饰器模式</h2><p>装饰者模式可以动态地给对象添加一些额外的属性或行为，即需要修改原有的功能，但又不愿直接去修改原有的代码时，设计一个Decorator套在原有代码外面。</p>
+<h2 id="简述观察者模式"><a href="#简述观察者模式" class="headerlink" title="简述观察者模式"></a>简述观察者模式</h2><p>观察者模式表示的是一种对象与对象之间具有依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新。</p>
 
       
     </div>
@@ -836,96 +926,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://huangluzhi.github.io/blog/2021/04/27/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="Rex">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Luzhi's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2021/04/27/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">设计模式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-04-27 14:08:20" itemprop="dateCreated datePublished" datetime="2021-04-27T14:08:20+08:00">2021-04-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-05-07 22:56:58" itemprop="dateModified" datetime="2021-05-07T22:56:58+08:00">2021-05-07</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><h2 id="简述设计模式七大原则"><a href="#简述设计模式七大原则" class="headerlink" title="简述设计模式七大原则"></a><strong>简述设计模式七大原则</strong></h2><p>开放封闭原则：对扩展开放，对修改关闭。在程序需要进行拓展的时候，不能去修改原有的代码，实现一个热插拔的效果。</p>
-<p>单一职责原则：一个类、接口或方法只负责一个职责，降低代码复杂度以及变更引起的风险。</p>
-<p>依赖倒置原则：针对接口编程，依赖于抽象类或接口而不依赖于具体实现类。</p>
-<p>接口隔离原则：将不同功能定义在不同接口中实现接口隔离。</p>
-<p>里氏替换原则：任何基类可以出现的地方，子类一定可以出现。</p>
-<p>迪米特原则：每个模块对其他模块都要尽可能少地了解和依赖，降低代码耦合度。</p>
-<p>合成复用原则：尽量使用组合(has-a)/聚合(contains-a)而不是继承(is-a)达到软件复用的目的。</p>
-<h2 id="简述设计模式的分类"><a href="#简述设计模式的分类" class="headerlink" title="简述设计模式的分类"></a>简述设计模式的分类</h2><p>创建型模式：在创建对象的同时隐藏创建逻辑，不使用 new 直接实例化对象。有工厂方法模式、抽象工厂模式、单例模式、建造者模式、原型模式。</p>
-<p>结构型模式：通过类和接口间的继承和引用实现创建复杂结构的对象。有适配器模式、装饰器模式、代理模式、外观模式、桥接模式、组合模式、享元模式。</p>
-<p>行为型模式：通过类之间不同通信方式实现不同行为。有策略模式、模板方法模式、观察者模式、迭代子模式、责任链模式、命令模式、备忘录模式、状态模式、访问者模式、中介者模式、解释器模式。</p>
-<h2 id="简述简单工厂模式"><a href="#简述简单工厂模式" class="headerlink" title="简述简单工厂模式"></a>简述简单工厂模式</h2><p>简单工厂模式指由一个工厂对象来创建实例,适用于工厂类负责创建对象较少的情况。例子：Spring 中的 BeanFactory 使用简单工厂模式，产生 Bean 对象。</p>
-<h2 id="简述工厂模式"><a href="#简述工厂模式" class="headerlink" title="简述工厂模式"></a>简述工厂模式</h2><p>工厂方法模式指定义一个创建对象的接口，让接口的实现类决定创建哪种对象，让类的实例化推迟到子类中进行。例子：Spring 的 FactoryBean 接口的 getObject 方法也是工厂方法。</p>
-<h2 id="简述抽象工厂模式"><a href="#简述抽象工厂模式" class="headerlink" title="简述抽象工厂模式"></a>简述抽象工厂模式</h2><p>抽象工厂模式指提供一个创建一系列相关或相互依赖对象的接口，无需指定它们的具体类。例子： java.sql.Connection 接口。</p>
-<h2 id="简述单例模式"><a href="#简述单例模式" class="headerlink" title="简述单例模式"></a><strong>简述单例模式</strong></h2><p>一个单例类在任何情况下都只存在一个实例。饿汉式实现</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Singleton instance</span><br><span class="line">		= <span class="keyword">new</span> Singleton();</span><br><span class="line">		</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> instance;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>懒汉式实现</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">DoubleCheckSingleton</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span></span><br><span class="line">    Singleton instance;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (Singleton.class) &#123;</span><br><span class="line">                <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">                	instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="简述代理模式"><a href="#简述代理模式" class="headerlink" title="简述代理模式"></a>简述代理模式</h2><p>代理模式为其他对象提供一种代理以控制对这个对象的访问。优点是可以增强目标对象的功能，降低代码耦合度，扩展性好。缺点是在客户端和目标对象之间增加代理对象会导致请求处理速度变慢，增加系统复杂度。</p>
-<p>静态代理：在程序运行前就已经存在代理类的字节码文件，代理类和委托类的关系在运行前就确定了。</p>
-<p>动态代理：程序运行期间动态的生成，所以不存在代理类的字节码文件。代理类和委托类的关系是在程序运行时确定。</p>
-<h2 id="简述适配器模式"><a href="#简述适配器模式" class="headerlink" title="简述适配器模式"></a><strong>简述适配器模式</strong></h2><p>适配器模式将一个接口转换成客户希望的另一个接口，使接口不兼容的那些类可以一起工作。</p>
-<h2 id="简述模板模式"><a href="#简述模板模式" class="headerlink" title="简述模板模式"></a>简述模板模式</h2><p>模板模式定义了一个操作中的算法的骨架，并将一些步骤延迟到子类，适用于抽取子类重复代码到公共父类。</p>
-<p>可以封装固定不变的部分，扩展可变的部分。但每一个不同实现都需要一个子类维护，会增加类的数量。</p>
-<h2 id="简述装饰器模式"><a href="#简述装饰器模式" class="headerlink" title="简述装饰器模式"></a>简述装饰器模式</h2><p>装饰者模式可以动态地给对象添加一些额外的属性或行为，即需要修改原有的功能，但又不愿直接去修改原有的代码时，设计一个Decorator套在原有代码外面。</p>
-<h2 id="简述观察者模式"><a href="#简述观察者模式" class="headerlink" title="简述观察者模式"></a>简述观察者模式</h2><p>观察者模式表示的是一种对象与对象之间具有依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://huangluzhi.github.io/blog/2021/04/27/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -957,7 +957,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-05-07 22:45:49" itemprop="dateModified" datetime="2021-05-07T22:45:49+08:00">2021-05-07</time>
+                <time title="Modified: 2021-05-07 23:45:48" itemprop="dateModified" datetime="2021-05-07T23:45:48+08:00">2021-05-07</time>
               </span>
 
           
@@ -973,20 +973,20 @@
       
           <h1 id="Java-多线程"><a href="#Java-多线程" class="headerlink" title="Java 多线程"></a>Java 多线程</h1><h2 id="java内存模型（JMM）"><a href="#java内存模型（JMM）" class="headerlink" title="java内存模型（JMM）"></a><strong>java</strong>内存模型（<strong>JMM</strong>）</h2><p>java内存模型定义了程序中各种变量的访问规则。其规定所有变量都存储在主内存，线程均有自己的工作内存。</p>
 <p>工作内存中保存被该线程使用的变量的主内存副本，线程对变量的所有操作都必须在工作空间进行，不能直接读写主内存数据。操作完成后，线程的工作内存通过缓存一致性协议将操作完的数据刷回主存。</p>
-<h1 id="简述as-if-serial"><a href="#简述as-if-serial" class="headerlink" title="简述as-if-serial"></a>简述as-if-serial</h1><p>编译器等会对原始的程序进行指令重排序和优化。但不管怎么重排序，其结果和用户原始程序输出预定结果一致。</p>
-<h1 id="简述happens-before八大原则"><a href="#简述happens-before八大原则" class="headerlink" title="简述happens-before八大原则"></a>简述happens-before八大原则</h1><p>程序次序规则：一个线程内写在前面的操作先行发生于后面的。</p>
+<h2 id="简述as-if-serial"><a href="#简述as-if-serial" class="headerlink" title="简述as-if-serial"></a>简述as-if-serial</h2><p>编译器等会对原始的程序进行指令重排序和优化。但不管怎么重排序，其结果和用户原始程序输出预定结果一致。</p>
+<h2 id="简述happens-before八大原则"><a href="#简述happens-before八大原则" class="headerlink" title="简述happens-before八大原则"></a>简述happens-before八大原则</h2><p>程序次序规则：一个线程内写在前面的操作先行发生于后面的。</p>
 <p>锁定规则： unlock 操作先行发生于后面对同一个锁的 lock 操作。 volatile 规则：对 volatile 变量的写操作先行发生于后面的读操作。</p>
 <p>线程启动规则：线程的 start 方法先行发生于线程的每个动作。</p>
 <p>线程中断规则：对线程interrupt()方法的调用先行发生于被中断线程的代码检测到中断事件的发生。</p>
 <p>线程终止规则：线程中所有操作先行发生于对线程的终止检测。</p>
 <p>对象终结规则：对象的初始化先行发生于 finalize 方法。</p>
 <p>传递性规则：如果操作 A 先行发生于操作 B，操作 B 先行发生于操作 C，那么操作 A 先行发生于操作C</p>
-<h1 id="as-if-serial-和-happens-before-的区别"><a href="#as-if-serial-和-happens-before-的区别" class="headerlink" title="as-if-serial 和 happens-before 的区别"></a>as-if-serial 和 happens-before 的区别</h1><p>as-if-serial 保证单线程程序的执行结果不变，happens-before 保证正确同步的多线程程序的执行结果不变。</p>
+<h2 id="as-if-serial-和-happens-before-的区别"><a href="#as-if-serial-和-happens-before-的区别" class="headerlink" title="as-if-serial 和 happens-before 的区别"></a>as-if-serial 和 happens-before 的区别</h2><p>as-if-serial 保证单线程程序的执行结果不变，happens-before 保证正确同步的多线程程序的执行结果不变。</p>
 <h2 id="简述原子性操作"><a href="#简述原子性操作" class="headerlink" title="简述原子性操作"></a>简述原子性操作</h2><p>一个操作或者多个操作，要么全部执行并且执行的过程不会被任何因素打断，要么就都不执行，这就是原子性操作。</p>
 <h2 id="简述线程的可见性"><a href="#简述线程的可见性" class="headerlink" title="简述线程的可见性"></a>简述线程的可见性</h2><p>可见性指当一个线程修改了共享变量时，其他线程能够立即得知修改。volatile,synchronized,final都能保证可见性。</p>
 <p><strong>简述有序性</strong></p>
 <p>即虽然多线程存在并发和指令优化等操作，在本线程内观察该线程的所有执行操作是有序的。</p>
-<h1 id="简述java中volatile关键字作用"><a href="#简述java中volatile关键字作用" class="headerlink" title="简述java中volatile关键字作用"></a>简述java中volatile关键字作用</h1><ol>
+<h2 id="简述java中volatile关键字作用"><a href="#简述java中volatile关键字作用" class="headerlink" title="简述java中volatile关键字作用"></a>简述java中volatile关键字作用</h2><ol>
 <li>保证变量对所有线程的可见性。</li>
 </ol>
 <p>当一条线程修改了变量值，新值对于其他线程来说是立即可以得知的。</p>
@@ -1046,8 +1046,8 @@
 <li><p>handler：拒绝策略。有以下几种拒绝策略：</p>
 </li>
 </ol>
-<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image001.gif" alt="img"> AbortPolicy：丢弃任务并抛出异常</p>
-<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image002.gif" alt="img">CallerRunsPolicy： 重新尝试提交该任务</p>
+<p>AbortPolicy：丢弃任务并抛出异常</p>
+<p>CallerRunsPolicy： 重新尝试提交该任务</p>
 <p>DiscardOldestPolicy 抛弃队列里等待最久的任务并把当前任务加入队列 DiscardPolicy 表示直接抛弃当前任务但不抛出异常。<strong>线程池创建方法</strong></p>
 <ol>
 <li><p>newFixedThreadPool，创建固定大小的线程池。</p>
@@ -1061,32 +1061,32 @@
 <li><p>newWorkStealingPool：一个拥有多个任务队列的线程池。</p>
 </li>
 </ol>
-<h1 id="简述Executor框架"><a href="#简述Executor框架" class="headerlink" title="简述Executor框架"></a>简述Executor框架</h1><p>Executor框架目的是将任务提交和任务如何运行分离开来的机制。用户不再需要从代码层考虑设计任务的提交运行，只需要调用Executor框架实现类的Execute方法就可以提交任务。产生线程池的函数</p>
+<h2 id="简述Executor框架"><a href="#简述Executor框架" class="headerlink" title="简述Executor框架"></a>简述Executor框架</h2><p>Executor框架目的是将任务提交和任务如何运行分离开来的机制。用户不再需要从代码层考虑设计任务的提交运行，只需要调用Executor框架实现类的Execute方法就可以提交任务。产生线程池的函数</p>
 <p>ThreadPoolExecutor也是Executor的具体实现类。</p>
-<h1 id="简述Executor的继承关系"><a href="#简述Executor的继承关系" class="headerlink" title="简述Executor的继承关系"></a>简述Executor的继承关系</h1><p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image003.gif" alt="img"> Executor：一个接口，其定义了一个接收Runnable对象的方法executor，该方法接收一个Runable 实例执行这个任务。</p>
-<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image004.gif" alt="img"> ExecutorService：Executor的子类接口，其定义了一个接收Callable对象的方法，返回 Future 对象，同时提供execute方法。</p>
-<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image005.gif" alt="img">ScheduledExecutorService：ExecutorService的子类接口，支持定期执行任务。</p>
+<h2 id="简述Executor的继承关系"><a href="#简述Executor的继承关系" class="headerlink" title="简述Executor的继承关系"></a>简述Executor的继承关系</h2><p> Executor：一个接口，其定义了一个接收Runnable对象的方法executor，该方法接收一个Runable 实例执行这个任务。</p>
+<p> ExecutorService：Executor的子类接口，其定义了一个接收Callable对象的方法，返回 Future 对象，同时提供execute方法。</p>
+<p>ScheduledExecutorService：ExecutorService的子类接口，支持定期执行任务。</p>
 <p>AbstractExecutorService：抽象类，提供 ExecutorService 执行方法的默认实现。</p>
 <p>Executors：实现ExecutorService接口的静态工厂类，提供了一系列工厂方法用于创建线程池。</p>
 <p>ThreadPoolExecutor：继承AbstractExecutorService，用于创建线程池。</p>
 <p>ForkJoinPool: 继承AbstractExecutorService，Fork 将大任务分叉为多个小任务，然后让小任务执行，Join 是获得小任务的结果，类似于map reduce。</p>
-<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image006.gif" alt="img"> ThreadPoolExecutor：继承ThreadPoolExecutor，实现ScheduledExecutorService，用于创建带定时任务的线程池。</p>
-<h2 id="简述线程池的状态"><a href="#简述线程池的状态" class="headerlink" title="简述线程池的状态"></a>简述线程池的状态</h2><p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image007.gif" alt="img"> Running：能接受新提交的任务，也可以处理阻塞队列的任务。</p>
-<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image003.gif" alt="img"> Shutdown：不再接受新提交的任务，但可以处理存量任务，线程池处于running时调用shutdown方法，会进入该状态。</p>
-<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image008.gif" alt="img">Stop：不接受新任务，不处理存量任务，调用shutdownnow进入该状态。</p>
+<p>ThreadPoolExecutor：继承ThreadPoolExecutor，实现ScheduledExecutorService，用于创建带定时任务的线程池。</p>
+<h2 id="简述线程池的状态"><a href="#简述线程池的状态" class="headerlink" title="简述线程池的状态"></a>简述线程池的状态</h2><p> Running：能接受新提交的任务，也可以处理阻塞队列的任务。</p>
+<p>Shutdown：不再接受新提交的任务，但可以处理存量任务，线程池处于running时调用shutdown方法，会进入该状态。</p>
+<p>Stop：不接受新任务，不处理存量任务，调用shutdownnow进入该状态。</p>
 <p>Tidying：所有任务已经终止了，worker_count（有效线程数）为0。</p>
 <p>Terminated：线程池彻底终止。在tidying模式下调用terminated方法会进入该状态。</p>
 <h2 id="简述阻塞队列"><a href="#简述阻塞队列" class="headerlink" title="简述阻塞队列"></a>简述阻塞队列</h2><p>阻塞队列是生产者消费者的实现具体组件之一。当阻塞队列为空时，从队列中获取元素的操作将会被阻塞，当阻塞队列满了，往队列添加元素的操作将会被阻塞。具体实现有：</p>
-<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image009.gif" alt="img">ArrayBlockingQueue：底层是由数组组成的有界阻塞队列。</p>
+<p>ArrayBlockingQueue：底层是由数组组成的有界阻塞队列。</p>
 <p>LinkedBlockingQueue：底层是由链表组成的有界阻塞队列。</p>
 <p>PriorityBlockingQueue：阻塞优先队列。</p>
 <p>DelayQueue：创建元素时可以指定多久才能从队列中获取当前元素</p>
 <p>SynchronousQueue：不存储元素的阻塞队列，每一个存储必须等待一个取出操作</p>
 <p>LinkedTransferQueue：与LinkedBlockingQueue相比多一个transfer方法，即如果当前有消费者正等待接收元素，可以把生产者传入的元素立刻传输给消费者。</p>
-<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image010.gif" alt="img"> LinkedBlockingDeque：双向阻塞队列。</p>
-<h1 id="谈一谈ThreadLocal"><a href="#谈一谈ThreadLocal" class="headerlink" title="谈一谈ThreadLocal"></a>谈一谈ThreadLocal</h1><p>ThreadLocal 是线程共享变量。ThreadLoacl 有一个静态内部类 ThreadLocalMap，其 Key 是</p>
+<p>LinkedBlockingDeque：双向阻塞队列。</p>
+<h2 id="谈一谈ThreadLocal"><a href="#谈一谈ThreadLocal" class="headerlink" title="谈一谈ThreadLocal"></a>谈一谈ThreadLocal</h2><p>ThreadLocal 是线程共享变量。ThreadLoacl 有一个静态内部类 ThreadLocalMap，其 Key 是</p>
 <p>ThreadLocal 对象，值是 Entry 对象，ThreadLocalMap是每个线程私有的。</p>
-<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image011.gif" alt="img">set 给ThreadLocalMap设置值。</p>
+<p>set 给ThreadLocalMap设置值。</p>
 <p>get 获取ThreadLocalMap。</p>
 <p>remove 删除ThreadLocalMap类型的对象。</p>
 <p>存在的问题</p>
@@ -1114,43 +1114,43 @@
 </ol>
 <h2 id="ABA问题及解决方法简述"><a href="#ABA问题及解决方法简述" class="headerlink" title="ABA问题及解决方法简述"></a>ABA问题及解决方法简述</h2><p>CAS 算法是基于值来做比较的，如果当前有两个线程，一个线程将变量值从 A 改为 B ，再由 B 改回为 A ，当前线程开始执行 CAS 算法时，就很容易认为值没有变化，误认为读取数据到执行 CAS 算法的期间，没有线程修改过数据。</p>
 <p>juc 包提供了一个 AtomicStampedReference，即在原始的版本下加入版本号戳，解决 ABA 问题。</p>
-<h1 id="简述常见的Atomic类"><a href="#简述常见的Atomic类" class="headerlink" title="简述常见的Atomic类"></a>简述常见的Atomic类</h1><p>在很多时候，我们需要的仅仅是一个简单的、高效的、线程安全的++或者–方案，使用synchronized关键字和lock固然可以实现，但代价比较大，此时用原子类更加方便。 </p>
+<h2 id="简述常见的Atomic类"><a href="#简述常见的Atomic类" class="headerlink" title="简述常见的Atomic类"></a>简述常见的Atomic类</h2><p>在很多时候，我们需要的仅仅是一个简单的、高效的、线程安全的++或者–方案，使用synchronized关键字和lock固然可以实现，但代价比较大，此时用原子类更加方便。 </p>
 <p>基本数据类型的原子类有：</p>
-<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image012.gif" alt="img">AtomicInteger 原子更新整形 AtomicLong 原子更新长整型</p>
+<p>AtomicInteger 原子更新整形 AtomicLong 原子更新长整型</p>
 <p>AtomicBoolean 原子更新布尔类型</p>
 <p>Atomic数组类型有：</p>
-<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image013.gif" alt="img">AtomicIntegerArray 原子更新整形数组里的元素</p>
+<p>AtomicIntegerArray 原子更新整形数组里的元素</p>
 <p>AtomicLongArray 原子更新长整型数组里的元素</p>
 <p>AtomicReferenceArray 原子更新引用类型数组里的元素。</p>
 <p>Atomic引用类型有</p>
-<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image002.gif" alt="img">AtomicReference 原子更新引用类型</p>
+<p>AtomicReference 原子更新引用类型</p>
 <p>AtomicMarkableReference 原子更新带有标记位的引用类型，可以绑定一个 boolean 标记 AtomicStampedReference 原子更新带有版本号的引用类型</p>
 <p>FieldUpdater类型：</p>
-<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image014.gif" alt="img">AtomicIntegerFieldUpdater 原子更新整形字段的更新器</p>
+<p>AtomicIntegerFieldUpdater 原子更新整形字段的更新器</p>
 <p>AtomicLongFieldUpdater 原子更新长整形字段的更新器</p>
 <p>AtomicReferenceFieldUpdater 原子更新引用类型字段的更新器<strong>简述<strong><strong>Atomic</strong></strong>类基本实现原理</strong></p>
 <p>以AtomicIntger 为例： </p>
 <p>方法getAndIncrement：以原子方式将当前的值加1，具体实现为：</p>
 <ol>
-<li><p>  在 for 死循环中取得 AtomicInteger 里存储的数值</p>
+<li><p>在 for 死循环中取得 AtomicInteger 里存储的数值</p>
 </li>
-<li><p>  对 AtomicInteger 当前的值加 1</p>
+<li><p>对 AtomicInteger 当前的值加 1</p>
 </li>
-<li><p>  调用 compareAndSet 方法进行原子更新</p>
+<li><p>调用 compareAndSet 方法进行原子更新</p>
 </li>
-<li><p>  先检查当前数值是否等于 expect</p>
+<li><p>先检查当前数值是否等于 expect</p>
 </li>
-<li><p>  如果等于则说明当前值没有被其他线程修改，则将值更新为 next，</p>
+<li><p>如果等于则说明当前值没有被其他线程修改，则将值更新为 next，</p>
 </li>
 <li><p>如果不是会更新失败返回 false，程序会进入 for 循环重新进行 compareAndSet 操作。</p>
 </li>
 </ol>
-<h1 id="简述CountDownLatch"><a href="#简述CountDownLatch" class="headerlink" title="简述CountDownLatch"></a><strong>简述</strong>CountDownLatch</h1><p>countDownLatch这个类使一个线程等待其他线程各自执行完毕后再执行。是通过一个计数器来实现的，计数器的初始值是线程的数量。每当一个线程执行完毕后，调用 countDown方法，计数器的值就减1，当计数器的值为0时，表示所有线程都执行完毕，然后在等待的线程就可以恢复工作了。只能一次性使用，不能reset。<strong>简述****CyclicBarrier</strong></p>
+<h2 id="简述CountDownLatch"><a href="#简述CountDownLatch" class="headerlink" title="简述CountDownLatch"></a><strong>简述</strong>CountDownLatch</h2><p>countDownLatch这个类使一个线程等待其他线程各自执行完毕后再执行。是通过一个计数器来实现的，计数器的初始值是线程的数量。每当一个线程执行完毕后，调用 countDown方法，计数器的值就减1，当计数器的值为0时，表示所有线程都执行完毕，然后在等待的线程就可以恢复工作了。只能一次性使用，不能reset。<strong>简述****CyclicBarrier</strong></p>
 <p>CyclicBarrier 主要功能和countDownLatch类似，也是通过一个计数器，使一个线程等待其他线程各自执行完毕后再执行。但是其可以重复使用（reset）。</p>
-<h1 id="简述Semaphore"><a href="#简述Semaphore" class="headerlink" title="简述Semaphore"></a>简述Semaphore</h1><p>Semaphore即信号量。 </p>
+<h2 id="简述Semaphore"><a href="#简述Semaphore" class="headerlink" title="简述Semaphore"></a>简述Semaphore</h2><p>Semaphore即信号量。 </p>
 <p>Semaphore 的构造方法参数接收一个 int 值，设置一个计数器，表示可用的许可数量即最大并发数。使用 acquire 方法获得一个许可证，计数器减一，使用 release 方法归还许可，计数器加一。如果此时计数器值为0,线程进入休眠。</p>
-<h1 id="简述Exchanger"><a href="#简述Exchanger" class="headerlink" title="简述Exchanger"></a>简述Exchanger</h1><p>Exchanger类可用于两个线程之间交换信息。可简单地将Exchanger对象理解为一个包含两个格子的容器，通过exchanger方法可以向两个格子中填充信息。线程通过exchange 方法交换数据，第一个线程执行 exchange 方法后会阻塞等待第二个线程执行该方法。当两个线程都到达同步点时这两个线程就可以交换数据当两个格子中的均被填充时，该对象会自动将两个格子的信息交换，然后返回给线程，从而实现两个线程的信息交换。</p>
-<h1 id="简述ConcurrentHashMap"><a href="#简述ConcurrentHashMap" class="headerlink" title="简述ConcurrentHashMap"></a>简述ConcurrentHashMap</h1><p>JDK7采用锁分段技术。首先将数据分成 Segment 数据段，然后给每一个数据段配一把锁，当一个线程占用锁访问其中一个段的数据时，其他段的数据也能被其他线程访问。</p>
+<h2 id="简述Exchanger"><a href="#简述Exchanger" class="headerlink" title="简述Exchanger"></a>简述Exchanger</h2><p>Exchanger类可用于两个线程之间交换信息。可简单地将Exchanger对象理解为一个包含两个格子的容器，通过exchanger方法可以向两个格子中填充信息。线程通过exchange 方法交换数据，第一个线程执行 exchange 方法后会阻塞等待第二个线程执行该方法。当两个线程都到达同步点时这两个线程就可以交换数据当两个格子中的均被填充时，该对象会自动将两个格子的信息交换，然后返回给线程，从而实现两个线程的信息交换。</p>
+<h2 id="简述ConcurrentHashMap"><a href="#简述ConcurrentHashMap" class="headerlink" title="简述ConcurrentHashMap"></a>简述ConcurrentHashMap</h2><p>JDK7采用锁分段技术。首先将数据分成 Segment 数据段，然后给每一个数据段配一把锁，当一个线程占用锁访问其中一个段的数据时，其他段的数据也能被其他线程访问。</p>
 <p>get 除读到空值不需要加锁。该方法先经过一次再散列，再用这个散列值通过散列运算定位到</p>
 <p>Segment，最后通过散列算法定位到元素。 </p>
 <p>put 须加锁，首先定位到 Segment，然后进行插入操作，第一步判断是否需要对 Segment 里的</p>
@@ -1164,12 +1164,12 @@
 <li><p>使用了更加优化的方式统计集合内的元素数量。</p>
 </li>
 </ol>
-<h1 id="Synchronized底层实现原理"><a href="#Synchronized底层实现原理" class="headerlink" title="Synchronized底层实现原理"></a>Synchronized底层实现原理</h1><p>Java 对象底层都关联一个的 monitor，使用 synchronized 时 JVM 会根据使用环境找到对象的 monitor，根据 monitor 的状态进行加解锁的判断。如果成功加锁就成为该 monitor 的唯一持有者， monitor 在被释放前不能再被其他线程获取。</p>
+<h2 id="Synchronized底层实现原理"><a href="#Synchronized底层实现原理" class="headerlink" title="Synchronized底层实现原理"></a>Synchronized底层实现原理</h2><p>Java 对象底层都关联一个的 monitor，使用 synchronized 时 JVM 会根据使用环境找到对象的 monitor，根据 monitor 的状态进行加解锁的判断。如果成功加锁就成为该 monitor 的唯一持有者， monitor 在被释放前不能再被其他线程获取。</p>
 <p>synchronized在JVM编译后会产生monitorenter 和 monitorexit 这两个字节码指令，获取和释放</p>
 <p>monitor。这两个字节码指令都需要一个引用类型的参数指明要锁定和解锁的对象，对于同步普通方法，</p>
 <p>锁是当前实例对象；对于静态同步方法，锁是当前类的 Class 对象；对于同步方法块，锁是 synchronized 括号里的对象。</p>
 <p>执行 monitorenter 指令时，首先尝试获取对象锁。如果这个对象没有被锁定，或当前线程已经持有锁，就把锁的计数器加 1，执行 monitorexit 指令时会将锁计数器减 1。一旦计数器为 0 锁随即就被释放。</p>
-<h1 id="Synchronized关键词使用方法"><a href="#Synchronized关键词使用方法" class="headerlink" title="Synchronized关键词使用方法"></a>Synchronized关键词使用方法</h1><ol>
+<h2 id="Synchronized关键词使用方法"><a href="#Synchronized关键词使用方法" class="headerlink" title="Synchronized关键词使用方法"></a>Synchronized关键词使用方法</h2><ol>
 <li><p>直接修饰某个实例方法</p>
 </li>
 <li><p>直接修饰某个静态方法</p>
@@ -1218,7 +1218,7 @@
 <p><strong>简述锁粗化</strong></p>
 <p>锁粗化的思想就是扩大加锁范围，避免反复的加锁和解锁。</p>
 <h2 id="简述锁消除"><a href="#简述锁消除" class="headerlink" title="简述锁消除"></a>简述锁消除</h2><p>锁消除是一种更为彻底的优化，在编译时，java编译器对运行上下文进行扫描，去除不可能存在共享资源竞争的锁。</p>
-<h1 id="简述Lock与ReentrantLock"><a href="#简述Lock与ReentrantLock" class="headerlink" title="简述Lock与ReentrantLock"></a>简述Lock与ReentrantLock</h1><p>Lock 接是 java并发包的顶层接口。</p>
+<h2 id="简述Lock与ReentrantLock"><a href="#简述Lock与ReentrantLock" class="headerlink" title="简述Lock与ReentrantLock"></a>简述Lock与ReentrantLock</h2><p>Lock 接是 java并发包的顶层接口。</p>
 <p>可重入锁 ReentrantLock 是 Lock 最常见的实现，与 synchronized 一样可重入。ReentrantLock 在默认情况下是非公平的，可以通过构造方法指定公平锁。一旦使用了公平锁，性能会下降。</p>
 <p><strong>简述</strong>AQS</p>
 <p>AQS（AbstractQuenedSynchronizer）抽象的队列式同步器。 </p>
