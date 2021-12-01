@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"huangluzhi.github.io","root":"/blog/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="C++关键字staticstatic的用法，全局变量与局部变量（1）生命周期：在修饰变量的时候，static修饰的静态局部变量只执行初始化一次，而且延长了局部变量的生命周期，直到程序运行结束以后才释放，但不改变作用域。比如修饰函数中存放在栈空间的数组。如果不想让这个数组在函数调用结束释放可以使用static修饰。（2）可见性：static修饰全局变量或函数时，这个全局变量只能在本文件中访问，不能在">
+  <meta name="description" content="C++基本数据类型uint8_t 是类型unsigned char 的别名，8个位（一个字节） short 2个字节，int 4个字节 1234567891011121314151617181920212223242526&#x2F;usr&#x2F;include&#x2F;stdint.hISO C99: 7.18 Integer types#ifndef __int8_t_defined">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++提纲">
 <meta property="og:url" content="https://huangluzhi.github.io/blog/2021/04/27/C++%E6%8F%90%E7%BA%B2/index.html">
 <meta property="og:site_name" content="Luzhi&#39;s Blog">
-<meta property="og:description" content="C++关键字staticstatic的用法，全局变量与局部变量（1）生命周期：在修饰变量的时候，static修饰的静态局部变量只执行初始化一次，而且延长了局部变量的生命周期，直到程序运行结束以后才释放，但不改变作用域。比如修饰函数中存放在栈空间的数组。如果不想让这个数组在函数调用结束释放可以使用static修饰。（2）可见性：static修饰全局变量或函数时，这个全局变量只能在本文件中访问，不能在">
+<meta property="og:description" content="C++基本数据类型uint8_t 是类型unsigned char 的别名，8个位（一个字节） short 2个字节，int 4个字节 1234567891011121314151617181920212223242526&#x2F;usr&#x2F;include&#x2F;stdint.hISO C99: 7.18 Integer types#ifndef __int8_t_defined">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-04-27T06:08:20.000Z">
-<meta property="article:modified_time" content="2021-05-02T02:41:15.179Z">
+<meta property="article:modified_time" content="2021-11-30T11:15:35.787Z">
 <meta property="article:author" content="Rex">
 <meta property="article:tag" content="编程语言基础">
 <meta name="twitter:card" content="summary">
@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-05-02 10:41:15" itemprop="dateModified" datetime="2021-05-02T10:41:15+08:00">2021-05-02</time>
+                <time title="Modified: 2021-11-30 19:15:35" itemprop="dateModified" datetime="2021-11-30T19:15:35+08:00">2021-11-30</time>
               </span>
 
           
@@ -210,22 +210,71 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h1><h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><h3 id="static"><a href="#static" class="headerlink" title="static"></a>static</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qychjj/article/details/99310485">static的用法，全局变量与局部变量</a><br>（1）生命周期：在修饰变量的时候，static修饰的静态局部变量只执行初始化一次，而且延长了局部变量的生命周期，直到程序运行结束以后才释放，但不改变作用域。比如修饰函数中存放在栈空间的数组。如果不想让这个数组在函数调用结束释放可以使用static修饰。<br>（2）可见性：static修饰全局变量或函数时，这个全局变量只能在本文件中访问，不能在其它文件中访问，即便是extern外部声明也不可以。这个函数也只能在本文件中调用，不能被其他文件调用。<br>（3）存储方式：Static修饰的变量存放在全局数据区的静态变量区，包括全局静态变量和局部静态变量，都在全局数据区分配内存。初始化的时候自动初始化为0。<br>（4）考虑到数据安全性（当程序想要使用全局变量的时候应该先考虑使用static）。</p>
+        <h1 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h1><h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><p>uint8_t 是类型unsigned char 的别名，<strong>8个位</strong>（一个字节）</p>
+<p>short 2个字节，int 4个字节</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;include&#x2F;stdint.hISO C99: 7.18 Integer types</span><br><span class="line"></span><br><span class="line">#ifndef __int8_t_defined   </span><br><span class="line"># define __int8_t_defined   </span><br><span class="line">typedef signed char             int8_t;     </span><br><span class="line">typedef short int               int16_t;    </span><br><span class="line">typedef int                     int32_t;    </span><br><span class="line"># if __WORDSIZE &#x3D;&#x3D; 64   </span><br><span class="line">typedef long int                int64_t;    </span><br><span class="line"># else   </span><br><span class="line">__extension__    </span><br><span class="line">typedef long long int           int64_t;    </span><br><span class="line"># endif   </span><br><span class="line">#endif   </span><br><span class="line">typedef unsigned char           uint8_t;    </span><br><span class="line">typedef unsigned short int      uint16_t;    </span><br><span class="line">#ifndef __uint32_t_defined   </span><br><span class="line">typedef unsigned int            uint32_t;    </span><br><span class="line"># define __uint32_t_defined   </span><br><span class="line">#endif   </span><br><span class="line">#if __WORDSIZE &#x3D;&#x3D; 64   </span><br><span class="line">typedef unsigned long int       uint64_t;    </span><br><span class="line">#else   </span><br><span class="line">__extension__    </span><br><span class="line">typedef unsigned long long int  uint64_t;    </span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><h3 id="static"><a href="#static" class="headerlink" title="static"></a>static</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qychjj/article/details/99310485">static的用法，全局变量与局部变量</a><br>（1）生命周期：在修饰变量的时候，static修饰的静态局部变量只执行初始化一次，而且延长了局部变量的生命周期，直到程序运行结束以后才释放，但不改变作用域。比如修饰函数中存放在栈空间的数组。如果不想让这个数组在函数调用结束释放可以使用static修饰。<br>（2）可见性：static修饰全局变量或函数时，这个全局变量只能在本文件中访问，不能在其它文件中访问，即便是extern外部声明也不可以。这个函数也只能在本文件中调用，不能被其他文件调用。<br>（3）存储方式：Static修饰的变量存放在全局数据区的静态变量区，包括全局静态变量和局部静态变量，都在全局数据区分配内存。初始化的时候自动初始化为0。<br>（4）考虑到数据安全性（当程序想要使用全局变量的时候应该先考虑使用static）。</p>
 <h3 id="union"><a href="#union" class="headerlink" title="union"></a>union</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/firefly_2002/article/details/7954458">Struct 和 Union区别</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/yuyanggo/article/details/49819667">union用法总结</a></p>
+<p>由于union里面的东西共享内存，所以<strong>不能定义静态、引用</strong>类型的变量。由于在union里也不允许存放带有构造函数、析构函数和复制构造函数等的类的对象，但是可以存放对应的类对象指针。编译器无法保证类的构造函数和析构函数得到正确的调用，由此，就可能出现内存泄漏。所以，在C++中使用union时，尽量保持C语言中使用union的风格，尽量不要让union带有对象。</p>
 <h3 id="extern"><a href="#extern" class="headerlink" title="extern"></a>extern</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/keensword/article/details/401114">解析“extern”</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/extern-head-h-different.html">extern 与头文件(*.h)的区别和联系</a></p>
 <h4 id="声明和定义"><a href="#声明和定义" class="headerlink" title="声明和定义"></a>声明和定义</h4><p>externint a; //属于声明  externint a = 10; //属于定义，同下</p>
 <p>externchar g_str[]=”123456”;//这个时候相当于没有extern</p>
 <p>如果在一个文件里定义了char g_str[] = “123456”;在另外一个文件中必须使用extern char g_str[ ];来声明。不能使用extern char* g_str;来声明。extern是严格的声明。且extern char* g_str只是声明的一个全局字符指针。</p>
 <p>注：声明可以拷贝n次，但是定义只能定义一次。</p>
+<p><strong>全局函数的声明</strong>语句中，关键字extern可以省略，因为全局函数默认是extern类型的。</p>
+<p>C++中const修饰的全局常量具有跟static相同的特性，即它们只能作用于本编译模块中，且static修饰的是全局变量，但是const可以与extern连用来声明该常量可以作用于其他编译模块中，如externconst char g_str[]; 然后在原文件中别忘了定义:const char g_str[] = “123456”; 所以当const单独使用时它就与static相同，而当与extern一起合作的时候，它的特性就跟extern的一样了</p>
+<h3 id="内存对齐"><a href="#内存对齐" class="headerlink" title="内存对齐"></a>内存对齐</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/30007037">C/C++内存对齐详解</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/chy19911123/article/details/48894579">示例</a></p>
+<h2 id="大小端模式"><a href="#大小端模式" class="headerlink" title="大小端模式"></a>大小端模式</h2><p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%A4%A7%E5%B0%8F%E7%AB%AF%E6%A8%A1%E5%BC%8F/6750542">大小端模式-百度百科</a></p>
+<h2 id="内存分配"><a href="#内存分配" class="headerlink" title="内存分配"></a>内存分配</h2><p><strong>堆</strong><br> 堆，就是那些由new分配的内存块，他们的释放编译器不去管，由我们的应用程序去控制，一般一个new就要对应一个delete。如果程序员没有释放掉，那么在程序结束后，操作系统会自动回收。</p>
+<p><strong>栈</strong><br> 栈，就是那些由编译器在需要的时候分配，在不需要的时候自动清楚的变量的存储区。里面的变量通常是局部变量、函数参数等。</p>
+<p><strong>自由存储区</strong><br> 自由存储区，就是那些由malloc等分配的内存块，他和堆是十分相似的，不过它是用free来结束自己的生命的。</p>
+<p><strong>全局/静态存储区</strong><br> 全局/静态存储区，全局变量和静态变量被分配到同一块内存中，在以前的C++堆栈中，全局变量又分为初始化的和未初始化的，在C++里面没有这个区分了，他们共同占用同一块内存区。</p>
+<p><strong>常量存储区</strong><br> 常量存储区，这是一块比较特殊的存储区，他们里面存放的是常量，不允许修改(当然，你要通过非正当手段也可以修改，而且方法很多)</p>
+<p><strong>程序代码区</strong></p>
+<p>存放函数体的二进制代码。</p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><h3 id="把引用作为返回值"><a href="#把引用作为返回值" class="headerlink" title="把引用作为返回值"></a>把引用作为返回值</h3><p><a target="_blank" rel="noopener" href="https://www.runoob.com/cplusplus/returning-values-by-reference.html">C++ 把引用作为返回值</a></p>
+<p>通过使用引用来替代指针，会使 C++ 程序更容易阅读和维护。C++ 函数可以返回一个引用，方式与返回一个指针类似。当函数返回一个引用时，则返回一个指向返回值的隐式指针。这样，<strong>函数就可以放在赋值语句的左边</strong>。</p>
+<p>当返回一个引用时，要注意被引用的对象不能超出作用域。所以返回一个对局部变量的引用是不合法的，但是，可以返回一个对静态变量的引用。</p>
+<p>目的：</p>
+<p>(*) 希望一些类的成员函数返回引用，以便于修改类内部的数据。</p>
+<p>(1) 访问某个参数（以引用传入，或是 *this ）的一部分。这一部分可以是逻辑上的，并不一定是子对象，比如容器的元素。</p>
+<p>(2) 访问某个名字不可在外部访问的对象。比如单例的对象。</p>
+<p>(3) 较少用：返回参数对象本身，但改变其 cv 限定或值类别。 std::move 、 std::forward 、 std::as_const 为此类。</p>
 <h2 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h2><p>优先队列运算符重载 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/cielosun/p/5654595.html">浅谈C++ STL中的优先队列(priority_queue)</a></p>
 <h2 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_34232363/article/details/85902435">C++ 四种强制类型转换</a></p>
-<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><h3 id="虚函数"><a href="#虚函数" class="headerlink" title="虚函数"></a>虚函数</h3><p><a target="_blank" rel="noopener" href="https://jacktang816.github.io/post/virtualfunction/">C++虚函数的实现基本原理</a></p>
+<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><p>构造函数必须是公有的</p>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>重写(Overriding)是父类与子类之间多态性的一种表现，而重载(Overloading)是一个类中多态性的一种表现。</p>
+<h3 id="虚函数"><a href="#虚函数" class="headerlink" title="虚函数"></a>虚函数</h3><p><a target="_blank" rel="noopener" href="https://jacktang816.github.io/post/virtualfunction/">C++虚函数的实现基本原理</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhxmdefj/p/11594459.html">C++虚函数表原理浅析</a></p>
+<p><a target="_blank" rel="noopener" href="https://leehao.me/C-%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8%E5%89%96%E6%9E%90/">https://leehao.me/C-%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8%E5%89%96%E6%9E%90/</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/QG-whz/p/5132745.html">C++编译期多态与运行期多态</a></p>
+<p><strong>对象的虚表指针用来指向自己所属类的虚表，虚表中的指针会指向其继承的最近的一个类的虚函数</strong></p>
+<p><strong>每个类使用一个虚函数表，每个类对象用一个虚表指针</strong></p>
+<h3 id="构造-析构函数与虚函数"><a href="#构造-析构函数与虚函数" class="headerlink" title="构造/析构函数与虚函数"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_28584889/article/details/88749862">构造/析构函数与虚函数</a></h3><p><em><strong>若析构函数不是虚函数(即不加virtual关键词)，delete时只释放基类，不释放子类；</strong></em></p>
+<p>析构函数可以且常常是虚函数。<strong>C++类有继承时，析构函数必须为虚函数。</strong>如果不是虚函数，则使用时可能存在****内存泄漏****的问题。</p>
 <h3 id="运行期多态"><a href="#运行期多态" class="headerlink" title="运行期多态"></a>运行期多态</h3><p>运行期多态的设计思想要归结到类继承体系的设计上去。对于有相关功能的对象集合，我们总希望能够抽象出它们共有的功能集合，在基类中将这些功能声明为虚接口（虚函数），然后由子类继承基类去重写这些虚接口，以实现子类特有的具体功能。</p>
 <h3 id="编译期多态"><a href="#编译期多态" class="headerlink" title="编译期多态"></a>编译期多态</h3><p>对模板参数而言，多态是通过模板具现化和函数重载解析实现的。以不同的模板参数具现化导致调用不同的函数，这就是所谓的编译期多态。<br>相比较于运行期多态，实现编译期多态的类之间并不需要成为一个继承体系，它们之间可以没有什么关系，但约束是它们都有相同的隐式接口。</p>
+<h3 id="纯虚函数作用"><a href="#纯虚函数作用" class="headerlink" title="纯虚函数作用"></a>纯虚函数作用</h3><p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/23971699/answer/69592611">c++虚函数的作用是什么</a></p>
 <h2 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/51855842">浅谈C++内存管理</a></p>
+<h2 id="C-11"><a href="#C-11" class="headerlink" title="C++11"></a>C++11</h2><p><a target="_blank" rel="noopener" href="http://c.biancheng.net/cplus/11/">C++11新特性大汇总</a></p>
+<ol>
+<li>新增基于范围的for循环</li>
+<li>自动类型推断 auto</li>
+<li>匿名函数 Lambda</li>
+<li>后置返回类型 ?</li>
+<li>显式重写(覆盖)override和final （override：如果无重写会报错）（final：防止基类被继承和防止子类重写函数），两者均为标识符</li>
+<li>空指针常量 nullptr</li>
+<li>long long int类型 （至少与long int一样大,并且不少于64位）</li>
+<li>模板的别名</li>
+<li>允许sizeof运算符可以在类型数据成员上使用，无需明确对象。</li>
+<li>元组类型 （tuple）</li>
+<li>线程支持</li>
+</ol>
 <h2 id="智能指针"><a href="#智能指针" class="headerlink" title="智能指针"></a>智能指针</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wuyepeng/p/9741241.html">C++智能指针</a></p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/74842729">智能指针短总结</a></p>
 <h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><table>
@@ -304,6 +353,7 @@
 <td><strong>稳定</strong></td>
 </tr>
 </tbody></table>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Primeprime/article/details/50726918">C++中使用空对象指针调用成员函数</a></p>
 
     </div>
 
@@ -322,8 +372,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/blog/2021/04/27/Java%E8%99%9A%E6%8B%9F%E6%9C%BA/" rel="prev" title="Java 虚拟机">
-      <i class="fa fa-chevron-left"></i> Java 虚拟机
+    <a href="/blog/2021/04/27/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="prev" title="Java 数据结构与算法">
+      <i class="fa fa-chevron-left"></i> Java 数据结构与算法
     </a></div>
       <div class="post-nav-item"></div>
     </div>
@@ -384,7 +434,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C"><span class="nav-number">1.</span> <span class="nav-text">C++</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">1.1.</span> <span class="nav-text">关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#static"><span class="nav-number">1.1.1.</span> <span class="nav-text">static</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#union"><span class="nav-number">1.1.2.</span> <span class="nav-text">union</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#extern"><span class="nav-number">1.1.3.</span> <span class="nav-text">extern</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%E5%92%8C%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">声明和定义</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="nav-number">1.2.</span> <span class="nav-text">运算符重载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.3.</span> <span class="nav-text">强制类型转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E6%80%81"><span class="nav-number">1.4.</span> <span class="nav-text">多态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%99%9A%E5%87%BD%E6%95%B0"><span class="nav-number">1.4.1.</span> <span class="nav-text">虚函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%9C%9F%E5%A4%9A%E6%80%81"><span class="nav-number">1.4.2.</span> <span class="nav-text">运行期多态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E6%9C%9F%E5%A4%9A%E6%80%81"><span class="nav-number">1.4.3.</span> <span class="nav-text">编译期多态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="nav-number">1.5.</span> <span class="nav-text">内存管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88"><span class="nav-number">1.6.</span> <span class="nav-text">智能指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F"><span class="nav-number">1.7.</span> <span class="nav-text">排序</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C"><span class="nav-number">1.</span> <span class="nav-text">C++</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.1.</span> <span class="nav-text">基本数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">1.2.</span> <span class="nav-text">关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#static"><span class="nav-number">1.2.1.</span> <span class="nav-text">static</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#union"><span class="nav-number">1.2.2.</span> <span class="nav-text">union</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#extern"><span class="nav-number">1.2.3.</span> <span class="nav-text">extern</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%E5%92%8C%E5%AE%9A%E4%B9%89"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">声明和定义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90"><span class="nav-number">1.2.4.</span> <span class="nav-text">内存对齐</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%A7%E5%B0%8F%E7%AB%AF%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.3.</span> <span class="nav-text">大小端模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D"><span class="nav-number">1.4.</span> <span class="nav-text">内存分配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E7%94%A8"><span class="nav-number">1.5.</span> <span class="nav-text">引用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%8A%E5%BC%95%E7%94%A8%E4%BD%9C%E4%B8%BA%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="nav-number">1.5.1.</span> <span class="nav-text">把引用作为返回值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="nav-number">1.6.</span> <span class="nav-text">运算符重载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.7.</span> <span class="nav-text">强制类型转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-number">1.8.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E6%80%81"><span class="nav-number">1.9.</span> <span class="nav-text">多态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%99%9A%E5%87%BD%E6%95%B0"><span class="nav-number">1.9.1.</span> <span class="nav-text">虚函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E9%80%A0-%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0%E4%B8%8E%E8%99%9A%E5%87%BD%E6%95%B0"><span class="nav-number">1.9.2.</span> <span class="nav-text">构造&#x2F;析构函数与虚函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%9C%9F%E5%A4%9A%E6%80%81"><span class="nav-number">1.9.3.</span> <span class="nav-text">运行期多态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E6%9C%9F%E5%A4%9A%E6%80%81"><span class="nav-number">1.9.4.</span> <span class="nav-text">编译期多态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%AF%E8%99%9A%E5%87%BD%E6%95%B0%E4%BD%9C%E7%94%A8"><span class="nav-number">1.9.5.</span> <span class="nav-text">纯虚函数作用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="nav-number">1.10.</span> <span class="nav-text">内存管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-11"><span class="nav-number">1.11.</span> <span class="nav-text">C++11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88"><span class="nav-number">1.12.</span> <span class="nav-text">智能指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F"><span class="nav-number">1.13.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">1.14.</span> <span class="nav-text">其他</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

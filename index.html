@@ -191,7 +191,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-05-02 10:41:15" itemprop="dateModified" datetime="2021-05-02T10:41:15+08:00">2021-05-02</time>
+                <time title="Modified: 2021-11-30 19:15:35" itemprop="dateModified" datetime="2021-11-30T19:15:35+08:00">2021-11-30</time>
               </span>
 
           
@@ -205,22 +205,71 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h1><h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><h3 id="static"><a href="#static" class="headerlink" title="static"></a>static</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qychjj/article/details/99310485">static的用法，全局变量与局部变量</a><br>（1）生命周期：在修饰变量的时候，static修饰的静态局部变量只执行初始化一次，而且延长了局部变量的生命周期，直到程序运行结束以后才释放，但不改变作用域。比如修饰函数中存放在栈空间的数组。如果不想让这个数组在函数调用结束释放可以使用static修饰。<br>（2）可见性：static修饰全局变量或函数时，这个全局变量只能在本文件中访问，不能在其它文件中访问，即便是extern外部声明也不可以。这个函数也只能在本文件中调用，不能被其他文件调用。<br>（3）存储方式：Static修饰的变量存放在全局数据区的静态变量区，包括全局静态变量和局部静态变量，都在全局数据区分配内存。初始化的时候自动初始化为0。<br>（4）考虑到数据安全性（当程序想要使用全局变量的时候应该先考虑使用static）。</p>
+          <h1 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h1><h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><p>uint8_t 是类型unsigned char 的别名，<strong>8个位</strong>（一个字节）</p>
+<p>short 2个字节，int 4个字节</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;include&#x2F;stdint.hISO C99: 7.18 Integer types</span><br><span class="line"></span><br><span class="line">#ifndef __int8_t_defined   </span><br><span class="line"># define __int8_t_defined   </span><br><span class="line">typedef signed char             int8_t;     </span><br><span class="line">typedef short int               int16_t;    </span><br><span class="line">typedef int                     int32_t;    </span><br><span class="line"># if __WORDSIZE &#x3D;&#x3D; 64   </span><br><span class="line">typedef long int                int64_t;    </span><br><span class="line"># else   </span><br><span class="line">__extension__    </span><br><span class="line">typedef long long int           int64_t;    </span><br><span class="line"># endif   </span><br><span class="line">#endif   </span><br><span class="line">typedef unsigned char           uint8_t;    </span><br><span class="line">typedef unsigned short int      uint16_t;    </span><br><span class="line">#ifndef __uint32_t_defined   </span><br><span class="line">typedef unsigned int            uint32_t;    </span><br><span class="line"># define __uint32_t_defined   </span><br><span class="line">#endif   </span><br><span class="line">#if __WORDSIZE &#x3D;&#x3D; 64   </span><br><span class="line">typedef unsigned long int       uint64_t;    </span><br><span class="line">#else   </span><br><span class="line">__extension__    </span><br><span class="line">typedef unsigned long long int  uint64_t;    </span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><h3 id="static"><a href="#static" class="headerlink" title="static"></a>static</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qychjj/article/details/99310485">static的用法，全局变量与局部变量</a><br>（1）生命周期：在修饰变量的时候，static修饰的静态局部变量只执行初始化一次，而且延长了局部变量的生命周期，直到程序运行结束以后才释放，但不改变作用域。比如修饰函数中存放在栈空间的数组。如果不想让这个数组在函数调用结束释放可以使用static修饰。<br>（2）可见性：static修饰全局变量或函数时，这个全局变量只能在本文件中访问，不能在其它文件中访问，即便是extern外部声明也不可以。这个函数也只能在本文件中调用，不能被其他文件调用。<br>（3）存储方式：Static修饰的变量存放在全局数据区的静态变量区，包括全局静态变量和局部静态变量，都在全局数据区分配内存。初始化的时候自动初始化为0。<br>（4）考虑到数据安全性（当程序想要使用全局变量的时候应该先考虑使用static）。</p>
 <h3 id="union"><a href="#union" class="headerlink" title="union"></a>union</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/firefly_2002/article/details/7954458">Struct 和 Union区别</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/yuyanggo/article/details/49819667">union用法总结</a></p>
+<p>由于union里面的东西共享内存，所以<strong>不能定义静态、引用</strong>类型的变量。由于在union里也不允许存放带有构造函数、析构函数和复制构造函数等的类的对象，但是可以存放对应的类对象指针。编译器无法保证类的构造函数和析构函数得到正确的调用，由此，就可能出现内存泄漏。所以，在C++中使用union时，尽量保持C语言中使用union的风格，尽量不要让union带有对象。</p>
 <h3 id="extern"><a href="#extern" class="headerlink" title="extern"></a>extern</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/keensword/article/details/401114">解析“extern”</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/extern-head-h-different.html">extern 与头文件(*.h)的区别和联系</a></p>
 <h4 id="声明和定义"><a href="#声明和定义" class="headerlink" title="声明和定义"></a>声明和定义</h4><p>externint a; //属于声明  externint a = 10; //属于定义，同下</p>
 <p>externchar g_str[]=”123456”;//这个时候相当于没有extern</p>
 <p>如果在一个文件里定义了char g_str[] = “123456”;在另外一个文件中必须使用extern char g_str[ ];来声明。不能使用extern char* g_str;来声明。extern是严格的声明。且extern char* g_str只是声明的一个全局字符指针。</p>
 <p>注：声明可以拷贝n次，但是定义只能定义一次。</p>
+<p><strong>全局函数的声明</strong>语句中，关键字extern可以省略，因为全局函数默认是extern类型的。</p>
+<p>C++中const修饰的全局常量具有跟static相同的特性，即它们只能作用于本编译模块中，且static修饰的是全局变量，但是const可以与extern连用来声明该常量可以作用于其他编译模块中，如externconst char g_str[]; 然后在原文件中别忘了定义:const char g_str[] = “123456”; 所以当const单独使用时它就与static相同，而当与extern一起合作的时候，它的特性就跟extern的一样了</p>
+<h3 id="内存对齐"><a href="#内存对齐" class="headerlink" title="内存对齐"></a>内存对齐</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/30007037">C/C++内存对齐详解</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/chy19911123/article/details/48894579">示例</a></p>
+<h2 id="大小端模式"><a href="#大小端模式" class="headerlink" title="大小端模式"></a>大小端模式</h2><p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%A4%A7%E5%B0%8F%E7%AB%AF%E6%A8%A1%E5%BC%8F/6750542">大小端模式-百度百科</a></p>
+<h2 id="内存分配"><a href="#内存分配" class="headerlink" title="内存分配"></a>内存分配</h2><p><strong>堆</strong><br> 堆，就是那些由new分配的内存块，他们的释放编译器不去管，由我们的应用程序去控制，一般一个new就要对应一个delete。如果程序员没有释放掉，那么在程序结束后，操作系统会自动回收。</p>
+<p><strong>栈</strong><br> 栈，就是那些由编译器在需要的时候分配，在不需要的时候自动清楚的变量的存储区。里面的变量通常是局部变量、函数参数等。</p>
+<p><strong>自由存储区</strong><br> 自由存储区，就是那些由malloc等分配的内存块，他和堆是十分相似的，不过它是用free来结束自己的生命的。</p>
+<p><strong>全局/静态存储区</strong><br> 全局/静态存储区，全局变量和静态变量被分配到同一块内存中，在以前的C++堆栈中，全局变量又分为初始化的和未初始化的，在C++里面没有这个区分了，他们共同占用同一块内存区。</p>
+<p><strong>常量存储区</strong><br> 常量存储区，这是一块比较特殊的存储区，他们里面存放的是常量，不允许修改(当然，你要通过非正当手段也可以修改，而且方法很多)</p>
+<p><strong>程序代码区</strong></p>
+<p>存放函数体的二进制代码。</p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><h3 id="把引用作为返回值"><a href="#把引用作为返回值" class="headerlink" title="把引用作为返回值"></a>把引用作为返回值</h3><p><a target="_blank" rel="noopener" href="https://www.runoob.com/cplusplus/returning-values-by-reference.html">C++ 把引用作为返回值</a></p>
+<p>通过使用引用来替代指针，会使 C++ 程序更容易阅读和维护。C++ 函数可以返回一个引用，方式与返回一个指针类似。当函数返回一个引用时，则返回一个指向返回值的隐式指针。这样，<strong>函数就可以放在赋值语句的左边</strong>。</p>
+<p>当返回一个引用时，要注意被引用的对象不能超出作用域。所以返回一个对局部变量的引用是不合法的，但是，可以返回一个对静态变量的引用。</p>
+<p>目的：</p>
+<p>(*) 希望一些类的成员函数返回引用，以便于修改类内部的数据。</p>
+<p>(1) 访问某个参数（以引用传入，或是 *this ）的一部分。这一部分可以是逻辑上的，并不一定是子对象，比如容器的元素。</p>
+<p>(2) 访问某个名字不可在外部访问的对象。比如单例的对象。</p>
+<p>(3) 较少用：返回参数对象本身，但改变其 cv 限定或值类别。 std::move 、 std::forward 、 std::as_const 为此类。</p>
 <h2 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h2><p>优先队列运算符重载 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/cielosun/p/5654595.html">浅谈C++ STL中的优先队列(priority_queue)</a></p>
 <h2 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_34232363/article/details/85902435">C++ 四种强制类型转换</a></p>
-<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><h3 id="虚函数"><a href="#虚函数" class="headerlink" title="虚函数"></a>虚函数</h3><p><a target="_blank" rel="noopener" href="https://jacktang816.github.io/post/virtualfunction/">C++虚函数的实现基本原理</a></p>
+<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><p>构造函数必须是公有的</p>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>重写(Overriding)是父类与子类之间多态性的一种表现，而重载(Overloading)是一个类中多态性的一种表现。</p>
+<h3 id="虚函数"><a href="#虚函数" class="headerlink" title="虚函数"></a>虚函数</h3><p><a target="_blank" rel="noopener" href="https://jacktang816.github.io/post/virtualfunction/">C++虚函数的实现基本原理</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhxmdefj/p/11594459.html">C++虚函数表原理浅析</a></p>
+<p><a target="_blank" rel="noopener" href="https://leehao.me/C-%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8%E5%89%96%E6%9E%90/">https://leehao.me/C-%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8%E5%89%96%E6%9E%90/</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/QG-whz/p/5132745.html">C++编译期多态与运行期多态</a></p>
+<p><strong>对象的虚表指针用来指向自己所属类的虚表，虚表中的指针会指向其继承的最近的一个类的虚函数</strong></p>
+<p><strong>每个类使用一个虚函数表，每个类对象用一个虚表指针</strong></p>
+<h3 id="构造-析构函数与虚函数"><a href="#构造-析构函数与虚函数" class="headerlink" title="构造/析构函数与虚函数"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_28584889/article/details/88749862">构造/析构函数与虚函数</a></h3><p><em><strong>若析构函数不是虚函数(即不加virtual关键词)，delete时只释放基类，不释放子类；</strong></em></p>
+<p>析构函数可以且常常是虚函数。<strong>C++类有继承时，析构函数必须为虚函数。</strong>如果不是虚函数，则使用时可能存在****内存泄漏****的问题。</p>
 <h3 id="运行期多态"><a href="#运行期多态" class="headerlink" title="运行期多态"></a>运行期多态</h3><p>运行期多态的设计思想要归结到类继承体系的设计上去。对于有相关功能的对象集合，我们总希望能够抽象出它们共有的功能集合，在基类中将这些功能声明为虚接口（虚函数），然后由子类继承基类去重写这些虚接口，以实现子类特有的具体功能。</p>
 <h3 id="编译期多态"><a href="#编译期多态" class="headerlink" title="编译期多态"></a>编译期多态</h3><p>对模板参数而言，多态是通过模板具现化和函数重载解析实现的。以不同的模板参数具现化导致调用不同的函数，这就是所谓的编译期多态。<br>相比较于运行期多态，实现编译期多态的类之间并不需要成为一个继承体系，它们之间可以没有什么关系，但约束是它们都有相同的隐式接口。</p>
+<h3 id="纯虚函数作用"><a href="#纯虚函数作用" class="headerlink" title="纯虚函数作用"></a>纯虚函数作用</h3><p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/23971699/answer/69592611">c++虚函数的作用是什么</a></p>
 <h2 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/51855842">浅谈C++内存管理</a></p>
+<h2 id="C-11"><a href="#C-11" class="headerlink" title="C++11"></a>C++11</h2><p><a target="_blank" rel="noopener" href="http://c.biancheng.net/cplus/11/">C++11新特性大汇总</a></p>
+<ol>
+<li>新增基于范围的for循环</li>
+<li>自动类型推断 auto</li>
+<li>匿名函数 Lambda</li>
+<li>后置返回类型 ?</li>
+<li>显式重写(覆盖)override和final （override：如果无重写会报错）（final：防止基类被继承和防止子类重写函数），两者均为标识符</li>
+<li>空指针常量 nullptr</li>
+<li>long long int类型 （至少与long int一样大,并且不少于64位）</li>
+<li>模板的别名</li>
+<li>允许sizeof运算符可以在类型数据成员上使用，无需明确对象。</li>
+<li>元组类型 （tuple）</li>
+<li>线程支持</li>
+</ol>
 <h2 id="智能指针"><a href="#智能指针" class="headerlink" title="智能指针"></a>智能指针</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wuyepeng/p/9741241.html">C++智能指针</a></p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/74842729">智能指针短总结</a></p>
 <h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><table>
@@ -299,6 +348,103 @@
 <td><strong>稳定</strong></td>
 </tr>
 </tbody></table>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Primeprime/article/details/50726918">C++中使用空对象指针调用成员函数</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://huangluzhi.github.io/blog/2021/04/27/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Rex">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Luzhi's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2021/04/27/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">Java 数据结构与算法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-04-27 14:08:20" itemprop="dateCreated datePublished" datetime="2021-04-27T14:08:20+08:00">2021-04-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-05-07 23:05:32" itemprop="dateModified" datetime="2021-05-07T23:05:32+08:00">2021-05-07</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Java-数据结构与算法"><a href="#Java-数据结构与算法" class="headerlink" title="Java 数据结构与算法"></a>Java 数据结构与算法</h1><h2 id="简述JAVA的List"><a href="#简述JAVA的List" class="headerlink" title="简述JAVA的List"></a><strong>简述JAVA的List</strong></h2><p>List是一个有序队列，在JAVA中有两种实现方式:</p>
+<p>ArrayList 使用数组实现，是容量可变的非线程安全列表，随机访问快，集合扩容时会创建更大的数组，把原有数组复制到新数组。</p>
+<p>LinkedList 本质是双向链表，与 ArrayList 相比插入和删除速度更快，但随机访问元素很慢。</p>
+<h2 id="简述JAVA的Set"><a href="#简述JAVA的Set" class="headerlink" title="简述JAVA的Set"></a>简述JAVA的Set</h2><p>Set 即集合，该数据结构不允许元素重复且无序。JAVA对Set有三种实现方式：</p>
+<p>HashSet 通过 HashMap 实现，HashMap 的 Key 即 HashSet 存储的元素，Value系统自定义一个名为 PRESENT 的 Object 类型常量。判断元素是否相同时，先比较hashCode，相同后再利用equals比较，查询O(1)</p>
+<p>LinkedHashSet 继承自 HashSet，通过 LinkedHashMap 实现，使用双向链表维护元素插入顺序。</p>
+<p>TreeSet 通过 TreeMap 实现的，底层数据结构是红黑树，添加元素到集合时按照比较规则将其插入合适的位置，保证插入后的集合仍然有序。查询O(logn)</p>
+<h2 id="简述JAVA的HashMap"><a href="#简述JAVA的HashMap" class="headerlink" title="简述JAVA的HashMap"></a><strong>简述JAVA的HashMap</strong></h2><p>JDK8 之前底层实现是数组 + 链表，JDK8 改为数组 + 链表/红黑树。主要成员变量包括存储数据的 table 数组、元素数量 size、加载因子 loadFactor。 </p>
+<p>HashMap 中数据以键值对的形式存在，键对应的 hash 值用来计算数组下标，如果两个元素 key 的 hash 值一样，就会发生哈希冲突，被放到同一个链表上。</p>
+<p>table 数组记录 HashMap 的数据，每个下标对应一条链表，所有哈希冲突的数据都会被存放到同一条链表，Node/Entry 节点包含四个成员变量：key、value、next 指针和 hash 值。在JDK8后链表超过8会转化为红黑树。</p>
+<p>若当前数据/总数据容量&gt;负载因子，Hashmap将执行扩容操作。 </p>
+<p>默认初始化容量为 16，扩容容量必须是 2 的幂次方、最大容量为 1&lt;&lt; 30 、默认加载因子为 0.75。</p>
+<h2 id="简述解决Hash冲突的方法"><a href="#简述解决Hash冲突的方法" class="headerlink" title="简述解决Hash冲突的方法"></a>简述解决Hash冲突的方法</h2><p>开放定址法：当发生哈希冲突时，如果哈希表未被装满，那么可以把这个值存放到冲突位置中的下一个空位置中去</p>
+<p>链地址法：对相同的哈希地址，设置一个单链表，单链表内放的都是哈希冲突元素。</p>
+<h2 id="简述java的TreeMap"><a href="#简述java的TreeMap" class="headerlink" title="简述java的TreeMap"></a>简述java的TreeMap</h2><p>TreeMap是底层利用红黑树实现的Map结构，底层实现是一棵平衡的排序二叉树，由于红黑树的插入、删除、遍历时间复杂度都为O(logN)，所以性能上低于哈希表。但是哈希表无法提供键值对的有序输出，红黑树可以按照键的值的大小有序输出。</p>
+<h2 id="简述AVL树"><a href="#简述AVL树" class="headerlink" title="简述AVL树"></a>简述AVL树</h2><p>AVL树是一种改进版的搜索二叉树，其引入平衡因子（左子支高度与右子支高度之差的绝对值），通过旋转使其尽量保持平衡。</p>
+<p>任何一个节点的左子支高度与右子支高度之差的绝对值不超过1。</p>
+<h2 id="简述红黑树"><a href="#简述红黑树" class="headerlink" title="简述红黑树"></a>简述红黑树</h2><p>红黑树本身是有2-3树发展而来，红黑树是保持黑平衡的二叉树，其查找会比AVL树慢一点，添加和删除元素会比AVL树快一点。增删改查统计性能上讲，红黑树更优。 </p>
+<p>红黑树主要特征是在每个节点上增加一个属性表示节点颜色，可以红色或黑色。红黑树和 AVL 树类似，都是在进行插入和删除时通过旋转保持自身平衡，从而获得较高的查找性能。红黑树保证从根节点到叶尾的最长路径不超过最短路径的 2 倍，所以最差时间复杂度是 O(logn)。红黑树通过重新着色和左右旋转，更加高效地完成了插入和删除之后的自平衡调整。</p>
+<h2 id="简述常见排序算法和其对应时间空间复杂度"><a href="#简述常见排序算法和其对应时间空间复杂度" class="headerlink" title="简述常见排序算法和其对应时间空间复杂度"></a>简述常见排序算法和其对应时间空间复杂度</h2><p>插入排序：每一趟将一个待排序记录按其关键字的大小插入到已排好序的一组记录的适当位置上，直到所有待排序记录全部插入为止。</p>
+<p>排序算法稳定。时间复杂度 O(n²)，空间复杂度 O(1)。</p>
+<p>希尔排序：把记录按下标的一定增量分组，对每组进行直接插入排序，每次排序后减小增量，当增量减至 1 时排序完毕。</p>
+<p>排序算法不稳定。时间复杂度 O(nlogn)，空间复杂度 O(1)。直接选择排序：每次在未排序序列中找到最小元素，和未排序序列的第一个元素交换位置，再在剩余未排序序列中重复该操作直到所有元素排序完毕。</p>
+<p>排序算法不稳定。时间复杂度 O(n²)，空间复杂度 O(1)。</p>
+<p>堆排序：将待排序数组看作一个树状数组，建立一个二叉树堆。通过对这种数据结构进行每个元素的插入，完成排序工作。</p>
+<p>排序算法不稳定，时间复杂度 O(nlogn)，空间复杂度 O(1)。</p>
+<p>冒泡排序：比较相邻的元素，如果第一个比第二个大就进行交换，对每一对相邻元素做同样的工作。</p>
+<p>排序算法稳定，时间复杂度 O(n²)，空间复杂度 O(1)。</p>
+<p>快速排序：随机选择一个基准元素，通过一趟排序将要排序的数据分割成独立的两部分，一部分全部小于等于基准元素，一部分全部大于等于基准元素，再按此方法递归对这两部分数据进行快速排序。</p>
+<p>排序算法不稳定，时间复杂度 O(nlogn)，空间复杂度 O(logn)。</p>
+<p>归并排序：将待排序序列分成两部分，然后对两部分分别递归排序，最后进行合并。</p>
+<p>排序算法稳定，时间复杂度都为 O(nlogn)，空间复杂度为 O(n)。</p>
 
       
     </div>
@@ -500,102 +646,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://huangluzhi.github.io/blog/2021/04/27/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="Rex">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Luzhi's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2021/04/27/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">Java 数据结构与算法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-04-27 14:08:20" itemprop="dateCreated datePublished" datetime="2021-04-27T14:08:20+08:00">2021-04-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-05-07 23:05:32" itemprop="dateModified" datetime="2021-05-07T23:05:32+08:00">2021-05-07</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Java-数据结构与算法"><a href="#Java-数据结构与算法" class="headerlink" title="Java 数据结构与算法"></a>Java 数据结构与算法</h1><h2 id="简述JAVA的List"><a href="#简述JAVA的List" class="headerlink" title="简述JAVA的List"></a><strong>简述JAVA的List</strong></h2><p>List是一个有序队列，在JAVA中有两种实现方式:</p>
-<p>ArrayList 使用数组实现，是容量可变的非线程安全列表，随机访问快，集合扩容时会创建更大的数组，把原有数组复制到新数组。</p>
-<p>LinkedList 本质是双向链表，与 ArrayList 相比插入和删除速度更快，但随机访问元素很慢。</p>
-<h2 id="简述JAVA的Set"><a href="#简述JAVA的Set" class="headerlink" title="简述JAVA的Set"></a>简述JAVA的Set</h2><p>Set 即集合，该数据结构不允许元素重复且无序。JAVA对Set有三种实现方式：</p>
-<p>HashSet 通过 HashMap 实现，HashMap 的 Key 即 HashSet 存储的元素，Value系统自定义一个名为 PRESENT 的 Object 类型常量。判断元素是否相同时，先比较hashCode，相同后再利用equals比较，查询O(1)</p>
-<p>LinkedHashSet 继承自 HashSet，通过 LinkedHashMap 实现，使用双向链表维护元素插入顺序。</p>
-<p>TreeSet 通过 TreeMap 实现的，底层数据结构是红黑树，添加元素到集合时按照比较规则将其插入合适的位置，保证插入后的集合仍然有序。查询O(logn)</p>
-<h2 id="简述JAVA的HashMap"><a href="#简述JAVA的HashMap" class="headerlink" title="简述JAVA的HashMap"></a><strong>简述JAVA的HashMap</strong></h2><p>JDK8 之前底层实现是数组 + 链表，JDK8 改为数组 + 链表/红黑树。主要成员变量包括存储数据的 table 数组、元素数量 size、加载因子 loadFactor。 </p>
-<p>HashMap 中数据以键值对的形式存在，键对应的 hash 值用来计算数组下标，如果两个元素 key 的 hash 值一样，就会发生哈希冲突，被放到同一个链表上。</p>
-<p>table 数组记录 HashMap 的数据，每个下标对应一条链表，所有哈希冲突的数据都会被存放到同一条链表，Node/Entry 节点包含四个成员变量：key、value、next 指针和 hash 值。在JDK8后链表超过8会转化为红黑树。</p>
-<p>若当前数据/总数据容量&gt;负载因子，Hashmap将执行扩容操作。 </p>
-<p>默认初始化容量为 16，扩容容量必须是 2 的幂次方、最大容量为 1&lt;&lt; 30 、默认加载因子为 0.75。</p>
-<h2 id="简述解决Hash冲突的方法"><a href="#简述解决Hash冲突的方法" class="headerlink" title="简述解决Hash冲突的方法"></a>简述解决Hash冲突的方法</h2><p>开放定址法：当发生哈希冲突时，如果哈希表未被装满，那么可以把这个值存放到冲突位置中的下一个空位置中去</p>
-<p>链地址法：对相同的哈希地址，设置一个单链表，单链表内放的都是哈希冲突元素。</p>
-<h2 id="简述java的TreeMap"><a href="#简述java的TreeMap" class="headerlink" title="简述java的TreeMap"></a>简述java的TreeMap</h2><p>TreeMap是底层利用红黑树实现的Map结构，底层实现是一棵平衡的排序二叉树，由于红黑树的插入、删除、遍历时间复杂度都为O(logN)，所以性能上低于哈希表。但是哈希表无法提供键值对的有序输出，红黑树可以按照键的值的大小有序输出。</p>
-<h2 id="简述AVL树"><a href="#简述AVL树" class="headerlink" title="简述AVL树"></a>简述AVL树</h2><p>AVL树是一种改进版的搜索二叉树，其引入平衡因子（左子支高度与右子支高度之差的绝对值），通过旋转使其尽量保持平衡。</p>
-<p>任何一个节点的左子支高度与右子支高度之差的绝对值不超过1。</p>
-<h2 id="简述红黑树"><a href="#简述红黑树" class="headerlink" title="简述红黑树"></a>简述红黑树</h2><p>红黑树本身是有2-3树发展而来，红黑树是保持黑平衡的二叉树，其查找会比AVL树慢一点，添加和删除元素会比AVL树快一点。增删改查统计性能上讲，红黑树更优。 </p>
-<p>红黑树主要特征是在每个节点上增加一个属性表示节点颜色，可以红色或黑色。红黑树和 AVL 树类似，都是在进行插入和删除时通过旋转保持自身平衡，从而获得较高的查找性能。红黑树保证从根节点到叶尾的最长路径不超过最短路径的 2 倍，所以最差时间复杂度是 O(logn)。红黑树通过重新着色和左右旋转，更加高效地完成了插入和删除之后的自平衡调整。</p>
-<h2 id="简述常见排序算法和其对应时间空间复杂度"><a href="#简述常见排序算法和其对应时间空间复杂度" class="headerlink" title="简述常见排序算法和其对应时间空间复杂度"></a>简述常见排序算法和其对应时间空间复杂度</h2><p>插入排序：每一趟将一个待排序记录按其关键字的大小插入到已排好序的一组记录的适当位置上，直到所有待排序记录全部插入为止。</p>
-<p>排序算法稳定。时间复杂度 O(n²)，空间复杂度 O(1)。</p>
-<p>希尔排序：把记录按下标的一定增量分组，对每组进行直接插入排序，每次排序后减小增量，当增量减至 1 时排序完毕。</p>
-<p>排序算法不稳定。时间复杂度 O(nlogn)，空间复杂度 O(1)。直接选择排序：每次在未排序序列中找到最小元素，和未排序序列的第一个元素交换位置，再在剩余未排序序列中重复该操作直到所有元素排序完毕。</p>
-<p>排序算法不稳定。时间复杂度 O(n²)，空间复杂度 O(1)。</p>
-<p>堆排序：将待排序数组看作一个树状数组，建立一个二叉树堆。通过对这种数据结构进行每个元素的插入，完成排序工作。</p>
-<p>排序算法不稳定，时间复杂度 O(nlogn)，空间复杂度 O(1)。</p>
-<p>冒泡排序：比较相邻的元素，如果第一个比第二个大就进行交换，对每一对相邻元素做同样的工作。</p>
-<p>排序算法稳定，时间复杂度 O(n²)，空间复杂度 O(1)。</p>
-<p>快速排序：随机选择一个基准元素，通过一趟排序将要排序的数据分割成独立的两部分，一部分全部小于等于基准元素，一部分全部大于等于基准元素，再按此方法递归对这两部分数据进行快速排序。</p>
-<p>排序算法不稳定，时间复杂度 O(nlogn)，空间复杂度 O(logn)。</p>
-<p>归并排序：将待排序序列分成两部分，然后对两部分分别递归排序，最后进行合并。</p>
-<p>排序算法稳定，时间复杂度都为 O(nlogn)，空间复杂度为 O(n)。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://huangluzhi.github.io/blog/2021/04/27/%E6%95%B0%E6%8D%AE%E5%BA%93-%E6%8F%90%E7%BA%B2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -627,7 +677,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-04-29 23:18:12" itemprop="dateModified" datetime="2021-04-29T23:18:12+08:00">2021-04-29</time>
+                <time title="Modified: 2021-11-28 14:57:11" itemprop="dateModified" datetime="2021-11-28T14:57:11+08:00">2021-11-28</time>
               </span>
 
           
@@ -642,7 +692,211 @@
 
       
           <h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><p><a target="_blank" rel="noopener" href="https://www.secn.net/article/1258557.html">9道面试题</a></p>
-<h2 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a>隔离级别</h2><p><a target="_blank" rel="noopener" href="https://www.secn.net/article/1258557.html">隔离级别</a></p>
+<h2 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a>隔离级别</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/60492217">隔离级别</a></p>
+<h2 id="ACID与隔离级别"><a href="#ACID与隔离级别" class="headerlink" title="ACID与隔离级别"></a>ACID与隔离级别</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/kismetv/p/10331633.html">https://www.cnblogs.com/kismetv/p/10331633.html</a></p>
+<h2 id="一致性是什么"><a href="#一致性是什么" class="headerlink" title="一致性是什么"></a>一致性是什么</h2><p>一致性就是:应用系统从一个正确的状态到另一个正确的状态。而ACID就是说事务能够通过AID来保证这个C的过程。C是目的，AID都是手段。事务的一致性只是在数据库预先定义的约束有关，满足了约束即满足了一致性</p>
+<h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><h2 id="HAVING-子句"><a href="#HAVING-子句" class="headerlink" title="HAVING 子句"></a>HAVING 子句</h2><p>在 SQL 中增加 HAVING 子句原因是，WHERE 关键字无法与聚合函数一起使用。</p>
+<p>HAVING 子句可以让我们筛选分组后的各组数据。</p>
+<p><strong>where 和having之后都是筛选条件，但是有区别的：</strong></p>
+<p>1.where在group by前， having在group by 之后</p>
+<p>2.聚合函数（avg、sum、max、min、count），不能作为条件放在where之后，但可以放在having之后</p>
+<h3 id="查询每门科目最好的前5个同学"><a href="#查询每门科目最好的前5个同学" class="headerlink" title="查询每门科目最好的前5个同学"></a>查询每门科目最好的前5个同学</h3><p>分析：先用自己交自己，条件为a.courseid = b.courseid and a.score&lt;b.score，列出同一门课内所有分数比较的情况。通过a.studentid和a.courseid可以联合确定这个同学的这门课的这个分数究竟比多少个其他记录高/低， 如果这个特定的a.studentid和a.courseid组合出现在这张表里的次数少于5个，那就意味着这个组合（学号+课号+分数）是这门课里排名前五的。</p>
+<p>下面这个计算中having count 部分其实count(<em>)或者任意其他列都可以，这里制定了一个列只是因为比count(</em>)运行速度上更快。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.studentid,a.courseid,a.score </span><br><span class="line"><span class="keyword">from</span> student_score <span class="keyword">as</span> a</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span> student_score <span class="keyword">as</span> b</span><br><span class="line"><span class="keyword">on</span> a.courseid <span class="operator">=</span> b.courseid <span class="keyword">and</span> a.score<span class="operator">&lt;</span>b.score</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> a.courseid, a.studentid</span><br><span class="line"><span class="keyword">having</span> <span class="built_in">count</span>(b.courseid)<span class="operator">&lt;</span><span class="number">5</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> a.courseid;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> s.student_name , c.course_name , temp.score </span><br><span class="line"><span class="keyword">from</span> student s , course c ,</span><br><span class="line">(</span><br><span class="line">    <span class="keyword">select</span> score.student_id, score.course_id ,score.score , <span class="built_in">row_number</span>()</span><br><span class="line">    <span class="keyword">over</span>(</span><br><span class="line">        <span class="keyword">partition</span> <span class="keyword">by</span> course_id  </span><br><span class="line">        <span class="keyword">order</span> <span class="keyword">by</span> score  <span class="keyword">desc</span>) </span><br><span class="line">    rn <span class="keyword">from</span> score</span><br><span class="line">) temp </span><br><span class="line"><span class="keyword">where</span>  temp.rn<span class="operator">&lt;=</span><span class="number">5</span> <span class="keyword">and</span> s.student_id <span class="operator">=</span> temp.student_id <span class="keyword">and</span> c.course_id <span class="operator">=</span> temp.course_id</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Oracle"><a href="#Oracle" class="headerlink" title="Oracle"></a>Oracle</h4><p><strong>求出每门课程成绩排名前五名的同学的姓名，分数和课程名：</strong><br>成绩相同的人排名相同，且排名不是连续的。</p>
+   <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span>  </span><br><span class="line">  <span class="keyword">from</span> (<span class="keyword">select</span> s.STUDENT_NAME,  </span><br><span class="line">               sc.SCORE,  </span><br><span class="line">               c.COURSE_NAME,  </span><br><span class="line">               <span class="built_in">rank</span>() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> c.COURSE_ID <span class="keyword">order</span> <span class="keyword">by</span> sc.SCORE <span class="keyword">desc</span>) ranking  </span><br><span class="line">          <span class="keyword">from</span> student s, course c, score sc  </span><br><span class="line">         <span class="keyword">where</span> s.STUDENT_ID <span class="operator">=</span> sc.STUDENT_ID  </span><br><span class="line">           <span class="keyword">and</span> c.COURSE_ID <span class="operator">=</span> sc.COURSE_ID) t  </span><br><span class="line"><span class="keyword">where</span> t.ranking <span class="operator">&lt;</span> <span class="number">6</span>;</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">STUDENT_NAME SCORE COURSE_NAME RANKING</span><br><span class="line">张三 99 语文 1</span><br><span class="line">李四 99 语文 1</span><br><span class="line">王五 96 语文 3</span><br><span class="line">马六 93 语文 4</span><br><span class="line">孙七 90 语文 5</span><br><span class="line">张三 98 数学 1</span><br><span class="line">李四 97 数学 2</span><br><span class="line">王五 95 数学 3</span><br><span class="line">马六 92 数学 4</span><br><span class="line">孙七 89 数学 5</span><br><span class="line">李四 98 英语 1</span><br><span class="line">张三 97 英语 2</span><br><span class="line">王五 94 英语 3</span><br><span class="line">马六 91 英语 4</span><br><span class="line">孙七 88 英语 5</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://huangluzhi.github.io/blog/2021/04/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E6%8F%90%E7%BA%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Rex">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Luzhi's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2021/04/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E6%8F%90%E7%BA%B2/" class="post-title-link" itemprop="url">计算机网络-提纲</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-04-27 14:08:20" itemprop="dateCreated datePublished" datetime="2021-04-27T14:08:20+08:00">2021-04-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-05-09 18:21:34" itemprop="dateModified" datetime="2021-05-09T18:21:34+08:00">2021-05-09</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="简述OSI七层协议"><a href="#简述OSI七层协议" class="headerlink" title="简述OSI七层协议"></a><strong>简述OSI七层协议</strong></h2><p>OSI七层协议包括：物理层，数据链路层，网络层，运输层，会话层，表示层， 应用层</p>
+<h2 id="简述TCP-IP五层协议"><a href="#简述TCP-IP五层协议" class="headerlink" title="简述TCP/IP五层协议"></a><strong>简述TCP/IP五层协议</strong></h2><p>TCP/IP五层协议包括：物理层，数据链路层，网络层，运输层，应用层</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/32059190">OSI 7层模型和TCP/IP 4层模型</a></p>
+<h2 id="物理层有什么作用"><a href="#物理层有什么作用" class="headerlink" title="物理层有什么作用"></a><strong>物理层有什么作用</strong></h2><p>主要解决两台物理机之间的通信，通过二进制比特流的传输来实现，二进制数据表现为电流电压上的强弱，到达目的地再转化为二进制机器码。网卡、集线器工作在这一层。</p>
+<h2 id="数据链路层有什么作用"><a href="#数据链路层有什么作用" class="headerlink" title="数据链路层有什么作用"></a>数据链路层有什么作用</h2><p>在不可靠的物理介质上提供可靠的传输，接收来自物理层的位流形式的数据，并封装成帧，传送到上一层；同样，也将来自上层的数据帧，拆装为位流形式的数据转发到物理层。这一层在物理层提供的比特流的基础上，通过差错控制、流量控制方法，使有差错的物理线路变为无差错的数据链路。提供物理地址寻址功能。交换机工作在这一层。</p>
+<p><strong>那链路层的功能有哪些呢？需要完成哪些事情呢？</strong></p>
+<ol>
+<li>链路管理，帧同步</li>
+<li>流量控制，差错控制</li>
+<li>数据和控制信息分开</li>
+<li>透明传输和<strong>寻址</strong></li>
+</ol>
+<h2 id="网络层有什么作用"><a href="#网络层有什么作用" class="headerlink" title="网络层有什么作用"></a>网络层有什么作用</h2><p>将网络地址翻译成对应的物理地址，并决定如何将数据从发送方路由到接收方，通过路由选择算法为分组通过通信子网选择最佳路径。路由器工作在这一层。</p>
+<h2 id="传输层有什么作用"><a href="#传输层有什么作用" class="headerlink" title="传输层有什么作用"></a>传输层有什么作用</h2><p>传输层提供了进程间的逻辑通信，传输层向高层用户屏蔽了下面网络层的核心细节，使应用程序看起来像是在两个传输层实体之间有一条端到端的逻辑通信信道。</p>
+<h2 id="会话层有什么作用"><a href="#会话层有什么作用" class="headerlink" title="会话层有什么作用"></a>会话层有什么作用</h2><p>建立会话：身份验证，权限鉴定等；保持会话：对该会话进行维护，在会话维持期间两者可以随时使用这条会话传输局；</p>
+<p>断开会话：当应用程序或应用层规定的超时时间到期后，OSI会话层才会释放这条会话。</p>
+<h2 id="表示层有什么作用"><a href="#表示层有什么作用" class="headerlink" title="表示层有什么作用"></a>表示层有什么作用</h2><p>对数据格式进行编译，对收到或发出的数据根据应用层的特征进行处理，如处理为文字、图片、音频、视频、文档等，还可以对压缩文件进行解压缩、对加密文件进行解密等。</p>
+<p><strong>应用层有什么作用</strong></p>
+<p>提供应用层协议，如HTTP协议，FTP协议等等，方便应用程序之间进行通信。</p>
+<h2 id="TCP与UDP区别"><a href="#TCP与UDP区别" class="headerlink" title="TCP与UDP区别"></a>TCP与UDP区别</h2><p>TCP作为面向流的协议，提供可靠的、面向连接的运输服务，并且提供点对点通信</p>
+<p>UDP作为面向报文的协议，不提供可靠交付，并且不需要连接，不仅仅对点对点，也支持多播和广播</p>
+<h2 id="为何TCP可靠"><a href="#为何TCP可靠" class="headerlink" title="为何TCP可靠"></a><strong>为何TCP可靠</strong></h2><p>TCP有三次握手建立连接，四次挥手关闭连接的机制。</p>
+<p>除此之外还有滑动窗口和拥塞控制算法。最最关键的是还保留超时重传的机制。</p>
+<p>对于每份报文也存在校验，保证每份报文可靠性。</p>
+<h2 id="为何UDP不可靠"><a href="#为何UDP不可靠" class="headerlink" title="为何UDP不可靠"></a>为何UDP不可靠</h2><p>UDP面向数据报无连接的，数据报发出去，就不保留数据备份了。 </p>
+<p>仅仅在IP数据报头部加入校验和复用。 </p>
+<p>UDP没有服务器和客户端的概念。 </p>
+<p>UDP报文过长的话是交给IP切成小段，如果某段报废报文就废了。</p>
+<h2 id="简述TCP粘包现象"><a href="#简述TCP粘包现象" class="headerlink" title="简述TCP粘包现象"></a>简述TCP粘包现象</h2><p>TCP是面向流协议，发送的单位是字节流，因此会将多个小尺寸数据被封装在一个tcp报文中发出去的可能性。</p>
+<p>可以简单的理解成客户端调用了两次send，服务器端一个recv就把信息都读出来了。</p>
+<h2 id="TCP粘包现象处理方法"><a href="#TCP粘包现象处理方法" class="headerlink" title="TCP粘包现象处理方法"></a><strong>TCP粘包现象处理方法</strong></h2><p>固定发送信息长度，或在两个信息之间加入分隔符。</p>
+<h2 id="简述TCP协议的滑动窗口"><a href="#简述TCP协议的滑动窗口" class="headerlink" title="简述TCP协议的滑动窗口"></a>简述TCP协议的滑动窗口</h2><p>滑动窗口是传输层进行流量控制的一种措施，接收方通过通告发</p>
+<p>送方自己的窗口大小，从而控制发送方的发送速度，防止发送方发送速度过快而导致自己被淹没。</p>
+<h2 id="简述TCP协议的拥塞控制"><a href="#简述TCP协议的拥塞控制" class="headerlink" title="简述TCP协议的拥塞控制"></a>简述TCP协议的拥塞控制</h2><p>拥塞是指一个或者多个交换点的数据报超载，TCP又会有重传机制，导致过载。</p>
+<p>为了防止拥塞窗口cwnd增长过大引起网络拥塞，还需要设置一个慢开始门限ssthresh状态变量.</p>
+<p>当cwnd &lt; ssthresh 时，使用慢开始算法。 </p>
+<p>当cwnd &gt; ssthresh 时，停止使用慢开始算法而改用拥塞避免算法。 </p>
+<p>当cwnd = ssthresh 时，即可使用慢开始算法，也可使用拥塞避免算法。</p>
+<p>慢开始：由小到大逐渐增加拥塞窗口的大小，每接一次报文，cwnd指数增加。</p>
+<p>拥塞避免：cwnd缓慢地增大，即每经过一个往返时间RTT就把发送方的拥塞窗口cwnd加1。</p>
+<p>快恢复之前的策略：发送方判断网络出现拥塞，就把ssthresh设置为出现拥塞时发送方窗口值的一半，继续执行慢开始，之后进行拥塞避免。</p>
+<p>快恢复：发送方判断网络出现拥塞，就把ssthresh设置为出现拥塞时发送方窗口值的一半，并把cwnd设置为ssthresh的一半，之后进行拥塞避免。</p>
+<h2 id="简述快重传"><a href="#简述快重传" class="headerlink" title="简述快重传"></a>简述快重传</h2><p>如果在超时重传定时器溢出之前，接收到连续的三个重复冗余ACK，发送端便知晓哪个报文段在传输过程中丢失了，于是重发该报文段，不需要等待超时重传定时器溢出再发送该报文。</p>
+<h2 id="TCP三次握手过程"><a href="#TCP三次握手过程" class="headerlink" title="TCP三次握手过程"></a>TCP三次握手过程</h2><ol>
+<li>第一次握手:客户端将标志位SYN置为1，随机产生一个值序列号seq=x，并将该数据包发送给服务端，客户端</li>
+</ol>
+<p>进入syn_sent状态，等待服务端确认。</p>
+<ol start="2">
+<li>第二次握手:服务端收到数据包后由标志位SYN=1知道客户端请求建立连接，服务端将标志位SYN 和</li>
+</ol>
+<p>ACK都置为1，ack=x+1,随机产生一个值seq=y，并将该数据包发送给客户端以确认连接请求，服务端进</p>
+<p>入syn_rcvd状态。</p>
+<ol start="3">
+<li>第三次握手:客户端收到确认后检查,如果正确则将标志位ACK为1，ack=y+1，并将该数据包发送给服务端，服务端进行检查如果正确则连接建立成功，客户端和服务端进入established状态，完成三次握手，随后客户端和服务端之间可以开始传输数据了</li>
+</ol>
+<h2 id="TCP四次挥手过程"><a href="#TCP四次挥手过程" class="headerlink" title="TCP四次挥手过程"></a>TCP四次挥手过程</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/136088574">四次挥手简介</a></p>
+<ol>
+<li><p>第一次挥手：客户端发送一个FIN，用来关闭客户端到服务端的数据传送，客户端进入fin_wait_1状态。</p>
+</li>
+<li><p>第二次挥手：服务端收到FIN后，发送一个ACK给客户端，确认序号为收到序号+1，服务端进入</p>
+</li>
+</ol>
+<p>Close_wait状态。此时TCP连接处于半关闭状态，即客户端已经没有要发送的数据了，但服务端若发送数据，则客户端仍要接收。</p>
+<ol start="3">
+<li>第三次挥手：服务端发送一个FIN，用来关闭服务端到客户端的数据传送，服务端进入Last_ack状态。</li>
+<li>第四次挥手：客户端收到FIN后，客户端进入Time_wait状态，接着发送一个ACK给服务端，确认后，服务端进入Closed状态，完成四次挥手。</li>
+</ol>
+<h2 id="TCP-半连接队列和全连接队列"><a href="#TCP-半连接队列和全连接队列" class="headerlink" title="TCP 半连接队列和全连接队列"></a>TCP 半连接队列和全连接队列</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiaolincoding/p/12995358.html">TCP 半连接队列和全连接队列</a></p>
+<p>增大 TCP 半连接队列的方式是增大 /proc/sys/net/ipv4/tcp_max_syn_backlog；</p>
+<p>增大 TCP 全连接队列的方式是增大 listen() 函数中的 <strong>backlog</strong>；</p>
+<h3 id="TIME-WAIT"><a href="#TIME-WAIT" class="headerlink" title="TIME_WAIT"></a>TIME_WAIT</h3><h2 id="简述DNS解析过程"><a href="#简述DNS解析过程" class="headerlink" title="简述DNS解析过程"></a>简述DNS解析过程</h2><p>1、客户机发出查询请求，在本地计算机缓存查找，若没有找到，就会将请求发送给dns服务器</p>
+<p>2、本地dns服务器会在自己的区域里面查找，找到即根据此记录进行解析，若没有找到，就会在本地的缓存里面查找</p>
+<p>3、本地服务器没有找到客户机查询的信息，就会将此请求发送到根域名dns服务器</p>
+<p>4、根域名服务器解析客户机请求的根域部分，它把包含的下一级的dns服务器的地址返回到客户机的 dns服务器地址</p>
+<p>5、客户机的dns服务器根据返回的信息接着访问下一级的dns服务器</p>
+<p>6、这样递归的方法一级一级接近查询的目标，最后在有目标域名的服务器上面得到相应的IP信息</p>
+<p>7、客户机的本地的dns服务器会将查询结果返回给我们的客户机 8、客户机根据得到的ip信息访问目标主机，完成解析过程</p>
+<h2 id="简述http状态码和对应的信息"><a href="#简述http状态码和对应的信息" class="headerlink" title="简述http状态码和对应的信息"></a><strong>简述http状态码和对应的信息</strong></h2><p>1XX：接收的信息正在处理</p>
+<p>2XX：请求正常处理完毕</p>
+<p>3XX：重定向</p>
+<p>4XX：客户端错误</p>
+<p>5XX：服务端错误</p>
+<p>常见错误码：</p>
+<p>301：永久重定向 </p>
+<p>302：临时重定向 </p>
+<p>304：资源没修改，用之前缓存就行 </p>
+<p>400：客户端请求的报文有错误 </p>
+<p>403：表示服务器禁止访问资源 </p>
+<p>404：表示请求的资源在服务器上不存在或未找到</p>
+<h2 id="转发和重定向的区别"><a href="#转发和重定向的区别" class="headerlink" title="转发和重定向的区别"></a><strong>转发和重定向的区别</strong></h2><p>转发是服务器行为。服务器直接向目标地址访问URL,将相应内容读取之后发给浏览器，用户浏览器地址栏URL不变，转发页面和转发到的页面可以共享request里面的数据。</p>
+<p>重定向是利用服务器返回的状态码来实现的，如果服务器返回301或者302，浏览器收到新的消息后自动跳转到新的网址重新请求资源。用户的地址栏url会发生改变，而且不能共享数据。</p>
+<h2 id="简述http1-0"><a href="#简述http1-0" class="headerlink" title="简述http1.0"></a>简述http1.0</h2><p>规定了请求头和请求尾，响应头和响应尾（get post）每一个请求都是一个单独的连接，做不到连接的复用</p>
+<h2 id="简述http1-1的改进"><a href="#简述http1-1的改进" class="headerlink" title="简述http1.1的改进"></a><strong>简述http1.1的改进</strong></h2><p>HTTP1.1默认开启长连接，在一个TCP连接上可以传送多个HTTP请求和响应。使用 TCP 长连接的方式改善了 HTTP/1.0 短连接造成的性能开销。支持管道（pipeline）网络传输，只要第一个请求发出去了，不必等其回来，就可以发第二个请求出去，可以减少整体的响应时间。</p>
+<p>服务端无法主动push</p>
+<h2 id="简述http2-0的改进"><a href="#简述http2-0的改进" class="headerlink" title="简述http2.0的改进"></a>简述http2.0的改进</h2><p>提出多路复用。多路复用前，文件时串行传输的，请求a文件，b文件只能等待，并且连接数过多。引入多路复用，a文件b文件可以同时传输。</p>
+<p>引入了二进制数据帧。其中帧对数据进行顺序标识，有了序列id，服务器就可以进行并行传输数据。</p>
+<h2 id="http与https的区别"><a href="#http与https的区别" class="headerlink" title="http与https的区别"></a>http与https的区别</h2><p>http所有传输的内容都是明文，并且客户端和服务器端都无法验证对方的身份。 </p>
+<p>https具有安全性的ssl加密传输协议，加密采用对称加密， </p>
+<p>https协议需要到ca申请证书，一般免费证书很少，需要交费。</p>
+<h2 id="https的连接过程"><a href="#https的连接过程" class="headerlink" title="https的连接过程"></a>https的连接过程</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/43789231">https加密</a></p>
+<ol>
+<li><p>浏览器将支持的加密算法信息发给服务器</p>
+</li>
+<li><p>服务器选择一套浏览器支持的加密算法，以证书的形式回发给浏览器</p>
+</li>
+<li><p>客户端(SSL/TLS)解析证书验证证书合法性，生成对称加密的密钥，我们将该密钥称之为client key，即客户端密钥，用服务器的公钥对客户端密钥进行非对称加密。</p>
+</li>
+<li><p>客户端会发起HTTPS中的第二个HTTP请求，将加密之后的客户端对称密钥发送给服务器</p>
+</li>
+<li><p>服务器接收到客户端发来的密文之后，会用自己的私钥对其进行非对称解密，解密之后的明文就是客户端密钥，然后用客户端密钥对数据进行对称加密，这样数据就变成了密文。</p>
+</li>
+<li><p>服务器将加密后的密文发送给客户端</p>
+</li>
+<li><p>客户端收到服务器发送来的密文，用客户端密钥对其进行对称解密，得到服务器发送的数据。这样</p>
+</li>
+</ol>
+<p>HTTPS中的第二个HTTP请求结束，整个HTTPS传输完成</p>
+<h2 id="Get与Post区别"><a href="#Get与Post区别" class="headerlink" title="Get与Post区别"></a>Get与Post区别</h2><p>Get：指定资源请求数据，刷新无害，Get请求的数据会附加到URL中，传输数据的大小受到url的限制。</p>
+<p>Post：向指定资源提交要被处理的数据。刷新会使数据会被重复提交。post在发送数据前会先将请求头发送给服务器进行确认，然后才真正发送数据。</p>
 
       
     </div>
@@ -733,180 +987,6 @@
 <p>可以封装固定不变的部分，扩展可变的部分。但每一个不同实现都需要一个子类维护，会增加类的数量。</p>
 <h2 id="简述装饰器模式"><a href="#简述装饰器模式" class="headerlink" title="简述装饰器模式"></a>简述装饰器模式</h2><p>装饰者模式可以动态地给对象添加一些额外的属性或行为，即需要修改原有的功能，但又不愿直接去修改原有的代码时，设计一个Decorator套在原有代码外面。</p>
 <h2 id="简述观察者模式"><a href="#简述观察者模式" class="headerlink" title="简述观察者模式"></a>简述观察者模式</h2><p>观察者模式表示的是一种对象与对象之间具有依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://huangluzhi.github.io/blog/2021/04/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E6%8F%90%E7%BA%B2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="Rex">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Luzhi's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2021/04/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E6%8F%90%E7%BA%B2/" class="post-title-link" itemprop="url">计算机网络-提纲</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-04-27 14:08:20" itemprop="dateCreated datePublished" datetime="2021-04-27T14:08:20+08:00">2021-04-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-05-07 23:03:17" itemprop="dateModified" datetime="2021-05-07T23:03:17+08:00">2021-05-07</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="简述OSI七层协议"><a href="#简述OSI七层协议" class="headerlink" title="简述OSI七层协议"></a><strong>简述OSI七层协议</strong></h2><p>OSI七层协议包括：物理层，数据链路层，网络层，运输层，会话层，表示层， 应用层</p>
-<h2 id="简述TCP-IP五层协议"><a href="#简述TCP-IP五层协议" class="headerlink" title="简述TCP/IP五层协议"></a><strong>简述TCP/IP五层协议</strong></h2><p>TCP/IP五层协议包括：物理层，数据链路层，网络层，运输层，应用层</p>
-<h2 id="物理层有什么作用"><a href="#物理层有什么作用" class="headerlink" title="物理层有什么作用"></a><strong>物理层有什么作用</strong></h2><p>主要解决两台物理机之间的通信，通过二进制比特流的传输来实现，二进制数据表现为电流电压上的强弱，到达目的地再转化为二进制机器码。网卡、集线器工作在这一层。</p>
-<h2 id="数据链路层有什么作用"><a href="#数据链路层有什么作用" class="headerlink" title="数据链路层有什么作用"></a>数据链路层有什么作用</h2><p>在不可靠的物理介质上提供可靠的传输，接收来自物理层的位流形式的数据，并封装成帧，传送到上一层；同样，也将来自上层的数据帧，拆装为位流形式的数据转发到物理层。这一层在物理层提供的比特流的基础上，通过差错控制、流量控制方法，使有差错的物理线路变为无差错的数据链路。提供物理地址寻址功能。交换机工作在这一层。</p>
-<h2 id="网络层有什么作用"><a href="#网络层有什么作用" class="headerlink" title="网络层有什么作用"></a>网络层有什么作用</h2><p>将网络地址翻译成对应的物理地址，并决定如何将数据从发送方路由到接收方，通过路由选择算法为分组通过通信子网选择最佳路径。路由器工作在这一层。</p>
-<h2 id="传输层有什么作用"><a href="#传输层有什么作用" class="headerlink" title="传输层有什么作用"></a>传输层有什么作用</h2><p>传输层提供了进程间的逻辑通信，传输层向高层用户屏蔽了下面网络层的核心细节，使应用程序看起来像是在两个传输层实体之间有一条端到端的逻辑通信信道。</p>
-<h2 id="会话层有什么作用"><a href="#会话层有什么作用" class="headerlink" title="会话层有什么作用"></a>会话层有什么作用</h2><p>建立会话：身份验证，权限鉴定等；保持会话：对该会话进行维护，在会话维持期间两者可以随时使用这条会话传输局；</p>
-<p>断开会话：当应用程序或应用层规定的超时时间到期后，OSI会话层才会释放这条会话。</p>
-<h2 id="表示层有什么作用"><a href="#表示层有什么作用" class="headerlink" title="表示层有什么作用"></a>表示层有什么作用</h2><p>对数据格式进行编译，对收到或发出的数据根据应用层的特征进行处理，如处理为文字、图片、音频、视频、文档等，还可以对压缩文件进行解压缩、对加密文件进行解密等。</p>
-<p><strong>应用层有什么作用</strong></p>
-<p>提供应用层协议，如HTTP协议，FTP协议等等，方便应用程序之间进行通信。</p>
-<h2 id="TCP与UDP区别"><a href="#TCP与UDP区别" class="headerlink" title="TCP与UDP区别"></a>TCP与UDP区别</h2><p>TCP作为面向流的协议，提供可靠的、面向连接的运输服务，并且提供点对点通信</p>
-<p>UDP作为面向报文的协议，不提供可靠交付，并且不需要连接，不仅仅对点对点，也支持多播和广播</p>
-<h2 id="为何TCP可靠"><a href="#为何TCP可靠" class="headerlink" title="为何TCP可靠"></a><strong>为何TCP可靠</strong></h2><p>TCP有三次握手建立连接，四次挥手关闭连接的机制。</p>
-<p>除此之外还有滑动窗口和拥塞控制算法。最最关键的是还保留超时重传的机制。</p>
-<p>对于每份报文也存在校验，保证每份报文可靠性。</p>
-<h2 id="为何UDP不可靠"><a href="#为何UDP不可靠" class="headerlink" title="为何UDP不可靠"></a>为何UDP不可靠</h2><p>UDP面向数据报无连接的，数据报发出去，就不保留数据备份了。 </p>
-<p>仅仅在IP数据报头部加入校验和复用。 </p>
-<p>UDP没有服务器和客户端的概念。 </p>
-<p>UDP报文过长的话是交给IP切成小段，如果某段报废报文就废了。</p>
-<h2 id="简述TCP粘包现象"><a href="#简述TCP粘包现象" class="headerlink" title="简述TCP粘包现象"></a>简述TCP粘包现象</h2><p>TCP是面向流协议，发送的单位是字节流，因此会将多个小尺寸数据被封装在一个tcp报文中发出去的可能性。</p>
-<p>可以简单的理解成客户端调用了两次send，服务器端一个recv就把信息都读出来了。</p>
-<h2 id="TCP粘包现象处理方法"><a href="#TCP粘包现象处理方法" class="headerlink" title="TCP粘包现象处理方法"></a><strong>TCP粘包现象处理方法</strong></h2><p>固定发送信息长度，或在两个信息之间加入分隔符。</p>
-<h2 id="简述TCP协议的滑动窗口"><a href="#简述TCP协议的滑动窗口" class="headerlink" title="简述TCP协议的滑动窗口"></a>简述TCP协议的滑动窗口</h2><p>滑动窗口是传输层进行流量控制的一种措施，接收方通过通告发</p>
-<p>送方自己的窗口大小，从而控制发送方的发送速度，防止发送方发送速度过快而导致自己被淹没。</p>
-<h2 id="简述TCP协议的拥塞控制"><a href="#简述TCP协议的拥塞控制" class="headerlink" title="简述TCP协议的拥塞控制"></a>简述TCP协议的拥塞控制</h2><p>拥塞是指一个或者多个交换点的数据报超载，TCP又会有重传机制，导致过载。</p>
-<p>为了防止拥塞窗口cwnd增长过大引起网络拥塞，还需要设置一个慢开始门限ssthresh状态变量.</p>
-<p>当cwnd &lt; ssthresh 时，使用慢开始算法。 </p>
-<p>当cwnd &gt; ssthresh 时，停止使用慢开始算法而改用拥塞避免算法。 </p>
-<p>当cwnd = ssthresh 时，即可使用慢开始算法，也可使用拥塞避免算法。</p>
-<p>慢开始：由小到大逐渐增加拥塞窗口的大小，每接一次报文，cwnd指数增加。</p>
-<p>拥塞避免：cwnd缓慢地增大，即每经过一个往返时间RTT就把发送方的拥塞窗口cwnd加1。</p>
-<p>快恢复之前的策略：发送方判断网络出现拥塞，就把ssthresh设置为出现拥塞时发送方窗口值的一半，继续执行慢开始，之后进行拥塞避免。</p>
-<p>快恢复：发送方判断网络出现拥塞，就把ssthresh设置为出现拥塞时发送方窗口值的一半，并把cwnd设置为ssthresh的一半，之后进行拥塞避免。</p>
-<h2 id="简述快重传"><a href="#简述快重传" class="headerlink" title="简述快重传"></a>简述快重传</h2><p>如果在超时重传定时器溢出之前，接收到连续的三个重复冗余ACK，发送端便知晓哪个报文段在传输过程中丢失了，于是重发该报文段，不需要等待超时重传定时器溢出再发送该报文。</p>
-<h2 id="TCP三次握手过程"><a href="#TCP三次握手过程" class="headerlink" title="TCP三次握手过程"></a>TCP三次握手过程</h2><ol>
-<li>第一次握手:客户端将标志位SYN置为1，随机产生一个值序列号seq=x，并将该数据包发送给服务端，客户端</li>
-</ol>
-<p>进入syn_sent状态，等待服务端确认。</p>
-<ol start="2">
-<li>第二次握手:服务端收到数据包后由标志位SYN=1知道客户端请求建立连接，服务端将标志位SYN 和</li>
-</ol>
-<p>ACK都置为1，ack=x+1,随机产生一个值seq=y，并将该数据包发送给客户端以确认连接请求，服务端进</p>
-<p>入syn_rcvd状态。</p>
-<ol start="3">
-<li>第三次握手:客户端收到确认后检查,如果正确则将标志位ACK为1，ack=y+1，并将该数据包发送给服务端，服务端进行检查如果正确则连接建立成功，客户端和服务端进入established状态，完成三次握手，随后客户端和服务端之间可以开始传输数据了</li>
-</ol>
-<h2 id="TCP四次挥手过程"><a href="#TCP四次挥手过程" class="headerlink" title="TCP四次挥手过程"></a>TCP四次挥手过程</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/136088574">四次挥手简介</a></p>
-<ol>
-<li><p>第一次挥手：客户端发送一个FIN，用来关闭客户端到服务端的数据传送，客户端进入fin_wait_1状态。</p>
-</li>
-<li><p>第二次挥手：服务端收到FIN后，发送一个ACK给客户端，确认序号为收到序号+1，服务端进入</p>
-</li>
-</ol>
-<p>Close_wait状态。此时TCP连接处于半关闭状态，即客户端已经没有要发送的数据了，但服务端若发送数据，则客户端仍要接收。</p>
-<ol start="3">
-<li><p>第三次挥手：服务端发送一个FIN，用来关闭服务端到客户端的数据传送，服务端进入Last_ack状态。</p>
-</li>
-<li><p>第四次挥手：客户端收到FIN后，客户端进入Time_wait状态，接着发送一个ACK给服务端，确认后，服务端进入Closed状态，完成四次挥手。</p>
-</li>
-</ol>
-<h3 id="TIME-WAIT"><a href="#TIME-WAIT" class="headerlink" title="TIME_WAIT"></a>TIME_WAIT</h3><h2 id="简述DNS解析过程"><a href="#简述DNS解析过程" class="headerlink" title="简述DNS解析过程"></a>简述DNS解析过程</h2><p>1、客户机发出查询请求，在本地计算机缓存查找，若没有找到，就会将请求发送给dns服务器</p>
-<p>2、本地dns服务器会在自己的区域里面查找，找到即根据此记录进行解析，若没有找到，就会在本地的缓存里面查找</p>
-<p>3、本地服务器没有找到客户机查询的信息，就会将此请求发送到根域名dns服务器</p>
-<p>4、根域名服务器解析客户机请求的根域部分，它把包含的下一级的dns服务器的地址返回到客户机的 dns服务器地址</p>
-<p>5、客户机的dns服务器根据返回的信息接着访问下一级的dns服务器</p>
-<p>6、这样递归的方法一级一级接近查询的目标，最后在有目标域名的服务器上面得到相应的IP信息</p>
-<p>7、客户机的本地的dns服务器会将查询结果返回给我们的客户机 8、客户机根据得到的ip信息访问目标主机，完成解析过程</p>
-<h2 id="简述http状态码和对应的信息"><a href="#简述http状态码和对应的信息" class="headerlink" title="简述http状态码和对应的信息"></a><strong>简述http状态码和对应的信息</strong></h2><p>1XX：接收的信息正在处理</p>
-<p>2XX：请求正常处理完毕</p>
-<p>3XX：重定向</p>
-<p>4XX：客户端错误</p>
-<p>5XX：服务端错误</p>
-<p>常见错误码：</p>
-<p>301：永久重定向 </p>
-<p>302：临时重定向 </p>
-<p>304：资源没修改，用之前缓存就行 </p>
-<p>400：客户端请求的报文有错误 </p>
-<p>403：表示服务器禁止访问资源 </p>
-<p>404：表示请求的资源在服务器上不存在或未找到</p>
-<h2 id="转发和重定向的区别"><a href="#转发和重定向的区别" class="headerlink" title="转发和重定向的区别"></a><strong>转发和重定向的区别</strong></h2><p>转发是服务器行为。服务器直接向目标地址访问URL,将相应内容读取之后发给浏览器，用户浏览器地址栏URL不变，转发页面和转发到的页面可以共享request里面的数据。</p>
-<p>重定向是利用服务器返回的状态码来实现的，如果服务器返回301或者302，浏览器收到新的消息后自动跳转到新的网址重新请求资源。用户的地址栏url会发生改变，而且不能共享数据。</p>
-<h2 id="简述http1-0"><a href="#简述http1-0" class="headerlink" title="简述http1.0"></a>简述http1.0</h2><p>规定了请求头和请求尾，响应头和响应尾（get post）每一个请求都是一个单独的连接，做不到连接的复用</p>
-<h2 id="简述http1-1的改进"><a href="#简述http1-1的改进" class="headerlink" title="简述http1.1的改进"></a><strong>简述http1.1的改进</strong></h2><p>HTTP1.1默认开启长连接，在一个TCP连接上可以传送多个HTTP请求和响应。使用 TCP 长连接的方式改善了 HTTP/1.0 短连接造成的性能开销。支持管道（pipeline）网络传输，只要第一个请求发出去了，不必等其回来，就可以发第二个请求出去，可以减少整体的响应时间。</p>
-<p>服务端无法主动push</p>
-<h2 id="简述http2-0的改进"><a href="#简述http2-0的改进" class="headerlink" title="简述http2.0的改进"></a>简述http2.0的改进</h2><p>提出多路复用。多路复用前，文件时串行传输的，请求a文件，b文件只能等待，并且连接数过多。引入多路复用，a文件b文件可以同时传输。</p>
-<p>引入了二进制数据帧。其中帧对数据进行顺序标识，有了序列id，服务器就可以进行并行传输数据。</p>
-<h2 id="http与https的区别"><a href="#http与https的区别" class="headerlink" title="http与https的区别"></a>http与https的区别</h2><p>http所有传输的内容都是明文，并且客户端和服务器端都无法验证对方的身份。 </p>
-<p>https具有安全性的ssl加密传输协议，加密采用对称加密， </p>
-<p>https协议需要到ca申请证书，一般免费证书很少，需要交费。</p>
-<h2 id="https的连接过程"><a href="#https的连接过程" class="headerlink" title="https的连接过程"></a>https的连接过程</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/43789231">https加密</a></p>
-<ol>
-<li><p>浏览器将支持的加密算法信息发给服务器</p>
-</li>
-<li><p>服务器选择一套浏览器支持的加密算法，以证书的形式回发给浏览器</p>
-</li>
-<li><p>客户端(SSL/TLS)解析证书验证证书合法性，生成对称加密的密钥，我们将该密钥称之为client key，即客户端密钥，用服务器的公钥对客户端密钥进行非对称加密。</p>
-</li>
-<li><p>客户端会发起HTTPS中的第二个HTTP请求，将加密之后的客户端对称密钥发送给服务器</p>
-</li>
-<li><p>服务器接收到客户端发来的密文之后，会用自己的私钥对其进行非对称解密，解密之后的明文就是客户端密钥，然后用客户端密钥对数据进行对称加密，这样数据就变成了密文。</p>
-</li>
-<li><p>服务器将加密后的密文发送给客户端</p>
-</li>
-<li><p>客户端收到服务器发送来的密文，用客户端密钥对其进行对称解密，得到服务器发送的数据。这样</p>
-</li>
-</ol>
-<p>HTTPS中的第二个HTTP请求结束，整个HTTPS传输完成</p>
-<h2 id="Get与Post区别"><a href="#Get与Post区别" class="headerlink" title="Get与Post区别"></a>Get与Post区别</h2><p>Get：指定资源请求数据，刷新无害，Get请求的数据会附加到URL中，传输数据的大小受到url的限制。</p>
-<p>Post：向指定资源提交要被处理的数据。刷新会使数据会被重复提交。post在发送数据前会先将请求头发送给服务器进行确认，然后才真正发送数据。</p>
 
       
     </div>
@@ -1297,7 +1377,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-05-07 23:21:48" itemprop="dateModified" datetime="2021-05-07T23:21:48+08:00">2021-05-07</time>
+                <time title="Modified: 2021-11-28 17:13:19" itemprop="dateModified" datetime="2021-11-28T17:13:19+08:00">2021-11-28</time>
               </span>
 
           
@@ -1409,6 +1489,13 @@
 <ol start="2">
 <li>接收信号：当目的进程被内核强迫以某种方式对信号的发送做出反应时，它就接收了信号。进程可以忽略这个信号，终止或者通过执行一个称为信号处理程序(signal handler)的用户层函数捕获这个信号。</li>
 </ol>
+<h2 id="什么是消息队列"><a href="#什么是消息队列" class="headerlink" title="什么是消息队列"></a>什么是消息队列</h2><p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/54152397">消息队列（mq）是什么？</a></p>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点:"></a>特点:</h3><ul>
+<li>先进先出<br>不能先进先出，都不能说是队列了。消息队列的顺序在入队的时候就基本已经确定了，一般是不需人工干预的。而且，最重要的是，<strong>数据是只有一条数据在使用中。</strong> 这也是MQ在诸多场景被使用的原因。（同步-&gt;异步）</li>
+<li>发布订阅<br>发布订阅是一种很高效的处理方式，如果不发生阻塞，基本可以当做是同步操作。这种处理方式能非常有效的提升服务器利用率，这样的应用场景非常广泛。</li>
+<li>持久化<br>持久化确保MQ的使用不只是一个部分场景的辅助工具，而是让MQ能像数据库一样存储核心的数据。</li>
+<li>分布式<br>在现在大流量、大数据的使用场景下，只支持单体应用的服务器软件基本是无法使用的，支持分布式的部署，才能被广泛使用。而且，MQ的定位就是一个高性能的中间件。</li>
+</ul>
 <h2 id="如何编写正确且安全的信号处理函数"><a href="#如何编写正确且安全的信号处理函数" class="headerlink" title="如何编写正确且安全的信号处理函数"></a>如何编写正确且安全的信号处理函数</h2><ol>
 <li>处理程序要尽可能简单。 避免麻烦的 好方法是保持处理程序尽可能小和简单。例如，处理程序可能只是简单地设置全局标志并立即返回；所有与接收信号相关的处理都由主程序执行，它周期性地检查(并重置)这个标志。</li>
 </ol>
@@ -1515,13 +1602,12 @@
 </ol>
 <p>引入线程就是为了解决以上进程的不足，线程具有以下的优点：</p>
 <ol>
-<li><p>从资源上来讲，开辟一个线程所需要的资源要远小于一个进程。</p>
-</li>
-<li><p>从切换效率上来讲，运行于一个进程中的多个线程，它们之间使用相同的地址空间，而且线程间彼此切换所需时间也远远小于进程间切换所需要的时间（这种时间的差异主要由于缓存的大量未命中导致）。</p>
-</li>
-<li><p>从通信机制上来讲，线程间方便的通信机制。对不同进程来说，它们具有独立的地址空间，要进行数据的传递只能通过进程间通信的方式进行。线程则不然，属于同一个进程的不同线程之间共享同一地址空间，所以一个线程的数据可以被其它线程感知，线程间可以直接读写进程数据段（如全局变量）来进行通信（需要一些同步措施）。</p>
-</li>
+<li>从资源上来讲，开辟一个线程所需要的资源要远小于一个进程。</li>
+<li>从切换效率上来讲，运行于一个进程中的多个线程，它们之间使用相同的地址空间，而且线程间彼此切换所需时间也远远小于进程间切换所需要的时间（这种时间的差异主要由于缓存的大量未命中导致）。</li>
+<li>从通信机制上来讲，线程间方便的通信机制。对不同进程来说，它们具有独立的地址空间，要进行数据的传递只能通过进程间通信的方式进行。线程则不然，属于同一个进程的不同线程之间共享同一地址空间，所以一个线程的数据可以被其它线程感知，线程间可以直接读写进程数据段（如全局变量）来进行通信（需要一些同步措施）。</li>
 </ol>
+<h2 id="线程间到底共享了哪些进程资源？"><a href="#线程间到底共享了哪些进程资源？" class="headerlink" title="线程间到底共享了哪些进程资源？"></a>线程间到底共享了哪些进程资源？</h2><p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1768025">https://cloud.tencent.com/developer/article/1768025</a></p>
+<p>私有：栈区，程序计数器</p>
 <h2 id="简述线程和进程的区别和联系"><a href="#简述线程和进程的区别和联系" class="headerlink" title="简述线程和进程的区别和联系"></a>简述线程和进程的区别和联系</h2><ol>
 <li><p>一个线程只能属于一个进程，而一个进程可以有多个线程，但至少有一个线程。线程依赖于进程而存在。</p>
 </li>
