@@ -646,93 +646,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://huangluzhi.github.io/blog/2021/04/27/%E6%95%B0%E6%8D%AE%E5%BA%93-%E6%8F%90%E7%BA%B2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="Rex">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Luzhi's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2021/04/27/%E6%95%B0%E6%8D%AE%E5%BA%93-%E6%8F%90%E7%BA%B2/" class="post-title-link" itemprop="url">数据库-提纲</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-04-27 14:08:20" itemprop="dateCreated datePublished" datetime="2021-04-27T14:08:20+08:00">2021-04-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-11-28 14:57:11" itemprop="dateModified" datetime="2021-11-28T14:57:11+08:00">2021-11-28</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><p><a target="_blank" rel="noopener" href="https://www.secn.net/article/1258557.html">9道面试题</a></p>
-<h2 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a>隔离级别</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/60492217">隔离级别</a></p>
-<h2 id="ACID与隔离级别"><a href="#ACID与隔离级别" class="headerlink" title="ACID与隔离级别"></a>ACID与隔离级别</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/kismetv/p/10331633.html">https://www.cnblogs.com/kismetv/p/10331633.html</a></p>
-<h2 id="一致性是什么"><a href="#一致性是什么" class="headerlink" title="一致性是什么"></a>一致性是什么</h2><p>一致性就是:应用系统从一个正确的状态到另一个正确的状态。而ACID就是说事务能够通过AID来保证这个C的过程。C是目的，AID都是手段。事务的一致性只是在数据库预先定义的约束有关，满足了约束即满足了一致性</p>
-<h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><h2 id="HAVING-子句"><a href="#HAVING-子句" class="headerlink" title="HAVING 子句"></a>HAVING 子句</h2><p>在 SQL 中增加 HAVING 子句原因是，WHERE 关键字无法与聚合函数一起使用。</p>
-<p>HAVING 子句可以让我们筛选分组后的各组数据。</p>
-<p><strong>where 和having之后都是筛选条件，但是有区别的：</strong></p>
-<p>1.where在group by前， having在group by 之后</p>
-<p>2.聚合函数（avg、sum、max、min、count），不能作为条件放在where之后，但可以放在having之后</p>
-<h3 id="查询每门科目最好的前5个同学"><a href="#查询每门科目最好的前5个同学" class="headerlink" title="查询每门科目最好的前5个同学"></a>查询每门科目最好的前5个同学</h3><p>分析：先用自己交自己，条件为a.courseid = b.courseid and a.score&lt;b.score，列出同一门课内所有分数比较的情况。通过a.studentid和a.courseid可以联合确定这个同学的这门课的这个分数究竟比多少个其他记录高/低， 如果这个特定的a.studentid和a.courseid组合出现在这张表里的次数少于5个，那就意味着这个组合（学号+课号+分数）是这门课里排名前五的。</p>
-<p>下面这个计算中having count 部分其实count(<em>)或者任意其他列都可以，这里制定了一个列只是因为比count(</em>)运行速度上更快。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.studentid,a.courseid,a.score </span><br><span class="line"><span class="keyword">from</span> student_score <span class="keyword">as</span> a</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span> student_score <span class="keyword">as</span> b</span><br><span class="line"><span class="keyword">on</span> a.courseid <span class="operator">=</span> b.courseid <span class="keyword">and</span> a.score<span class="operator">&lt;</span>b.score</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> a.courseid, a.studentid</span><br><span class="line"><span class="keyword">having</span> <span class="built_in">count</span>(b.courseid)<span class="operator">&lt;</span><span class="number">5</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> a.courseid;</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> s.student_name , c.course_name , temp.score </span><br><span class="line"><span class="keyword">from</span> student s , course c ,</span><br><span class="line">(</span><br><span class="line">    <span class="keyword">select</span> score.student_id, score.course_id ,score.score , <span class="built_in">row_number</span>()</span><br><span class="line">    <span class="keyword">over</span>(</span><br><span class="line">        <span class="keyword">partition</span> <span class="keyword">by</span> course_id  </span><br><span class="line">        <span class="keyword">order</span> <span class="keyword">by</span> score  <span class="keyword">desc</span>) </span><br><span class="line">    rn <span class="keyword">from</span> score</span><br><span class="line">) temp </span><br><span class="line"><span class="keyword">where</span>  temp.rn<span class="operator">&lt;=</span><span class="number">5</span> <span class="keyword">and</span> s.student_id <span class="operator">=</span> temp.student_id <span class="keyword">and</span> c.course_id <span class="operator">=</span> temp.course_id</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="Oracle"><a href="#Oracle" class="headerlink" title="Oracle"></a>Oracle</h4><p><strong>求出每门课程成绩排名前五名的同学的姓名，分数和课程名：</strong><br>成绩相同的人排名相同，且排名不是连续的。</p>
-   <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span>  </span><br><span class="line">  <span class="keyword">from</span> (<span class="keyword">select</span> s.STUDENT_NAME,  </span><br><span class="line">               sc.SCORE,  </span><br><span class="line">               c.COURSE_NAME,  </span><br><span class="line">               <span class="built_in">rank</span>() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> c.COURSE_ID <span class="keyword">order</span> <span class="keyword">by</span> sc.SCORE <span class="keyword">desc</span>) ranking  </span><br><span class="line">          <span class="keyword">from</span> student s, course c, score sc  </span><br><span class="line">         <span class="keyword">where</span> s.STUDENT_ID <span class="operator">=</span> sc.STUDENT_ID  </span><br><span class="line">           <span class="keyword">and</span> c.COURSE_ID <span class="operator">=</span> sc.COURSE_ID) t  </span><br><span class="line"><span class="keyword">where</span> t.ranking <span class="operator">&lt;</span> <span class="number">6</span>;</span><br></pre></td></tr></table></figure>
-
-<p>结果：</p>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">STUDENT_NAME SCORE COURSE_NAME RANKING</span><br><span class="line">张三 99 语文 1</span><br><span class="line">李四 99 语文 1</span><br><span class="line">王五 96 语文 3</span><br><span class="line">马六 93 语文 4</span><br><span class="line">孙七 90 语文 5</span><br><span class="line">张三 98 数学 1</span><br><span class="line">李四 97 数学 2</span><br><span class="line">王五 95 数学 3</span><br><span class="line">马六 92 数学 4</span><br><span class="line">孙七 89 数学 5</span><br><span class="line">李四 98 英语 1</span><br><span class="line">张三 97 英语 2</span><br><span class="line">王五 94 英语 3</span><br><span class="line">马六 91 英语 4</span><br><span class="line">孙七 88 英语 5</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://huangluzhi.github.io/blog/2021/04/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E6%8F%90%E7%BA%B2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -898,6 +811,93 @@
 <h2 id="Get与Post区别"><a href="#Get与Post区别" class="headerlink" title="Get与Post区别"></a>Get与Post区别</h2><p>Get：指定资源请求数据，刷新无害，Get请求的数据会附加到URL中，传输数据的大小受到url的限制。</p>
 <p>Post：向指定资源提交要被处理的数据。刷新会使数据会被重复提交。post在发送数据前会先将请求头发送给服务器进行确认，然后才真正发送数据。</p>
 
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://huangluzhi.github.io/blog/2021/04/27/%E6%95%B0%E6%8D%AE%E5%BA%93-%E6%8F%90%E7%BA%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Rex">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Luzhi's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2021/04/27/%E6%95%B0%E6%8D%AE%E5%BA%93-%E6%8F%90%E7%BA%B2/" class="post-title-link" itemprop="url">数据库-提纲</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-04-27 14:08:20" itemprop="dateCreated datePublished" datetime="2021-04-27T14:08:20+08:00">2021-04-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-11-28 14:57:11" itemprop="dateModified" datetime="2021-11-28T14:57:11+08:00">2021-11-28</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><p><a target="_blank" rel="noopener" href="https://www.secn.net/article/1258557.html">9道面试题</a></p>
+<h2 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a>隔离级别</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/60492217">隔离级别</a></p>
+<h2 id="ACID与隔离级别"><a href="#ACID与隔离级别" class="headerlink" title="ACID与隔离级别"></a>ACID与隔离级别</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/kismetv/p/10331633.html">https://www.cnblogs.com/kismetv/p/10331633.html</a></p>
+<h2 id="一致性是什么"><a href="#一致性是什么" class="headerlink" title="一致性是什么"></a>一致性是什么</h2><p>一致性就是:应用系统从一个正确的状态到另一个正确的状态。而ACID就是说事务能够通过AID来保证这个C的过程。C是目的，AID都是手段。事务的一致性只是在数据库预先定义的约束有关，满足了约束即满足了一致性</p>
+<h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><h2 id="HAVING-子句"><a href="#HAVING-子句" class="headerlink" title="HAVING 子句"></a>HAVING 子句</h2><p>在 SQL 中增加 HAVING 子句原因是，WHERE 关键字无法与聚合函数一起使用。</p>
+<p>HAVING 子句可以让我们筛选分组后的各组数据。</p>
+<p><strong>where 和having之后都是筛选条件，但是有区别的：</strong></p>
+<p>1.where在group by前， having在group by 之后</p>
+<p>2.聚合函数（avg、sum、max、min、count），不能作为条件放在where之后，但可以放在having之后</p>
+<h3 id="查询每门科目最好的前5个同学"><a href="#查询每门科目最好的前5个同学" class="headerlink" title="查询每门科目最好的前5个同学"></a>查询每门科目最好的前5个同学</h3><p>分析：先用自己交自己，条件为a.courseid = b.courseid and a.score&lt;b.score，列出同一门课内所有分数比较的情况。通过a.studentid和a.courseid可以联合确定这个同学的这门课的这个分数究竟比多少个其他记录高/低， 如果这个特定的a.studentid和a.courseid组合出现在这张表里的次数少于5个，那就意味着这个组合（学号+课号+分数）是这门课里排名前五的。</p>
+<p>下面这个计算中having count 部分其实count(<em>)或者任意其他列都可以，这里制定了一个列只是因为比count(</em>)运行速度上更快。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.studentid,a.courseid,a.score </span><br><span class="line"><span class="keyword">from</span> student_score <span class="keyword">as</span> a</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span> student_score <span class="keyword">as</span> b</span><br><span class="line"><span class="keyword">on</span> a.courseid <span class="operator">=</span> b.courseid <span class="keyword">and</span> a.score<span class="operator">&lt;</span>b.score</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> a.courseid, a.studentid</span><br><span class="line"><span class="keyword">having</span> <span class="built_in">count</span>(b.courseid)<span class="operator">&lt;</span><span class="number">5</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> a.courseid;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> s.student_name , c.course_name , temp.score </span><br><span class="line"><span class="keyword">from</span> student s , course c ,</span><br><span class="line">(</span><br><span class="line">    <span class="keyword">select</span> score.student_id, score.course_id ,score.score , <span class="built_in">row_number</span>()</span><br><span class="line">    <span class="keyword">over</span>(</span><br><span class="line">        <span class="keyword">partition</span> <span class="keyword">by</span> course_id  </span><br><span class="line">        <span class="keyword">order</span> <span class="keyword">by</span> score  <span class="keyword">desc</span>) </span><br><span class="line">    rn <span class="keyword">from</span> score</span><br><span class="line">) temp </span><br><span class="line"><span class="keyword">where</span>  temp.rn<span class="operator">&lt;=</span><span class="number">5</span> <span class="keyword">and</span> s.student_id <span class="operator">=</span> temp.student_id <span class="keyword">and</span> c.course_id <span class="operator">=</span> temp.course_id</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Oracle"><a href="#Oracle" class="headerlink" title="Oracle"></a>Oracle</h4><p><strong>求出每门课程成绩排名前五名的同学的姓名，分数和课程名：</strong><br>成绩相同的人排名相同，且排名不是连续的。</p>
+   <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span>  </span><br><span class="line">  <span class="keyword">from</span> (<span class="keyword">select</span> s.STUDENT_NAME,  </span><br><span class="line">               sc.SCORE,  </span><br><span class="line">               c.COURSE_NAME,  </span><br><span class="line">               <span class="built_in">rank</span>() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> c.COURSE_ID <span class="keyword">order</span> <span class="keyword">by</span> sc.SCORE <span class="keyword">desc</span>) ranking  </span><br><span class="line">          <span class="keyword">from</span> student s, course c, score sc  </span><br><span class="line">         <span class="keyword">where</span> s.STUDENT_ID <span class="operator">=</span> sc.STUDENT_ID  </span><br><span class="line">           <span class="keyword">and</span> c.COURSE_ID <span class="operator">=</span> sc.COURSE_ID) t  </span><br><span class="line"><span class="keyword">where</span> t.ranking <span class="operator">&lt;</span> <span class="number">6</span>;</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">STUDENT_NAME SCORE COURSE_NAME RANKING</span><br><span class="line">张三 99 语文 1</span><br><span class="line">李四 99 语文 1</span><br><span class="line">王五 96 语文 3</span><br><span class="line">马六 93 语文 4</span><br><span class="line">孙七 90 语文 5</span><br><span class="line">张三 98 数学 1</span><br><span class="line">李四 97 数学 2</span><br><span class="line">王五 95 数学 3</span><br><span class="line">马六 92 数学 4</span><br><span class="line">孙七 89 数学 5</span><br><span class="line">李四 98 英语 1</span><br><span class="line">张三 97 英语 2</span><br><span class="line">王五 94 英语 3</span><br><span class="line">马六 91 英语 4</span><br><span class="line">孙七 88 英语 5</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -1806,122 +1806,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://huangluzhi.github.io/blog/2021/04/13/My%20learned%20song/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="Rex">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Luzhi's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2021/04/13/My%20learned%20song/" class="post-title-link" itemprop="url">My learned song</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-04-13 14:08:20" itemprop="dateCreated datePublished" datetime="2021-04-13T14:08:20+08:00">2021-04-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-01-28 00:51:27" itemprop="dateModified" datetime="2022-01-28T00:51:27+08:00">2022-01-28</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Finger-style"><a href="#Finger-style" class="headerlink" title="Finger style"></a>Finger style</h2><h3 id="Standard-Turning"><a href="#Standard-Turning" class="headerlink" title="Standard Turning"></a>Standard Turning</h3><ol>
-<li>风の诗</li>
-<li>黄昏</li>
-<li>Fight！</li>
-<li>风之丘</li>
-<li>Always with me</li>
-<li>約束の海</li>
-<li>Romantica</li>
-<li>Mellow Sunset</li>
-<li>Windy and Warm</li>
-<li>Angelina</li>
-<li>Mombasa</li>
-<li>Papa George</li>
-<li>Classical Gas</li>
-<li>Hunt</li>
-<li>夏天的风</li>
-</ol>
-<h3 id="DADGBE"><a href="#DADGBE" class="headerlink" title="DADGBE"></a>DADGBE</h3><ol>
-<li>相思堤上的偶遇</li>
-<li>He is a pirate</li>
-</ol>
-<h3 id="DADGBD"><a href="#DADGBD" class="headerlink" title="DADGBD"></a>DADGBD</h3><ol>
-<li>翼<del>you are the HERO</del></li>
-<li>Drifting</li>
-</ol>
-<h3 id="DADGAD"><a href="#DADGAD" class="headerlink" title="DADGAD"></a>DADGAD</h3><ol>
-<li>奇跡の山</li>
-<li>Flower</li>
-</ol>
-<h3 id="DADGAC"><a href="#DADGAC" class="headerlink" title="DADGAC"></a>DADGAC</h3><ol>
-<li>Merry Christmas Mr.Lawrence</li>
-</ol>
-<h3 id="CGDGBD"><a href="#CGDGBD" class="headerlink" title="CGDGBD"></a>CGDGBD</h3><ol>
-<li>Landscape</li>
-<li>ナユタ(NAYUTA)</li>
-</ol>
-<h3 id="CGDGAD"><a href="#CGDGAD" class="headerlink" title="CGDGAD"></a>CGDGAD</h3><ol>
-<li>流れ行く雲</li>
-</ol>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3><p>WuWei</p>
-<p>Phunkdified</p>
-<p>Like a star</p>
-<p>Unravel</p>
-<p>Let it go</p>
-<h3 id="Double-Guitar"><a href="#Double-Guitar" class="headerlink" title="Double Guitar"></a>Double Guitar</h3><ol>
-<li>Mosaic</li>
-<li>11:11</li>
-</ol>
-<h2 id="弹唱"><a href="#弹唱" class="headerlink" title="弹唱"></a>弹唱</h2><ol>
-<li>Neon</li>
-<li>Hotel California</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://huangluzhi.github.io/blog/2021/04/13/%E5%88%BB%E5%9C%A8%E6%88%91%E5%BF%83%E5%BA%95%E7%9A%84%E5%90%8D%E5%AD%97-%E5%8D%A2%E5%B9%BF%E4%BB%B2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1965,6 +1849,122 @@
 <p><strong>tempo</strong>: 68<br><strong>origin key</strong>: Bb <strong>Baritone key</strong>: A <strong>Mezzo key</strong>: E </p>
 <hr>
 <p class="p1" style="white-space: normal;">[前奏] |Gadd9&nbsp;&nbsp;&nbsp;&nbsp;|Em7&nbsp;&nbsp;&nbsp;&nbsp;|Cmaj7&nbsp;&nbsp;&nbsp;&nbsp;|Cm&nbsp; &nbsp; |</p><p class="p1" style="white-space: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |Gadd9&nbsp;&nbsp;&nbsp;&nbsp;|Em7&nbsp;&nbsp;&nbsp;&nbsp;|Am7&nbsp;&nbsp;&nbsp;&nbsp;|Cm&nbsp;&nbsp;&nbsp;&nbsp;|</p><p class="p1" style="white-space: normal;"><br/></p><p class="p1" style="white-space: normal;">&nbsp; &nbsp;|Gadd9&nbsp; &nbsp;&nbsp;|F#m7-5&nbsp; &nbsp;B7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Em7&nbsp;&nbsp;&nbsp;&nbsp; |Dm7&nbsp;&nbsp;&nbsp;&nbsp;G&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</p><p class="p1" style="white-space: normal;">&nbsp; &nbsp;Oublie-le &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;好几次我告诉我自己&nbsp; &nbsp; &nbsp; &nbsp;越想努力赶上<br/></p><p>&nbsp; &nbsp;|Cadd9&nbsp; &nbsp;|G/B&nbsp;&nbsp;&nbsp;&nbsp;C#m7-5&nbsp; &nbsp;|Am7&nbsp;&nbsp;&nbsp;&nbsp; |D7-9&nbsp;&nbsp;&nbsp;&nbsp;|</p><p>&nbsp; &nbsp;光的影&nbsp;&nbsp;&nbsp;&nbsp;越&nbsp;&nbsp;&nbsp;&nbsp;无法&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;抽离&nbsp;&nbsp;&nbsp;&nbsp; 而已</p><p><span style="font-family: Arial; font-size: 14px;"></span><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp;|Gadd9</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;|F#m7-5</span><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp;B7</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;|Em7</span><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">|Dm7</span><span style="font-family: Arial; font-size: 14px;">&nbsp; G&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;|</span><span style="font-family: Arial; font-size: 14px;"></span></p><p>&nbsp; &nbsp;1.Je t&#39;aimais &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;刻骨铭心&nbsp;&nbsp;&nbsp;&nbsp;只有我自己&nbsp;&nbsp;&nbsp;&nbsp;好不容易交出</p><p><span style="font-family: Arial; font-size: 14px;"></span><span style="font-family: Arial; font-size: 14px;"><span style="font-family: Arial; font-size: 14px;">▲</span>2.寻找你</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 茫茫人海&nbsp;&nbsp;&nbsp;&nbsp;却又想起你</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">好不容易离开</span></p><p><span style="font-family: Arial; font-size: 14px;"><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp; &nbsp;&nbsp;|Cadd9&nbsp; </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Cm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Dsus4&nbsp;&nbsp;&nbsp;&nbsp;|D&nbsp;&nbsp;&nbsp;&nbsp;|<span style="font-family: Arial; font-size: 14px;"></span></span></p><p>&nbsp; &nbsp;1.真心的勇气&nbsp;&nbsp;&nbsp;&nbsp;你沉默的回应 &nbsp;&nbsp;&nbsp;&nbsp;是善意</p><p><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp;2.思念的轨迹</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">回忆将我连系</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;到过去</span></p><p><br/></p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|Gadd9&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;|B7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; |Em&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Em/D&nbsp; &nbsp; |C#m7-5&nbsp;&nbsp;&nbsp;&nbsp;|<br/></p><p><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp;1.</span>刻在我心底的名字&nbsp;&nbsp;&nbsp;&nbsp;忘记了时间这回事&nbsp;&nbsp;&nbsp;&nbsp;于是谎言说了一次就一辈子</p><p><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp;2.</span><span style="font-family: Arial; font-size: 14px;">刻在我心底的名字&nbsp;&nbsp;&nbsp;&nbsp;忘记了时间这回事&nbsp;&nbsp;&nbsp;&nbsp;</span>既然决定爱上一次就一辈子</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Am7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Bm7&nbsp; &nbsp; &nbsp; &nbsp;Em7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Am7&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;|Dsus4&nbsp;&nbsp;&nbsp;&nbsp;D&nbsp;&nbsp;&nbsp;&nbsp;|<br/></p><p>&nbsp; &nbsp;1.曾顽固跟世界对峙&nbsp;&nbsp;&nbsp;&nbsp;觉得连呼吸都是奢侈&nbsp;&nbsp;&nbsp;&nbsp;如果有下次 &nbsp;&nbsp;&nbsp;&nbsp;我会再爱一次</p><p><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp;2.希望让这世界静止</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;想念才不会变得奢侈</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">如果有下次</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;我会再爱一次</span></p><p><span style="font-family: Arial; font-size: 14px;"><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp; </span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |Gadd9</span><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp; </span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;"></span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;|B7</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; |Em</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;Em/D</span><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp; |C#m7-5</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;|</span></span></p><p>&nbsp; &nbsp;刻在我心底的名字&nbsp;&nbsp;&nbsp;&nbsp;你藏在尘封的位置&nbsp;&nbsp;&nbsp;&nbsp;要不是这样我怎么过一辈子</p><p><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp; </span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;|Am7</span><span style="font-family: Arial; font-size: 14px;">&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;D</span><span style="font-family: Arial; font-size: 14px;">&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;|Bm7</span><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp; &nbsp; &nbsp;Em7</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;|Am7</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;D</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;|</span></p><p>&nbsp; &nbsp;1.我住在霓虹的城市&nbsp;&nbsp;&nbsp;&nbsp;握著飞向天堂的地址&nbsp;&nbsp;&nbsp;&nbsp;你可以翱翔 &nbsp;&nbsp;&nbsp;&nbsp;可是我只能停滞</p><p>&nbsp; &nbsp;2.我住在想你的城市&nbsp;&nbsp;&nbsp;&nbsp;握著飞向天空的钥匙&nbsp;&nbsp;&nbsp;&nbsp;你继续翱翔&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;还有我为你坚持</p><p><br/></p><p><br style="white-space: normal;"/></p><p class="p1" style="white-space: normal;">(1)</p><p class="p1" style="white-space: normal;">[间奏1] |Gmaj7&nbsp;&nbsp;&nbsp;&nbsp;|Cmaj7&nbsp;&nbsp;&nbsp;&nbsp;|Am7&nbsp;&nbsp;&nbsp;&nbsp;|D&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp; (回▲)</p><p class="p1" style="white-space: normal;"><br/></p><p class="p1" style="white-space: normal;">(2)</p><p class="p1" style="white-space: normal;"><span style="font-family: Arial; font-size: 14px;">[间奏2] |Em&nbsp;&nbsp;&nbsp;&nbsp;Bm/D&nbsp;&nbsp;&nbsp;&nbsp;|Cmaj7 －－ B7&nbsp;&nbsp;&nbsp;&nbsp;|Em&nbsp;&nbsp;&nbsp;&nbsp;Bm/D&nbsp;&nbsp;&nbsp;&nbsp;|Cmaj7&nbsp;&nbsp;&nbsp;&nbsp;|</span></p><p class="p1" style="white-space: normal;"><span style="font-family: Arial; font-size: 14px;"><br/></span></p><p class="p1" style="white-space: normal;"><span style="font-family: Arial; font-size: 14px;"><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |Gadd9&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;|B7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; |Em&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Em/D&nbsp; &nbsp; |C#m7-5&nbsp;&nbsp;&nbsp;&nbsp;|</span></span></p><p>&nbsp; &nbsp;刻在我心底的名字&nbsp;&nbsp;&nbsp;&nbsp;忘记了时间这回事&nbsp;&nbsp;&nbsp;&nbsp;既然决定爱上一次就一辈子</p><p><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |Am7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|Bm7&nbsp; &nbsp; &nbsp; &nbsp;Em7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Am7&nbsp; &nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp; D7-9&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</span></p><p>&nbsp; &nbsp;希望让这世界静止&nbsp;&nbsp;&nbsp;&nbsp;想念才不会变得奢侈&nbsp;&nbsp;&nbsp;&nbsp;如果有下次&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我会再爱&nbsp;&nbsp;&nbsp;&nbsp;一次</p><p><br style="white-space: normal;"/></p><p style="white-space: normal;">[尾奏] ||Gmaj7&nbsp; |Cmaj7&nbsp;&nbsp;&nbsp;&nbsp;|| x 2&nbsp; &nbsp;|Gmaj7&nbsp;&nbsp;&nbsp;&nbsp;|</p><p><br/></p><p><br/></p><p><br/></p>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://huangluzhi.github.io/blog/2021/04/13/My%20learned%20song/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Rex">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Luzhi's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2021/04/13/My%20learned%20song/" class="post-title-link" itemprop="url">My learned song</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-04-13 14:08:20" itemprop="dateCreated datePublished" datetime="2021-04-13T14:08:20+08:00">2021-04-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-01-28 00:47:51" itemprop="dateModified" datetime="2022-01-28T00:47:51+08:00">2022-01-28</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Finger-style"><a href="#Finger-style" class="headerlink" title="Finger style"></a>Finger style</h1><h2 id="Standard-Turning"><a href="#Standard-Turning" class="headerlink" title="Standard Turning"></a>Standard Turning</h2><ol>
+<li>风の诗</li>
+<li>黄昏</li>
+<li>Fight！</li>
+<li>风之丘</li>
+<li>Always with me</li>
+<li>約束の海</li>
+<li>Romantica</li>
+<li>Mellow Sunset</li>
+<li>Windy and Warm</li>
+<li>Angelina</li>
+<li>Mombasa</li>
+<li>Papa George</li>
+<li>Classical Gas</li>
+<li>Hunt</li>
+<li>夏天的风</li>
+</ol>
+<h2 id="DADGBE"><a href="#DADGBE" class="headerlink" title="DADGBE"></a>DADGBE</h2><ol>
+<li>相思堤上的偶遇</li>
+<li>He is a pirate</li>
+</ol>
+<h2 id="DADGBD"><a href="#DADGBD" class="headerlink" title="DADGBD"></a>DADGBD</h2><ol>
+<li>翼<del>you are the HERO</del></li>
+<li>Drifting</li>
+</ol>
+<h2 id="DADGAD"><a href="#DADGAD" class="headerlink" title="DADGAD"></a>DADGAD</h2><ol>
+<li>奇跡の山</li>
+<li>Flower</li>
+</ol>
+<h2 id="DADGAC"><a href="#DADGAC" class="headerlink" title="DADGAC"></a>DADGAC</h2><ol>
+<li>Merry Christmas Mr.Lawrence</li>
+</ol>
+<h2 id="CGDGBD"><a href="#CGDGBD" class="headerlink" title="CGDGBD"></a>CGDGBD</h2><ol>
+<li>Landscape</li>
+<li>ナユタ(NAYUTA)</li>
+</ol>
+<h2 id="CGDGAD"><a href="#CGDGAD" class="headerlink" title="CGDGAD"></a>CGDGAD</h2><ol>
+<li>流れ行く雲</li>
+</ol>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><p>WuWei</p>
+<p>Phunkdified</p>
+<p>Like a star</p>
+<p>Unravel</p>
+<p>Let it go</p>
+<h2 id="Double-Guitar"><a href="#Double-Guitar" class="headerlink" title="Double Guitar"></a>Double Guitar</h2><ol>
+<li>Mosaic</li>
+<li>11:11</li>
+</ol>
+<h1 id="弹唱"><a href="#弹唱" class="headerlink" title="弹唱"></a>弹唱</h1><ol>
+<li>Neon</li>
+<li>Hotel California</li>
+</ol>
+
       
     </div>
 
