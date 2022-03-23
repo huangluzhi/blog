@@ -28,7 +28,7 @@
 <meta property="og:description" content="C++基本数据类型uint8_t 是类型unsigned char 的别名，8个位（一个字节） short 2个字节，int 4个字节 1234567891011121314151617181920212223242526&#x2F;usr&#x2F;include&#x2F;stdint.hISO C99: 7.18 Integer types#ifndef __int8_t_defined">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-04-27T06:08:20.000Z">
-<meta property="article:modified_time" content="2021-11-30T11:15:35.787Z">
+<meta property="article:modified_time" content="2022-03-23T13:57:06.919Z">
 <meta property="article:author" content="Rex">
 <meta property="article:tag" content="编程语言基础">
 <meta name="twitter:card" content="summary">
@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-11-30 19:15:35" itemprop="dateModified" datetime="2021-11-30T19:15:35+08:00">2021-11-30</time>
+                <time title="Modified: 2022-03-23 21:57:06" itemprop="dateModified" datetime="2022-03-23T21:57:06+08:00">2022-03-23</time>
               </span>
 
           
@@ -354,6 +354,32 @@
 </tr>
 </tbody></table>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Primeprime/article/details/50726918">C++中使用空对象指针调用成员函数</a></p>
+<table>
+<thead>
+<tr>
+<th>const/static/private</th>
+<th>构造函数</th>
+<th>虚函数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>const</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>static</td>
+<td></td>
+<td>1) static成员不属于任何类对象或类实例，所以即使给此函数加上virtual也是没有任何意义的。<br/>2) 静态与非静态成员函数之间有一个主要的区别。那就是静态成员函数没有this指针。   虚函数依靠vptr和vtable来处理。vptr是一个指针，在类的构造函数中创建生成，并且只能用this指针来访问它，因为它是类的一个成员，并且vptr指向保存虚函数地址的vtable。<br/><strong>虚函数的调用关系：this -&gt; vptr -&gt; vtable -&gt;virtual function</strong></td>
+</tr>
+<tr>
+<td>private</td>
+<td>用于实现单例模式，只允许类内成员访问，所以类内要通过一个static成员函数进行实例化</td>
+<td>基类private子类public都行。类似的问题还有默认参数。这种会造成误解的方式不建议采用。</td>
+</tr>
+</tbody></table>
+<p>为何static成员函数不能为const函数<br>当声明一个非静态成员函数为const时，对this指针会有影响。对于一个Test类中的const修饰的成员函数，this指针相当于Test const *，而对于非const成员函数，this指针相当于Test *。</p>
+<p>而static成员函数没有this指针，所以使用const来修饰static成员函数没有任何意义。</p>
 
     </div>
 
@@ -372,8 +398,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/blog/2021/04/27/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="prev" title="Java 数据结构与算法">
-      <i class="fa fa-chevron-left"></i> Java 数据结构与算法
+    <a href="/blog/2021/04/27/Java%E8%99%9A%E6%8B%9F%E6%9C%BA/" rel="prev" title="Java 虚拟机">
+      <i class="fa fa-chevron-left"></i> Java 虚拟机
     </a></div>
       <div class="post-nav-item"></div>
     </div>

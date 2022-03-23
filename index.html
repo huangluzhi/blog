@@ -191,7 +191,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-11-30 19:15:35" itemprop="dateModified" datetime="2021-11-30T19:15:35+08:00">2021-11-30</time>
+                <time title="Modified: 2022-03-23 21:57:06" itemprop="dateModified" datetime="2022-03-23T21:57:06+08:00">2022-03-23</time>
               </span>
 
           
@@ -349,102 +349,32 @@
 </tr>
 </tbody></table>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Primeprime/article/details/50726918">C++中使用空对象指针调用成员函数</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://huangluzhi.github.io/blog/2021/04/27/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="Rex">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Luzhi's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2021/04/27/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">Java 数据结构与算法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-04-27 14:08:20" itemprop="dateCreated datePublished" datetime="2021-04-27T14:08:20+08:00">2021-04-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-05-07 23:05:32" itemprop="dateModified" datetime="2021-05-07T23:05:32+08:00">2021-05-07</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Java-数据结构与算法"><a href="#Java-数据结构与算法" class="headerlink" title="Java 数据结构与算法"></a>Java 数据结构与算法</h1><h2 id="简述JAVA的List"><a href="#简述JAVA的List" class="headerlink" title="简述JAVA的List"></a><strong>简述JAVA的List</strong></h2><p>List是一个有序队列，在JAVA中有两种实现方式:</p>
-<p>ArrayList 使用数组实现，是容量可变的非线程安全列表，随机访问快，集合扩容时会创建更大的数组，把原有数组复制到新数组。</p>
-<p>LinkedList 本质是双向链表，与 ArrayList 相比插入和删除速度更快，但随机访问元素很慢。</p>
-<h2 id="简述JAVA的Set"><a href="#简述JAVA的Set" class="headerlink" title="简述JAVA的Set"></a>简述JAVA的Set</h2><p>Set 即集合，该数据结构不允许元素重复且无序。JAVA对Set有三种实现方式：</p>
-<p>HashSet 通过 HashMap 实现，HashMap 的 Key 即 HashSet 存储的元素，Value系统自定义一个名为 PRESENT 的 Object 类型常量。判断元素是否相同时，先比较hashCode，相同后再利用equals比较，查询O(1)</p>
-<p>LinkedHashSet 继承自 HashSet，通过 LinkedHashMap 实现，使用双向链表维护元素插入顺序。</p>
-<p>TreeSet 通过 TreeMap 实现的，底层数据结构是红黑树，添加元素到集合时按照比较规则将其插入合适的位置，保证插入后的集合仍然有序。查询O(logn)</p>
-<h2 id="简述JAVA的HashMap"><a href="#简述JAVA的HashMap" class="headerlink" title="简述JAVA的HashMap"></a><strong>简述JAVA的HashMap</strong></h2><p>JDK8 之前底层实现是数组 + 链表，JDK8 改为数组 + 链表/红黑树。主要成员变量包括存储数据的 table 数组、元素数量 size、加载因子 loadFactor。 </p>
-<p>HashMap 中数据以键值对的形式存在，键对应的 hash 值用来计算数组下标，如果两个元素 key 的 hash 值一样，就会发生哈希冲突，被放到同一个链表上。</p>
-<p>table 数组记录 HashMap 的数据，每个下标对应一条链表，所有哈希冲突的数据都会被存放到同一条链表，Node/Entry 节点包含四个成员变量：key、value、next 指针和 hash 值。在JDK8后链表超过8会转化为红黑树。</p>
-<p>若当前数据/总数据容量&gt;负载因子，Hashmap将执行扩容操作。 </p>
-<p>默认初始化容量为 16，扩容容量必须是 2 的幂次方、最大容量为 1&lt;&lt; 30 、默认加载因子为 0.75。</p>
-<h2 id="简述解决Hash冲突的方法"><a href="#简述解决Hash冲突的方法" class="headerlink" title="简述解决Hash冲突的方法"></a>简述解决Hash冲突的方法</h2><p>开放定址法：当发生哈希冲突时，如果哈希表未被装满，那么可以把这个值存放到冲突位置中的下一个空位置中去</p>
-<p>链地址法：对相同的哈希地址，设置一个单链表，单链表内放的都是哈希冲突元素。</p>
-<h2 id="简述java的TreeMap"><a href="#简述java的TreeMap" class="headerlink" title="简述java的TreeMap"></a>简述java的TreeMap</h2><p>TreeMap是底层利用红黑树实现的Map结构，底层实现是一棵平衡的排序二叉树，由于红黑树的插入、删除、遍历时间复杂度都为O(logN)，所以性能上低于哈希表。但是哈希表无法提供键值对的有序输出，红黑树可以按照键的值的大小有序输出。</p>
-<h2 id="简述AVL树"><a href="#简述AVL树" class="headerlink" title="简述AVL树"></a>简述AVL树</h2><p>AVL树是一种改进版的搜索二叉树，其引入平衡因子（左子支高度与右子支高度之差的绝对值），通过旋转使其尽量保持平衡。</p>
-<p>任何一个节点的左子支高度与右子支高度之差的绝对值不超过1。</p>
-<h2 id="简述红黑树"><a href="#简述红黑树" class="headerlink" title="简述红黑树"></a>简述红黑树</h2><p>红黑树本身是有2-3树发展而来，红黑树是保持黑平衡的二叉树，其查找会比AVL树慢一点，添加和删除元素会比AVL树快一点。增删改查统计性能上讲，红黑树更优。 </p>
-<p>红黑树主要特征是在每个节点上增加一个属性表示节点颜色，可以红色或黑色。红黑树和 AVL 树类似，都是在进行插入和删除时通过旋转保持自身平衡，从而获得较高的查找性能。红黑树保证从根节点到叶尾的最长路径不超过最短路径的 2 倍，所以最差时间复杂度是 O(logn)。红黑树通过重新着色和左右旋转，更加高效地完成了插入和删除之后的自平衡调整。</p>
-<h2 id="简述常见排序算法和其对应时间空间复杂度"><a href="#简述常见排序算法和其对应时间空间复杂度" class="headerlink" title="简述常见排序算法和其对应时间空间复杂度"></a>简述常见排序算法和其对应时间空间复杂度</h2><p>插入排序：每一趟将一个待排序记录按其关键字的大小插入到已排好序的一组记录的适当位置上，直到所有待排序记录全部插入为止。</p>
-<p>排序算法稳定。时间复杂度 O(n²)，空间复杂度 O(1)。</p>
-<p>希尔排序：把记录按下标的一定增量分组，对每组进行直接插入排序，每次排序后减小增量，当增量减至 1 时排序完毕。</p>
-<p>排序算法不稳定。时间复杂度 O(nlogn)，空间复杂度 O(1)。直接选择排序：每次在未排序序列中找到最小元素，和未排序序列的第一个元素交换位置，再在剩余未排序序列中重复该操作直到所有元素排序完毕。</p>
-<p>排序算法不稳定。时间复杂度 O(n²)，空间复杂度 O(1)。</p>
-<p>堆排序：将待排序数组看作一个树状数组，建立一个二叉树堆。通过对这种数据结构进行每个元素的插入，完成排序工作。</p>
-<p>排序算法不稳定，时间复杂度 O(nlogn)，空间复杂度 O(1)。</p>
-<p>冒泡排序：比较相邻的元素，如果第一个比第二个大就进行交换，对每一对相邻元素做同样的工作。</p>
-<p>排序算法稳定，时间复杂度 O(n²)，空间复杂度 O(1)。</p>
-<p>快速排序：随机选择一个基准元素，通过一趟排序将要排序的数据分割成独立的两部分，一部分全部小于等于基准元素，一部分全部大于等于基准元素，再按此方法递归对这两部分数据进行快速排序。</p>
-<p>排序算法不稳定，时间复杂度 O(nlogn)，空间复杂度 O(logn)。</p>
-<p>归并排序：将待排序序列分成两部分，然后对两部分分别递归排序，最后进行合并。</p>
-<p>排序算法稳定，时间复杂度都为 O(nlogn)，空间复杂度为 O(n)。</p>
+<table>
+<thead>
+<tr>
+<th>const/static/private</th>
+<th>构造函数</th>
+<th>虚函数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>const</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>static</td>
+<td></td>
+<td>1) static成员不属于任何类对象或类实例，所以即使给此函数加上virtual也是没有任何意义的。<br/>2) 静态与非静态成员函数之间有一个主要的区别。那就是静态成员函数没有this指针。   虚函数依靠vptr和vtable来处理。vptr是一个指针，在类的构造函数中创建生成，并且只能用this指针来访问它，因为它是类的一个成员，并且vptr指向保存虚函数地址的vtable。<br/><strong>虚函数的调用关系：this -&gt; vptr -&gt; vtable -&gt;virtual function</strong></td>
+</tr>
+<tr>
+<td>private</td>
+<td>用于实现单例模式，只允许类内成员访问，所以类内要通过一个static成员函数进行实例化</td>
+<td>基类private子类public都行。类似的问题还有默认参数。这种会造成误解的方式不建议采用。</td>
+</tr>
+</tbody></table>
+<p>为何static成员函数不能为const函数<br>当声明一个非静态成员函数为const时，对this指针会有影响。对于一个Test类中的const修饰的成员函数，this指针相当于Test const *，而对于非const成员函数，this指针相当于Test *。</p>
+<p>而static成员函数没有this指针，所以使用const来修饰static成员函数没有任何意义。</p>
 
       
     </div>
@@ -628,6 +558,189 @@
 </li>
 </ol>
 
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://huangluzhi.github.io/blog/2021/04/27/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Rex">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Luzhi's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2021/04/27/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">Java 数据结构与算法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-04-27 14:08:20" itemprop="dateCreated datePublished" datetime="2021-04-27T14:08:20+08:00">2021-04-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-05-07 23:05:32" itemprop="dateModified" datetime="2021-05-07T23:05:32+08:00">2021-05-07</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Java-数据结构与算法"><a href="#Java-数据结构与算法" class="headerlink" title="Java 数据结构与算法"></a>Java 数据结构与算法</h1><h2 id="简述JAVA的List"><a href="#简述JAVA的List" class="headerlink" title="简述JAVA的List"></a><strong>简述JAVA的List</strong></h2><p>List是一个有序队列，在JAVA中有两种实现方式:</p>
+<p>ArrayList 使用数组实现，是容量可变的非线程安全列表，随机访问快，集合扩容时会创建更大的数组，把原有数组复制到新数组。</p>
+<p>LinkedList 本质是双向链表，与 ArrayList 相比插入和删除速度更快，但随机访问元素很慢。</p>
+<h2 id="简述JAVA的Set"><a href="#简述JAVA的Set" class="headerlink" title="简述JAVA的Set"></a>简述JAVA的Set</h2><p>Set 即集合，该数据结构不允许元素重复且无序。JAVA对Set有三种实现方式：</p>
+<p>HashSet 通过 HashMap 实现，HashMap 的 Key 即 HashSet 存储的元素，Value系统自定义一个名为 PRESENT 的 Object 类型常量。判断元素是否相同时，先比较hashCode，相同后再利用equals比较，查询O(1)</p>
+<p>LinkedHashSet 继承自 HashSet，通过 LinkedHashMap 实现，使用双向链表维护元素插入顺序。</p>
+<p>TreeSet 通过 TreeMap 实现的，底层数据结构是红黑树，添加元素到集合时按照比较规则将其插入合适的位置，保证插入后的集合仍然有序。查询O(logn)</p>
+<h2 id="简述JAVA的HashMap"><a href="#简述JAVA的HashMap" class="headerlink" title="简述JAVA的HashMap"></a><strong>简述JAVA的HashMap</strong></h2><p>JDK8 之前底层实现是数组 + 链表，JDK8 改为数组 + 链表/红黑树。主要成员变量包括存储数据的 table 数组、元素数量 size、加载因子 loadFactor。 </p>
+<p>HashMap 中数据以键值对的形式存在，键对应的 hash 值用来计算数组下标，如果两个元素 key 的 hash 值一样，就会发生哈希冲突，被放到同一个链表上。</p>
+<p>table 数组记录 HashMap 的数据，每个下标对应一条链表，所有哈希冲突的数据都会被存放到同一条链表，Node/Entry 节点包含四个成员变量：key、value、next 指针和 hash 值。在JDK8后链表超过8会转化为红黑树。</p>
+<p>若当前数据/总数据容量&gt;负载因子，Hashmap将执行扩容操作。 </p>
+<p>默认初始化容量为 16，扩容容量必须是 2 的幂次方、最大容量为 1&lt;&lt; 30 、默认加载因子为 0.75。</p>
+<h2 id="简述解决Hash冲突的方法"><a href="#简述解决Hash冲突的方法" class="headerlink" title="简述解决Hash冲突的方法"></a>简述解决Hash冲突的方法</h2><p>开放定址法：当发生哈希冲突时，如果哈希表未被装满，那么可以把这个值存放到冲突位置中的下一个空位置中去</p>
+<p>链地址法：对相同的哈希地址，设置一个单链表，单链表内放的都是哈希冲突元素。</p>
+<h2 id="简述java的TreeMap"><a href="#简述java的TreeMap" class="headerlink" title="简述java的TreeMap"></a>简述java的TreeMap</h2><p>TreeMap是底层利用红黑树实现的Map结构，底层实现是一棵平衡的排序二叉树，由于红黑树的插入、删除、遍历时间复杂度都为O(logN)，所以性能上低于哈希表。但是哈希表无法提供键值对的有序输出，红黑树可以按照键的值的大小有序输出。</p>
+<h2 id="简述AVL树"><a href="#简述AVL树" class="headerlink" title="简述AVL树"></a>简述AVL树</h2><p>AVL树是一种改进版的搜索二叉树，其引入平衡因子（左子支高度与右子支高度之差的绝对值），通过旋转使其尽量保持平衡。</p>
+<p>任何一个节点的左子支高度与右子支高度之差的绝对值不超过1。</p>
+<h2 id="简述红黑树"><a href="#简述红黑树" class="headerlink" title="简述红黑树"></a>简述红黑树</h2><p>红黑树本身是有2-3树发展而来，红黑树是保持黑平衡的二叉树，其查找会比AVL树慢一点，添加和删除元素会比AVL树快一点。增删改查统计性能上讲，红黑树更优。 </p>
+<p>红黑树主要特征是在每个节点上增加一个属性表示节点颜色，可以红色或黑色。红黑树和 AVL 树类似，都是在进行插入和删除时通过旋转保持自身平衡，从而获得较高的查找性能。红黑树保证从根节点到叶尾的最长路径不超过最短路径的 2 倍，所以最差时间复杂度是 O(logn)。红黑树通过重新着色和左右旋转，更加高效地完成了插入和删除之后的自平衡调整。</p>
+<h2 id="简述常见排序算法和其对应时间空间复杂度"><a href="#简述常见排序算法和其对应时间空间复杂度" class="headerlink" title="简述常见排序算法和其对应时间空间复杂度"></a>简述常见排序算法和其对应时间空间复杂度</h2><p>插入排序：每一趟将一个待排序记录按其关键字的大小插入到已排好序的一组记录的适当位置上，直到所有待排序记录全部插入为止。</p>
+<p>排序算法稳定。时间复杂度 O(n²)，空间复杂度 O(1)。</p>
+<p>希尔排序：把记录按下标的一定增量分组，对每组进行直接插入排序，每次排序后减小增量，当增量减至 1 时排序完毕。</p>
+<p>排序算法不稳定。时间复杂度 O(nlogn)，空间复杂度 O(1)。直接选择排序：每次在未排序序列中找到最小元素，和未排序序列的第一个元素交换位置，再在剩余未排序序列中重复该操作直到所有元素排序完毕。</p>
+<p>排序算法不稳定。时间复杂度 O(n²)，空间复杂度 O(1)。</p>
+<p>堆排序：将待排序数组看作一个树状数组，建立一个二叉树堆。通过对这种数据结构进行每个元素的插入，完成排序工作。</p>
+<p>排序算法不稳定，时间复杂度 O(nlogn)，空间复杂度 O(1)。</p>
+<p>冒泡排序：比较相邻的元素，如果第一个比第二个大就进行交换，对每一对相邻元素做同样的工作。</p>
+<p>排序算法稳定，时间复杂度 O(n²)，空间复杂度 O(1)。</p>
+<p>快速排序：随机选择一个基准元素，通过一趟排序将要排序的数据分割成独立的两部分，一部分全部小于等于基准元素，一部分全部大于等于基准元素，再按此方法递归对这两部分数据进行快速排序。</p>
+<p>排序算法不稳定，时间复杂度 O(nlogn)，空间复杂度 O(logn)。</p>
+<p>归并排序：将待排序序列分成两部分，然后对两部分分别递归排序，最后进行合并。</p>
+<p>排序算法稳定，时间复杂度都为 O(nlogn)，空间复杂度为 O(n)。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://huangluzhi.github.io/blog/2021/04/27/%E6%95%B0%E6%8D%AE%E5%BA%93-%E6%8F%90%E7%BA%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Rex">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Luzhi's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2021/04/27/%E6%95%B0%E6%8D%AE%E5%BA%93-%E6%8F%90%E7%BA%B2/" class="post-title-link" itemprop="url">数据库-提纲</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-04-27 14:08:20" itemprop="dateCreated datePublished" datetime="2021-04-27T14:08:20+08:00">2021-04-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-11-28 14:57:11" itemprop="dateModified" datetime="2021-11-28T14:57:11+08:00">2021-11-28</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><p><a target="_blank" rel="noopener" href="https://www.secn.net/article/1258557.html">9道面试题</a></p>
+<h2 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a>隔离级别</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/60492217">隔离级别</a></p>
+<h2 id="ACID与隔离级别"><a href="#ACID与隔离级别" class="headerlink" title="ACID与隔离级别"></a>ACID与隔离级别</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/kismetv/p/10331633.html">https://www.cnblogs.com/kismetv/p/10331633.html</a></p>
+<h2 id="一致性是什么"><a href="#一致性是什么" class="headerlink" title="一致性是什么"></a>一致性是什么</h2><p>一致性就是:应用系统从一个正确的状态到另一个正确的状态。而ACID就是说事务能够通过AID来保证这个C的过程。C是目的，AID都是手段。事务的一致性只是在数据库预先定义的约束有关，满足了约束即满足了一致性</p>
+<h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><h2 id="HAVING-子句"><a href="#HAVING-子句" class="headerlink" title="HAVING 子句"></a>HAVING 子句</h2><p>在 SQL 中增加 HAVING 子句原因是，WHERE 关键字无法与聚合函数一起使用。</p>
+<p>HAVING 子句可以让我们筛选分组后的各组数据。</p>
+<p><strong>where 和having之后都是筛选条件，但是有区别的：</strong></p>
+<p>1.where在group by前， having在group by 之后</p>
+<p>2.聚合函数（avg、sum、max、min、count），不能作为条件放在where之后，但可以放在having之后</p>
+<h3 id="查询每门科目最好的前5个同学"><a href="#查询每门科目最好的前5个同学" class="headerlink" title="查询每门科目最好的前5个同学"></a>查询每门科目最好的前5个同学</h3><p>分析：先用自己交自己，条件为a.courseid = b.courseid and a.score&lt;b.score，列出同一门课内所有分数比较的情况。通过a.studentid和a.courseid可以联合确定这个同学的这门课的这个分数究竟比多少个其他记录高/低， 如果这个特定的a.studentid和a.courseid组合出现在这张表里的次数少于5个，那就意味着这个组合（学号+课号+分数）是这门课里排名前五的。</p>
+<p>下面这个计算中having count 部分其实count(<em>)或者任意其他列都可以，这里制定了一个列只是因为比count(</em>)运行速度上更快。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.studentid,a.courseid,a.score </span><br><span class="line"><span class="keyword">from</span> student_score <span class="keyword">as</span> a</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span> student_score <span class="keyword">as</span> b</span><br><span class="line"><span class="keyword">on</span> a.courseid <span class="operator">=</span> b.courseid <span class="keyword">and</span> a.score<span class="operator">&lt;</span>b.score</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> a.courseid, a.studentid</span><br><span class="line"><span class="keyword">having</span> <span class="built_in">count</span>(b.courseid)<span class="operator">&lt;</span><span class="number">5</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> a.courseid;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> s.student_name , c.course_name , temp.score </span><br><span class="line"><span class="keyword">from</span> student s , course c ,</span><br><span class="line">(</span><br><span class="line">    <span class="keyword">select</span> score.student_id, score.course_id ,score.score , <span class="built_in">row_number</span>()</span><br><span class="line">    <span class="keyword">over</span>(</span><br><span class="line">        <span class="keyword">partition</span> <span class="keyword">by</span> course_id  </span><br><span class="line">        <span class="keyword">order</span> <span class="keyword">by</span> score  <span class="keyword">desc</span>) </span><br><span class="line">    rn <span class="keyword">from</span> score</span><br><span class="line">) temp </span><br><span class="line"><span class="keyword">where</span>  temp.rn<span class="operator">&lt;=</span><span class="number">5</span> <span class="keyword">and</span> s.student_id <span class="operator">=</span> temp.student_id <span class="keyword">and</span> c.course_id <span class="operator">=</span> temp.course_id</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Oracle"><a href="#Oracle" class="headerlink" title="Oracle"></a>Oracle</h4><p><strong>求出每门课程成绩排名前五名的同学的姓名，分数和课程名：</strong><br>成绩相同的人排名相同，且排名不是连续的。</p>
+   <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span>  </span><br><span class="line">  <span class="keyword">from</span> (<span class="keyword">select</span> s.STUDENT_NAME,  </span><br><span class="line">               sc.SCORE,  </span><br><span class="line">               c.COURSE_NAME,  </span><br><span class="line">               <span class="built_in">rank</span>() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> c.COURSE_ID <span class="keyword">order</span> <span class="keyword">by</span> sc.SCORE <span class="keyword">desc</span>) ranking  </span><br><span class="line">          <span class="keyword">from</span> student s, course c, score sc  </span><br><span class="line">         <span class="keyword">where</span> s.STUDENT_ID <span class="operator">=</span> sc.STUDENT_ID  </span><br><span class="line">           <span class="keyword">and</span> c.COURSE_ID <span class="operator">=</span> sc.COURSE_ID) t  </span><br><span class="line"><span class="keyword">where</span> t.ranking <span class="operator">&lt;</span> <span class="number">6</span>;</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">STUDENT_NAME SCORE COURSE_NAME RANKING</span><br><span class="line">张三 99 语文 1</span><br><span class="line">李四 99 语文 1</span><br><span class="line">王五 96 语文 3</span><br><span class="line">马六 93 语文 4</span><br><span class="line">孙七 90 语文 5</span><br><span class="line">张三 98 数学 1</span><br><span class="line">李四 97 数学 2</span><br><span class="line">王五 95 数学 3</span><br><span class="line">马六 92 数学 4</span><br><span class="line">孙七 89 数学 5</span><br><span class="line">李四 98 英语 1</span><br><span class="line">张三 97 英语 2</span><br><span class="line">王五 94 英语 3</span><br><span class="line">马六 91 英语 4</span><br><span class="line">孙七 88 英语 5</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -860,7 +973,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-05-07 22:56:58" itemprop="dateModified" datetime="2021-05-07T22:56:58+08:00">2021-05-07</time>
+                <time title="Modified: 2022-03-23 11:23:20" itemprop="dateModified" datetime="2022-03-23T11:23:20+08:00">2022-03-23</time>
               </span>
 
           
@@ -892,6 +1005,13 @@
 <p>懒汉式实现</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">DoubleCheckSingleton</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span></span><br><span class="line">    Singleton instance;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (Singleton.class) &#123;</span><br><span class="line">                <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">                	instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+
+
+<h2 id="单例模式与私有构造函数"><a href="#单例模式与私有构造函数" class="headerlink" title="单例模式与私有构造函数"></a>单例模式与私有构造函数</h2><p>类是为设计模式而存在的，就拿单例模式（懒加载）来说，怎么控制唯一实例？</p>
+<p>最根本的就是禁止无限制的使用<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:%22556167980%22%7D">构造函数</a>，即把类自身的构造函数的访问权限设置为private。</p>
+<p>在类的内部设计一个静态public方法（即getInstance），该方法会检查静态实例是否初始化完成，外部访问getInstance方法时，只能获得第一次实例化的对象。</p>
+<p>如果没有private约束，很难防止外界去滥用构造函数。</p>
+<p>链接：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/21151015/answer/556167980">https://www.zhihu.com/question/21151015/answer/556167980</a></p>
 <h2 id="简述代理模式"><a href="#简述代理模式" class="headerlink" title="简述代理模式"></a>简述代理模式</h2><p>代理模式为其他对象提供一种代理以控制对这个对象的访问。优点是可以增强目标对象的功能，降低代码耦合度，扩展性好。缺点是在客户端和目标对象之间增加代理对象会导致请求处理速度变慢，增加系统复杂度。</p>
 <p>静态代理：在程序运行前就已经存在代理类的字节码文件，代理类和委托类的关系在运行前就确定了。</p>
 <p>动态代理：程序运行期间动态的生成，所以不存在代理类的字节码文件。代理类和委托类的关系是在程序运行时确定。</p>
@@ -901,93 +1021,6 @@
 <h2 id="简述装饰器模式"><a href="#简述装饰器模式" class="headerlink" title="简述装饰器模式"></a>简述装饰器模式</h2><p>装饰者模式可以动态地给对象添加一些额外的属性或行为，即需要修改原有的功能，但又不愿直接去修改原有的代码时，设计一个Decorator套在原有代码外面。</p>
 <h2 id="简述观察者模式"><a href="#简述观察者模式" class="headerlink" title="简述观察者模式"></a>简述观察者模式</h2><p>观察者模式表示的是一种对象与对象之间具有依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新。</p>
 
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://huangluzhi.github.io/blog/2021/04/27/%E6%95%B0%E6%8D%AE%E5%BA%93-%E6%8F%90%E7%BA%B2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="Rex">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Luzhi's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2021/04/27/%E6%95%B0%E6%8D%AE%E5%BA%93-%E6%8F%90%E7%BA%B2/" class="post-title-link" itemprop="url">数据库-提纲</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-04-27 14:08:20" itemprop="dateCreated datePublished" datetime="2021-04-27T14:08:20+08:00">2021-04-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-11-28 14:57:11" itemprop="dateModified" datetime="2021-11-28T14:57:11+08:00">2021-11-28</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><p><a target="_blank" rel="noopener" href="https://www.secn.net/article/1258557.html">9道面试题</a></p>
-<h2 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a>隔离级别</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/60492217">隔离级别</a></p>
-<h2 id="ACID与隔离级别"><a href="#ACID与隔离级别" class="headerlink" title="ACID与隔离级别"></a>ACID与隔离级别</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/kismetv/p/10331633.html">https://www.cnblogs.com/kismetv/p/10331633.html</a></p>
-<h2 id="一致性是什么"><a href="#一致性是什么" class="headerlink" title="一致性是什么"></a>一致性是什么</h2><p>一致性就是:应用系统从一个正确的状态到另一个正确的状态。而ACID就是说事务能够通过AID来保证这个C的过程。C是目的，AID都是手段。事务的一致性只是在数据库预先定义的约束有关，满足了约束即满足了一致性</p>
-<h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><h2 id="HAVING-子句"><a href="#HAVING-子句" class="headerlink" title="HAVING 子句"></a>HAVING 子句</h2><p>在 SQL 中增加 HAVING 子句原因是，WHERE 关键字无法与聚合函数一起使用。</p>
-<p>HAVING 子句可以让我们筛选分组后的各组数据。</p>
-<p><strong>where 和having之后都是筛选条件，但是有区别的：</strong></p>
-<p>1.where在group by前， having在group by 之后</p>
-<p>2.聚合函数（avg、sum、max、min、count），不能作为条件放在where之后，但可以放在having之后</p>
-<h3 id="查询每门科目最好的前5个同学"><a href="#查询每门科目最好的前5个同学" class="headerlink" title="查询每门科目最好的前5个同学"></a>查询每门科目最好的前5个同学</h3><p>分析：先用自己交自己，条件为a.courseid = b.courseid and a.score&lt;b.score，列出同一门课内所有分数比较的情况。通过a.studentid和a.courseid可以联合确定这个同学的这门课的这个分数究竟比多少个其他记录高/低， 如果这个特定的a.studentid和a.courseid组合出现在这张表里的次数少于5个，那就意味着这个组合（学号+课号+分数）是这门课里排名前五的。</p>
-<p>下面这个计算中having count 部分其实count(<em>)或者任意其他列都可以，这里制定了一个列只是因为比count(</em>)运行速度上更快。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.studentid,a.courseid,a.score </span><br><span class="line"><span class="keyword">from</span> student_score <span class="keyword">as</span> a</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span> student_score <span class="keyword">as</span> b</span><br><span class="line"><span class="keyword">on</span> a.courseid <span class="operator">=</span> b.courseid <span class="keyword">and</span> a.score<span class="operator">&lt;</span>b.score</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> a.courseid, a.studentid</span><br><span class="line"><span class="keyword">having</span> <span class="built_in">count</span>(b.courseid)<span class="operator">&lt;</span><span class="number">5</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> a.courseid;</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> s.student_name , c.course_name , temp.score </span><br><span class="line"><span class="keyword">from</span> student s , course c ,</span><br><span class="line">(</span><br><span class="line">    <span class="keyword">select</span> score.student_id, score.course_id ,score.score , <span class="built_in">row_number</span>()</span><br><span class="line">    <span class="keyword">over</span>(</span><br><span class="line">        <span class="keyword">partition</span> <span class="keyword">by</span> course_id  </span><br><span class="line">        <span class="keyword">order</span> <span class="keyword">by</span> score  <span class="keyword">desc</span>) </span><br><span class="line">    rn <span class="keyword">from</span> score</span><br><span class="line">) temp </span><br><span class="line"><span class="keyword">where</span>  temp.rn<span class="operator">&lt;=</span><span class="number">5</span> <span class="keyword">and</span> s.student_id <span class="operator">=</span> temp.student_id <span class="keyword">and</span> c.course_id <span class="operator">=</span> temp.course_id</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="Oracle"><a href="#Oracle" class="headerlink" title="Oracle"></a>Oracle</h4><p><strong>求出每门课程成绩排名前五名的同学的姓名，分数和课程名：</strong><br>成绩相同的人排名相同，且排名不是连续的。</p>
-   <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span>  </span><br><span class="line">  <span class="keyword">from</span> (<span class="keyword">select</span> s.STUDENT_NAME,  </span><br><span class="line">               sc.SCORE,  </span><br><span class="line">               c.COURSE_NAME,  </span><br><span class="line">               <span class="built_in">rank</span>() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> c.COURSE_ID <span class="keyword">order</span> <span class="keyword">by</span> sc.SCORE <span class="keyword">desc</span>) ranking  </span><br><span class="line">          <span class="keyword">from</span> student s, course c, score sc  </span><br><span class="line">         <span class="keyword">where</span> s.STUDENT_ID <span class="operator">=</span> sc.STUDENT_ID  </span><br><span class="line">           <span class="keyword">and</span> c.COURSE_ID <span class="operator">=</span> sc.COURSE_ID) t  </span><br><span class="line"><span class="keyword">where</span> t.ranking <span class="operator">&lt;</span> <span class="number">6</span>;</span><br></pre></td></tr></table></figure>
-
-<p>结果：</p>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">STUDENT_NAME SCORE COURSE_NAME RANKING</span><br><span class="line">张三 99 语文 1</span><br><span class="line">李四 99 语文 1</span><br><span class="line">王五 96 语文 3</span><br><span class="line">马六 93 语文 4</span><br><span class="line">孙七 90 语文 5</span><br><span class="line">张三 98 数学 1</span><br><span class="line">李四 97 数学 2</span><br><span class="line">王五 95 数学 3</span><br><span class="line">马六 92 数学 4</span><br><span class="line">孙七 89 数学 5</span><br><span class="line">李四 98 英语 1</span><br><span class="line">张三 97 英语 2</span><br><span class="line">王五 94 英语 3</span><br><span class="line">马六 91 英语 4</span><br><span class="line">孙七 88 英语 5</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -1806,67 +1839,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://huangluzhi.github.io/blog/2021/04/13/%E5%88%BB%E5%9C%A8%E6%88%91%E5%BF%83%E5%BA%95%E7%9A%84%E5%90%8D%E5%AD%97-%E5%8D%A2%E5%B9%BF%E4%BB%B2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="Rex">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Luzhi's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2021/04/13/%E5%88%BB%E5%9C%A8%E6%88%91%E5%BF%83%E5%BA%95%E7%9A%84%E5%90%8D%E5%AD%97-%E5%8D%A2%E5%B9%BF%E4%BB%B2/" class="post-title-link" itemprop="url">刻在我心底的名字-卢广仲</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-04-13 14:08:20 / Modified: 14:09:23" itemprop="dateCreated datePublished" datetime="2021-04-13T14:08:20+08:00">2021-04-13</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="刻在我心底的名字"><a href="#刻在我心底的名字" class="headerlink" title="刻在我心底的名字"></a>刻在我心底的名字</h1><p><strong>singer</strong>: 卢广仲<br><strong>composer</strong>: 许媛婷、佳旺、陈文华<br><strong>lyricist</strong>: 许媛婷、佳旺、陈文华</p>
-<p><strong>tempo</strong>: 68<br><strong>origin key</strong>: Bb <strong>Baritone key</strong>: A <strong>Mezzo key</strong>: E </p>
-<hr>
-<p class="p1" style="white-space: normal;">[前奏] |Gadd9&nbsp;&nbsp;&nbsp;&nbsp;|Em7&nbsp;&nbsp;&nbsp;&nbsp;|Cmaj7&nbsp;&nbsp;&nbsp;&nbsp;|Cm&nbsp; &nbsp; |</p><p class="p1" style="white-space: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |Gadd9&nbsp;&nbsp;&nbsp;&nbsp;|Em7&nbsp;&nbsp;&nbsp;&nbsp;|Am7&nbsp;&nbsp;&nbsp;&nbsp;|Cm&nbsp;&nbsp;&nbsp;&nbsp;|</p><p class="p1" style="white-space: normal;"><br/></p><p class="p1" style="white-space: normal;">&nbsp; &nbsp;|Gadd9&nbsp; &nbsp;&nbsp;|F#m7-5&nbsp; &nbsp;B7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Em7&nbsp;&nbsp;&nbsp;&nbsp; |Dm7&nbsp;&nbsp;&nbsp;&nbsp;G&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</p><p class="p1" style="white-space: normal;">&nbsp; &nbsp;Oublie-le &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;好几次我告诉我自己&nbsp; &nbsp; &nbsp; &nbsp;越想努力赶上<br/></p><p>&nbsp; &nbsp;|Cadd9&nbsp; &nbsp;|G/B&nbsp;&nbsp;&nbsp;&nbsp;C#m7-5&nbsp; &nbsp;|Am7&nbsp;&nbsp;&nbsp;&nbsp; |D7-9&nbsp;&nbsp;&nbsp;&nbsp;|</p><p>&nbsp; &nbsp;光的影&nbsp;&nbsp;&nbsp;&nbsp;越&nbsp;&nbsp;&nbsp;&nbsp;无法&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;抽离&nbsp;&nbsp;&nbsp;&nbsp; 而已</p><p><span style="font-family: Arial; font-size: 14px;"></span><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp;|Gadd9</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;|F#m7-5</span><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp;B7</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;|Em7</span><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">|Dm7</span><span style="font-family: Arial; font-size: 14px;">&nbsp; G&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;|</span><span style="font-family: Arial; font-size: 14px;"></span></p><p>&nbsp; &nbsp;1.Je t&#39;aimais &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;刻骨铭心&nbsp;&nbsp;&nbsp;&nbsp;只有我自己&nbsp;&nbsp;&nbsp;&nbsp;好不容易交出</p><p><span style="font-family: Arial; font-size: 14px;"></span><span style="font-family: Arial; font-size: 14px;"><span style="font-family: Arial; font-size: 14px;">▲</span>2.寻找你</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 茫茫人海&nbsp;&nbsp;&nbsp;&nbsp;却又想起你</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">好不容易离开</span></p><p><span style="font-family: Arial; font-size: 14px;"><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp; &nbsp;&nbsp;|Cadd9&nbsp; </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Cm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Dsus4&nbsp;&nbsp;&nbsp;&nbsp;|D&nbsp;&nbsp;&nbsp;&nbsp;|<span style="font-family: Arial; font-size: 14px;"></span></span></p><p>&nbsp; &nbsp;1.真心的勇气&nbsp;&nbsp;&nbsp;&nbsp;你沉默的回应 &nbsp;&nbsp;&nbsp;&nbsp;是善意</p><p><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp;2.思念的轨迹</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">回忆将我连系</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;到过去</span></p><p><br/></p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|Gadd9&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;|B7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; |Em&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Em/D&nbsp; &nbsp; |C#m7-5&nbsp;&nbsp;&nbsp;&nbsp;|<br/></p><p><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp;1.</span>刻在我心底的名字&nbsp;&nbsp;&nbsp;&nbsp;忘记了时间这回事&nbsp;&nbsp;&nbsp;&nbsp;于是谎言说了一次就一辈子</p><p><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp;2.</span><span style="font-family: Arial; font-size: 14px;">刻在我心底的名字&nbsp;&nbsp;&nbsp;&nbsp;忘记了时间这回事&nbsp;&nbsp;&nbsp;&nbsp;</span>既然决定爱上一次就一辈子</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Am7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Bm7&nbsp; &nbsp; &nbsp; &nbsp;Em7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Am7&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;|Dsus4&nbsp;&nbsp;&nbsp;&nbsp;D&nbsp;&nbsp;&nbsp;&nbsp;|<br/></p><p>&nbsp; &nbsp;1.曾顽固跟世界对峙&nbsp;&nbsp;&nbsp;&nbsp;觉得连呼吸都是奢侈&nbsp;&nbsp;&nbsp;&nbsp;如果有下次 &nbsp;&nbsp;&nbsp;&nbsp;我会再爱一次</p><p><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp;2.希望让这世界静止</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;想念才不会变得奢侈</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">如果有下次</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;我会再爱一次</span></p><p><span style="font-family: Arial; font-size: 14px;"><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp; </span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |Gadd9</span><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp; </span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;"></span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;|B7</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; |Em</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;Em/D</span><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp; |C#m7-5</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;|</span></span></p><p>&nbsp; &nbsp;刻在我心底的名字&nbsp;&nbsp;&nbsp;&nbsp;你藏在尘封的位置&nbsp;&nbsp;&nbsp;&nbsp;要不是这样我怎么过一辈子</p><p><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp; </span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;|Am7</span><span style="font-family: Arial; font-size: 14px;">&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;D</span><span style="font-family: Arial; font-size: 14px;">&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;|Bm7</span><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp; &nbsp; &nbsp;Em7</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;|Am7</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;D</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;|</span></p><p>&nbsp; &nbsp;1.我住在霓虹的城市&nbsp;&nbsp;&nbsp;&nbsp;握著飞向天堂的地址&nbsp;&nbsp;&nbsp;&nbsp;你可以翱翔 &nbsp;&nbsp;&nbsp;&nbsp;可是我只能停滞</p><p>&nbsp; &nbsp;2.我住在想你的城市&nbsp;&nbsp;&nbsp;&nbsp;握著飞向天空的钥匙&nbsp;&nbsp;&nbsp;&nbsp;你继续翱翔&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;还有我为你坚持</p><p><br/></p><p><br style="white-space: normal;"/></p><p class="p1" style="white-space: normal;">(1)</p><p class="p1" style="white-space: normal;">[间奏1] |Gmaj7&nbsp;&nbsp;&nbsp;&nbsp;|Cmaj7&nbsp;&nbsp;&nbsp;&nbsp;|Am7&nbsp;&nbsp;&nbsp;&nbsp;|D&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp; (回▲)</p><p class="p1" style="white-space: normal;"><br/></p><p class="p1" style="white-space: normal;">(2)</p><p class="p1" style="white-space: normal;"><span style="font-family: Arial; font-size: 14px;">[间奏2] |Em&nbsp;&nbsp;&nbsp;&nbsp;Bm/D&nbsp;&nbsp;&nbsp;&nbsp;|Cmaj7 －－ B7&nbsp;&nbsp;&nbsp;&nbsp;|Em&nbsp;&nbsp;&nbsp;&nbsp;Bm/D&nbsp;&nbsp;&nbsp;&nbsp;|Cmaj7&nbsp;&nbsp;&nbsp;&nbsp;|</span></p><p class="p1" style="white-space: normal;"><span style="font-family: Arial; font-size: 14px;"><br/></span></p><p class="p1" style="white-space: normal;"><span style="font-family: Arial; font-size: 14px;"><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |Gadd9&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;|B7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; |Em&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Em/D&nbsp; &nbsp; |C#m7-5&nbsp;&nbsp;&nbsp;&nbsp;|</span></span></p><p>&nbsp; &nbsp;刻在我心底的名字&nbsp;&nbsp;&nbsp;&nbsp;忘记了时间这回事&nbsp;&nbsp;&nbsp;&nbsp;既然决定爱上一次就一辈子</p><p><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |Am7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|Bm7&nbsp; &nbsp; &nbsp; &nbsp;Em7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Am7&nbsp; &nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp; D7-9&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</span></p><p>&nbsp; &nbsp;希望让这世界静止&nbsp;&nbsp;&nbsp;&nbsp;想念才不会变得奢侈&nbsp;&nbsp;&nbsp;&nbsp;如果有下次&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我会再爱&nbsp;&nbsp;&nbsp;&nbsp;一次</p><p><br style="white-space: normal;"/></p><p style="white-space: normal;">[尾奏] ||Gmaj7&nbsp; |Cmaj7&nbsp;&nbsp;&nbsp;&nbsp;|| x 2&nbsp; &nbsp;|Gmaj7&nbsp;&nbsp;&nbsp;&nbsp;|</p><p><br/></p><p><br/></p><p><br/></p>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://huangluzhi.github.io/blog/2021/04/13/My%20learned%20song/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1965,6 +1937,67 @@
 <li>Hotel California</li>
 </ol>
 
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://huangluzhi.github.io/blog/2021/04/13/%E5%88%BB%E5%9C%A8%E6%88%91%E5%BF%83%E5%BA%95%E7%9A%84%E5%90%8D%E5%AD%97-%E5%8D%A2%E5%B9%BF%E4%BB%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="Rex">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Luzhi's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2021/04/13/%E5%88%BB%E5%9C%A8%E6%88%91%E5%BF%83%E5%BA%95%E7%9A%84%E5%90%8D%E5%AD%97-%E5%8D%A2%E5%B9%BF%E4%BB%B2/" class="post-title-link" itemprop="url">刻在我心底的名字-卢广仲</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-04-13 14:08:20 / Modified: 14:09:23" itemprop="dateCreated datePublished" datetime="2021-04-13T14:08:20+08:00">2021-04-13</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="刻在我心底的名字"><a href="#刻在我心底的名字" class="headerlink" title="刻在我心底的名字"></a>刻在我心底的名字</h1><p><strong>singer</strong>: 卢广仲<br><strong>composer</strong>: 许媛婷、佳旺、陈文华<br><strong>lyricist</strong>: 许媛婷、佳旺、陈文华</p>
+<p><strong>tempo</strong>: 68<br><strong>origin key</strong>: Bb <strong>Baritone key</strong>: A <strong>Mezzo key</strong>: E </p>
+<hr>
+<p class="p1" style="white-space: normal;">[前奏] |Gadd9&nbsp;&nbsp;&nbsp;&nbsp;|Em7&nbsp;&nbsp;&nbsp;&nbsp;|Cmaj7&nbsp;&nbsp;&nbsp;&nbsp;|Cm&nbsp; &nbsp; |</p><p class="p1" style="white-space: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |Gadd9&nbsp;&nbsp;&nbsp;&nbsp;|Em7&nbsp;&nbsp;&nbsp;&nbsp;|Am7&nbsp;&nbsp;&nbsp;&nbsp;|Cm&nbsp;&nbsp;&nbsp;&nbsp;|</p><p class="p1" style="white-space: normal;"><br/></p><p class="p1" style="white-space: normal;">&nbsp; &nbsp;|Gadd9&nbsp; &nbsp;&nbsp;|F#m7-5&nbsp; &nbsp;B7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Em7&nbsp;&nbsp;&nbsp;&nbsp; |Dm7&nbsp;&nbsp;&nbsp;&nbsp;G&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</p><p class="p1" style="white-space: normal;">&nbsp; &nbsp;Oublie-le &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;好几次我告诉我自己&nbsp; &nbsp; &nbsp; &nbsp;越想努力赶上<br/></p><p>&nbsp; &nbsp;|Cadd9&nbsp; &nbsp;|G/B&nbsp;&nbsp;&nbsp;&nbsp;C#m7-5&nbsp; &nbsp;|Am7&nbsp;&nbsp;&nbsp;&nbsp; |D7-9&nbsp;&nbsp;&nbsp;&nbsp;|</p><p>&nbsp; &nbsp;光的影&nbsp;&nbsp;&nbsp;&nbsp;越&nbsp;&nbsp;&nbsp;&nbsp;无法&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;抽离&nbsp;&nbsp;&nbsp;&nbsp; 而已</p><p><span style="font-family: Arial; font-size: 14px;"></span><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp;|Gadd9</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;|F#m7-5</span><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp;B7</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;|Em7</span><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">|Dm7</span><span style="font-family: Arial; font-size: 14px;">&nbsp; G&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;|</span><span style="font-family: Arial; font-size: 14px;"></span></p><p>&nbsp; &nbsp;1.Je t&#39;aimais &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;刻骨铭心&nbsp;&nbsp;&nbsp;&nbsp;只有我自己&nbsp;&nbsp;&nbsp;&nbsp;好不容易交出</p><p><span style="font-family: Arial; font-size: 14px;"></span><span style="font-family: Arial; font-size: 14px;"><span style="font-family: Arial; font-size: 14px;">▲</span>2.寻找你</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 茫茫人海&nbsp;&nbsp;&nbsp;&nbsp;却又想起你</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">好不容易离开</span></p><p><span style="font-family: Arial; font-size: 14px;"><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp; &nbsp;&nbsp;|Cadd9&nbsp; </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Cm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Dsus4&nbsp;&nbsp;&nbsp;&nbsp;|D&nbsp;&nbsp;&nbsp;&nbsp;|<span style="font-family: Arial; font-size: 14px;"></span></span></p><p>&nbsp; &nbsp;1.真心的勇气&nbsp;&nbsp;&nbsp;&nbsp;你沉默的回应 &nbsp;&nbsp;&nbsp;&nbsp;是善意</p><p><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp;2.思念的轨迹</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">回忆将我连系</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;到过去</span></p><p><br/></p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|Gadd9&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;|B7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; |Em&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Em/D&nbsp; &nbsp; |C#m7-5&nbsp;&nbsp;&nbsp;&nbsp;|<br/></p><p><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp;1.</span>刻在我心底的名字&nbsp;&nbsp;&nbsp;&nbsp;忘记了时间这回事&nbsp;&nbsp;&nbsp;&nbsp;于是谎言说了一次就一辈子</p><p><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp;2.</span><span style="font-family: Arial; font-size: 14px;">刻在我心底的名字&nbsp;&nbsp;&nbsp;&nbsp;忘记了时间这回事&nbsp;&nbsp;&nbsp;&nbsp;</span>既然决定爱上一次就一辈子</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Am7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Bm7&nbsp; &nbsp; &nbsp; &nbsp;Em7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Am7&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;|Dsus4&nbsp;&nbsp;&nbsp;&nbsp;D&nbsp;&nbsp;&nbsp;&nbsp;|<br/></p><p>&nbsp; &nbsp;1.曾顽固跟世界对峙&nbsp;&nbsp;&nbsp;&nbsp;觉得连呼吸都是奢侈&nbsp;&nbsp;&nbsp;&nbsp;如果有下次 &nbsp;&nbsp;&nbsp;&nbsp;我会再爱一次</p><p><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp;2.希望让这世界静止</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;想念才不会变得奢侈</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">如果有下次</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;我会再爱一次</span></p><p><span style="font-family: Arial; font-size: 14px;"><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp; </span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |Gadd9</span><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp; </span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;"></span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;|B7</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; |Em</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;Em/D</span><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp; |C#m7-5</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;|</span></span></p><p>&nbsp; &nbsp;刻在我心底的名字&nbsp;&nbsp;&nbsp;&nbsp;你藏在尘封的位置&nbsp;&nbsp;&nbsp;&nbsp;要不是这样我怎么过一辈子</p><p><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp; </span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;|Am7</span><span style="font-family: Arial; font-size: 14px;">&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;D</span><span style="font-family: Arial; font-size: 14px;">&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;|Bm7</span><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp; &nbsp; &nbsp;Em7</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;|Am7</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;D</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;|</span></p><p>&nbsp; &nbsp;1.我住在霓虹的城市&nbsp;&nbsp;&nbsp;&nbsp;握著飞向天堂的地址&nbsp;&nbsp;&nbsp;&nbsp;你可以翱翔 &nbsp;&nbsp;&nbsp;&nbsp;可是我只能停滞</p><p>&nbsp; &nbsp;2.我住在想你的城市&nbsp;&nbsp;&nbsp;&nbsp;握著飞向天空的钥匙&nbsp;&nbsp;&nbsp;&nbsp;你继续翱翔&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;还有我为你坚持</p><p><br/></p><p><br style="white-space: normal;"/></p><p class="p1" style="white-space: normal;">(1)</p><p class="p1" style="white-space: normal;">[间奏1] |Gmaj7&nbsp;&nbsp;&nbsp;&nbsp;|Cmaj7&nbsp;&nbsp;&nbsp;&nbsp;|Am7&nbsp;&nbsp;&nbsp;&nbsp;|D&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp; (回▲)</p><p class="p1" style="white-space: normal;"><br/></p><p class="p1" style="white-space: normal;">(2)</p><p class="p1" style="white-space: normal;"><span style="font-family: Arial; font-size: 14px;">[间奏2] |Em&nbsp;&nbsp;&nbsp;&nbsp;Bm/D&nbsp;&nbsp;&nbsp;&nbsp;|Cmaj7 －－ B7&nbsp;&nbsp;&nbsp;&nbsp;|Em&nbsp;&nbsp;&nbsp;&nbsp;Bm/D&nbsp;&nbsp;&nbsp;&nbsp;|Cmaj7&nbsp;&nbsp;&nbsp;&nbsp;|</span></p><p class="p1" style="white-space: normal;"><span style="font-family: Arial; font-size: 14px;"><br/></span></p><p class="p1" style="white-space: normal;"><span style="font-family: Arial; font-size: 14px;"><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |Gadd9&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;|B7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; |Em&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Em/D&nbsp; &nbsp; |C#m7-5&nbsp;&nbsp;&nbsp;&nbsp;|</span></span></p><p>&nbsp; &nbsp;刻在我心底的名字&nbsp;&nbsp;&nbsp;&nbsp;忘记了时间这回事&nbsp;&nbsp;&nbsp;&nbsp;既然决定爱上一次就一辈子</p><p><span style="font-family: Arial; font-size: 14px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |Am7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|Bm7&nbsp; &nbsp; &nbsp; &nbsp;Em7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Am7&nbsp; &nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family: Arial; font-size: 14px;">&nbsp; D7-9&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</span></p><p>&nbsp; &nbsp;希望让这世界静止&nbsp;&nbsp;&nbsp;&nbsp;想念才不会变得奢侈&nbsp;&nbsp;&nbsp;&nbsp;如果有下次&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我会再爱&nbsp;&nbsp;&nbsp;&nbsp;一次</p><p><br style="white-space: normal;"/></p><p style="white-space: normal;">[尾奏] ||Gmaj7&nbsp; |Cmaj7&nbsp;&nbsp;&nbsp;&nbsp;|| x 2&nbsp; &nbsp;|Gmaj7&nbsp;&nbsp;&nbsp;&nbsp;|</p><p><br/></p><p><br/></p><p><br/></p>
       
     </div>
 
